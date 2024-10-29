@@ -4,56 +4,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Currículum Vitae - José María Pineda</title>
+    <title>Fundación</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    <div class="container">
-        <header class="header">
-            <img src="unnamed.jpg" alt="Foto de José María Pineda" class="profile-pic">
-            <h1>José María Pineda</h1>
-            <p>Edad: 20 años</p>
-            <p>Teléfono: +504 9333-8560</p>
-            <p>Correo: pjosemaria757@gmail.com</p>
-            <p class="description">Soy un emprendedor apasionado con experiencia en producción audiovisual, gestión de eventos y desarrollo de contenido digital. Busco siempre nuevas oportunidades para expandir mis conocimientos y crear proyectos de impacto.</p>
-            <div class="btn">
-                <a href="https://www.facebook.com/josemaria.pineda.5680" class="botones">Facebook</a>
-                <a href="https://www.instagram.com/pjose_maria/" class="botones">Instagram</a>
-            </div>
-        </header>
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <img src="Assets/448004361_846738257484773_313831.png" alt="Logo de la Fundación">
+        </div>
+        <div class="header-content">
+            <h1>Proyectos Claretianos para el Desarrolo de Guatemala</h1>
+            <p>Trabajando para un futuro mejor, brindando ayuda y esperanza a quienes más lo necesitan.</p>
+            <button class="donate-button">Donar</button>
+            <button class="info-button">Información</button>
+        </div>
+    </header>
 
+    <!-- Sección de Quiénes Somos -->
+    <section id="quienes-somos">
+        <h2>¿Quiénes Somos?</h2>
+        <p>Somos una organización comprometida con el bienestar y desarrollo de las comunidades vulnerables. Nos esforzamos por brindar recursos y oportunidades a quienes más lo necesitan.</p>
+    </section>
 
-        <section class="section">
-            <h2>Experiencia Laboral</h2>
-            <ul>
-                <li>
-                    <h3>Cacao Express</h3>
-                    <p>Venta de granitas de cacao y otros productos artesanales, enfocado en la producción de chocolate natural.</p>
-                </li>
-                <li>
-                    <h3>Productor Audiovisual en Amate TV</h3>
-                    <p>2024 - Presente</p>
-                    <p>Creación de contenido, manejo de transmisiones en vivo y gestión de publicidad en redes sociales.</p>
-                </li>
-            </ul>
-        </section>
+    <!-- Sección de Proyectos -->
+    <section id="proyectos">
+        <h2>Proyectos</h2>
+        <div class="proyecto">
+            <img src="Assets/guatemala-mother-and-child-sense.png" alt="Proyecto 1">
+            <h3>Educación para Todos</h3>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Esse modi distinctio veniam aliquam officia nam. Perspiciatis doloremque, aut sapiente blanditiis, inventore temporibus porro vitae ducimus, ab quos et dolores illum.</p>
+            <button onclick="mostrarDetalles('Proyecto 1')">Saber más</button>
+        </div>
+        <div class="proyecto">
+            <img src="Assets/monitoreo_de_la_vacunacion_comun.png" alt="Proyecto 2">
+            <h3>Salud y Bienestar</h3>
+            <button onclick="mostrarDetalles('Proyecto 2')">Saber más</button>
+        </div>
+    </section>
 
-        <section class="section">
-            <h2>Mis Emprendimientos</h2>
-            <ul>
+    <!-- Sección de Contacto -->
+    <section id="contacto">
+        <h2>Contacto</h2>
+        <p>Para más información, puedes contactarnos en el siguiente correo electrónico: <a href="mailto:info@fundacion.org">info@fundacion.org</a></p>
+    </section>
 
-                <li>
-                    <h3>Josaly´s Shop</h3>
-                    <p>Tienda en línea de productos de Victoria's Secret y Bath & Body Works, con entregas a domicilio.</p>
-                </li>
-                <li>
-                    <h3>Amate TV</h3>
-                    <p>Creación de contenido, manejo de transmisiones en vivo y gestión de publicidad en redes sociales.</p>
-                </li>
-            </ul>
-        </section>
-    </div>
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Fundación Ayuda y Esperanza. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 
 </html>
