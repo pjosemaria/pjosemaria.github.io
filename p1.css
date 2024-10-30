@@ -29,9 +29,12 @@
 
 .atras {
     background-color: #33615c;
+    font-weight: 600;
     color: #ffffff;
+    text-decoration: none;
     padding: 5px 20px;
-    border-radius: 5px;
+    border-radius: 20px;
+    margin-left: 20px;
 }
 
 
@@ -69,7 +72,7 @@
 }
 
 .project-gallery img {
-    width: 200px;
+    width: 300px;
     height: auto;
     border-radius: 8px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);

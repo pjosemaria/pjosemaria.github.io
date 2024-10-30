@@ -13,7 +13,7 @@
 
 .subheader {
     background-color: #f7f7f7;
-    padding: 5px 0px;
+    padding: 5px 0;
     text-align: left;
     position: relative;
 }
@@ -29,9 +29,12 @@
 
 .atras {
     background-color: #33615c;
+    font-weight: 600;
     color: #ffffff;
+    text-decoration: none;
     padding: 5px 20px;
-    border-radius: 5px;
+    border-radius: 20px;
+    margin-left: 20px;
 }
 
 
