@@ -12,13 +12,14 @@
 /* Estilos del Header */
 
 header {
-    background-color: #33615c;
+    background-image: url(Assets/Captura.png);
     background-size: cover;
     background-position: center;
     color: white;
     position: relative;
     text-align: center;
     padding: 100px 50px;
+    font-weight: 500;
 }
 
 .logo {
@@ -33,6 +34,7 @@ header {
 }
 
 .header-content h1 {
+    font-weight: 800;
     text-overflow: clip;
     font-size: 2.5em;
     margin-bottom: 10px;
@@ -44,34 +46,17 @@ header {
 }
 
 .donate-button {
+    font-weight: 600;
     text-decoration: none;
     background-color: #ffc527;
     /* Amarillo dorado */
-    color: #333;
+    color: #141414;
     border: none;
-    padding: 10px 40px;
-    font-size: 1em;
+    padding: 15px 50px;
+    font-size: 20px;
     cursor: pointer;
     border-radius: 5px;
     transition: background-color 0.3s;
-}
-
-.info-button {
-    background-color: #4ca099;
-    text-decoration: none;
-    /* Amarillo dorado */
-    color: #ffffff;
-    border: none;
-    padding: 10px 20px;
-    font-size: 1em;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-}
-
-.info-button:hover {
-    background-color: #213f3b;
-    text-decoration: none;
 }
 
 .donate-button:hover {
@@ -97,11 +82,30 @@ header {
 }
 
 #quienes-somos p {
-    padding: 30px 20px;
+    padding: 10px 20px;
     font-size: 1em;
     color: #666;
     max-width: 800px;
     text-align: center;
+    margin-bottom: 15px;
+}
+
+.info-button {
+    background-color: #4ca099;
+    text-decoration: none;
+    /* Amarillo dorado */
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.info-button:hover {
+    background-color: #213f3b;
+    text-decoration: none;
 }
 
 
@@ -121,11 +125,11 @@ header {
 
 .proyecto {
     display: inline-block;
-    height: 350px;
+    height: 400px;
     width: 300px;
     margin: 20px;
     background-color: white;
-    border-radius: 8px;
+    border-radius: 0px;
     overflow: hidden;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -152,7 +156,7 @@ header {
     background-color: #4ca099;
     color: rgb(255, 255, 255);
     border: none;
-    padding: 10px 20px;
+    padding: 10px 60px;
     cursor: pointer;
     border-radius: 4px;
     transition: background-color 0.3s;
