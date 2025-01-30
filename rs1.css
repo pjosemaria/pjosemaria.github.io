@@ -1,0 +1,77 @@
+/* Estilos generales */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #141414;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+
+/* Contenedor principal */
+
+.video-container {
+    width: 100%;
+    max-width: 1200px;
+    position: relative;
+    text-align: center;
+}
+
+video {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+
+/* Información del video */
+
+.video-info {
+    margin-top: 20px;
+}
+
+.video-info h1 {
+    font-size: 2em;
+    margin: 0;
+}
+
+.video-info p {
+    font-size: 1em;
+    margin: 5px 0 0;
+}
+
+
+/* Estilo para dispositivos móviles */
+
+@media (max-width: 768px) {
+    .video-container {
+        max-width: 100%;
+    }
+}
+
+
+/* Estilos para pantalla en modo horizontal */
+
+@media (orientation: landscape) {
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        padding: 0;
+    }
+    .video-container {
+        max-width: 100%;
+        width: 100%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
