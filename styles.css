@@ -1,0 +1,235 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #141414;
+    color: white;
+    line-height: 1.6;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #141414;
+    align-items: center;
+}
+
+header img {
+    width: 150px;
+    margin: 5px;
+}
+
+header .nav-buttons a {
+    text-decoration: none;
+    background-color: #575757;
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+header .nav-buttons a:hover {
+    background-color: #575757;
+}
+
+header .nav-buttons i {
+    margin-right: 10px;
+}
+
+header .nav-buttons button {
+    background-color: #196fdf;
+    border: none;
+    color: white;
+    padding: 8px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+header .nav-buttons button:hover {
+    background-color: #0b428a;
+}
+
+.video-section {
+    margin-top: 10px;
+    padding: 20px;
+}
+
+.video-section h2 {
+    font-size: 1em;
+    margin-bottom: 5px;
+}
+
+.video-gallery {
+    display: flex;
+    gap: 20px;
+}
+
+.video-item {
+    color: #fff;
+    text-decoration: none;
+    width: 500px;
+    text-align: center;
+    transition: filter 0.3s ease;
+    margin-bottom: 10px;
+}
+
+.video-item:hover {
+    filter: brightness(0.7);
+}
+
+.video-item img {
+    width: 100%;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.cc-section {
+    margin-top: 5px;
+    padding: px;
+}
+
+.cc-section h2 {
+    font-size: 1em;
+    margin: 10px;
+}
+
+.cc {
+    display: flex;
+    gap: 15px;
+    overflow-x: scroll;
+}
+
+.cc img {
+    width: 130px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.deportes-section {
+    margin-top: 5px;
+    padding: px;
+}
+
+.deportes-section h2 {
+    font-size: 1em;
+    margin: 10px;
+}
+
+.deportes {
+    display: flex;
+    gap: 15px;
+    overflow-x: scroll;
+}
+
+.deportes img {
+    width: 200px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.deportes h5 {
+    color: #dfdfdf;
+    font-size: 0.5rem;
+}
+
+.deportes h3 {
+    color: #fff;
+    font-size: 1rem;
+}
+
+.cap-section {
+    margin-top: 5px;
+    padding: 10px;
+}
+
+.cap-section h2 {
+    font-size: 1em;
+    margin: 10px;
+}
+
+.cap {
+    display: flex;
+    gap: 15px;
+    overflow-x: scroll;
+}
+
+.cap img {
+    width: 200px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.cap h5 {
+    color: #dfdfdf;
+    font-size: 0.8rem;
+}
+
+.cap h3 {
+    color: #fff;
+    font-size: 1rem;
+}
+
+.serie-info img {
+    width: 100%;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.serie-info h2 {
+    margin: 20px;
+}
+
+.serie-info p {
+    margin: 20px;
+    font-size: 1rem;
+}
+
+.serie-info a {
+    max-width: 500px;
+    margin: 20px;
+    background-color: #fff;
+    padding: 5px 80px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: #141414;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease;
+}
+
+.serie-info a:hover {
+    background-color: rgb(204, 204, 204);
+}
+
+.serie-info i {
+    margin: 10px;
+}
+
+.serie-info h5 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.lista img {
+    margin: 20px;
+    width: 200px;
+    border-radius: 10px;
+    object-fit: cover;
+    display: flex;
+}
+
+.lista h2 {
+    margin: 20px;
+}
