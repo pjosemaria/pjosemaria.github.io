@@ -360,7 +360,7 @@
         </form>
     </section>
 
-  <!-- SOLICITAR PRÉSTAMO -->
+<!-- SOLICITAR PRÉSTAMO -->
 <section id="solicitud">
     <form id="loan-form">
         <h2>Formulario de Solicitud de Préstamo</h2>
@@ -396,7 +396,17 @@
             <textarea name="direccion_residencia" rows="2"></textarea>
 
             <label>Teléfono personal:</label>
-            <input type="tel" name="telefono" required>
+            <div style="display:flex; gap:5px; align-items:center;">
+                <select id="codigo_pais_personal" name="codigo_pais_personal" required>
+                    <option value="+504">🇭🇳 Honduras (+504)</option>
+                    <option value="+502">🇬🇹 Guatemala (+502)</option>
+                    <option value="+503">🇸🇻 El Salvador (+503)</option>
+                    <option value="+505">🇳🇮 Nicaragua (+505)</option>
+                    <option value="+506">🇨🇷 Costa Rica (+506)</option>
+                    <option value="+1">🇺🇸 Estados Unidos (+1)</option>
+                </select>
+                <input type="text" id="telefono_personal" name="telefono_personal" placeholder="9999-9999" required>
+            </div>
 
             <label>Correo electrónico:</label>
             <input type="email" name="correo">
@@ -427,7 +437,17 @@
             <input type="text" name="jefe">
 
             <label>Teléfono de la empresa:</label>
-            <input type="tel" name="telefono_empresa">
+            <div style="display:flex; gap:5px; align-items:center;">
+                <select id="codigo_pais_empresa" name="codigo_pais_empresa" required>
+                    <option value="+504">🇭🇳 Honduras (+504)</option>
+                    <option value="+502">🇬🇹 Guatemala (+502)</option>
+                    <option value="+503">🇸🇻 El Salvador (+503)</option>
+                    <option value="+505">🇳🇮 Nicaragua (+505)</option>
+                    <option value="+506">🇨🇷 Costa Rica (+506)</option>
+                    <option value="+1">🇺🇸 Estados Unidos (+1)</option>
+                </select>
+                <input type="text" id="telefono_empresa" name="telefono_empresa" placeholder="9999-9999" required>
+            </div>
 
             <label>Salario mensual:</label>
             <input type="text" name="salario" class="money">
@@ -482,7 +502,6 @@
     </form>
 </section>
 
-
     <footer>
         <p> Telefono: +504 9333-8560</p>
         <p>&copy; 2025 Caja Rural de Ahorro y Crédito "Amistad y Superación" (CARACAS). Todos los derechos reservados.</p>
@@ -506,6 +525,48 @@
       }
     });
   });
+        // Campos de teléfono personal y empresa
+  const camposTelefono = [
+    { select: "codigo_pais_personal", input: "telefono_personal" },
+    { select: "codigo_pais_empresa", input: "telefono_empresa" }
+  ];
+
+  camposTelefono.forEach(campo => {
+    const select = document.getElementById(campo.select);
+    const input = document.getElementById(campo.input);
+
+    // Cambiar placeholder según país
+    select.addEventListener("change", () => {
+      if (select.value === "+1") {
+        input.placeholder = "(000) 000-0000";
+      } else {
+        input.placeholder = "9999-9999";
+      }
+      input.value = "";
+    });
+
+    // Formatear número mientras escribes
+    input.addEventListener("input", () => {
+      let valor = input.value.replace(/\D/g, '');
+      if (select.value === "+1") {
+        if (valor.length > 10) valor = valor.slice(0,10);
+        if (valor.length > 6) {
+          valor = `(${valor.slice(0,3)}) ${valor.slice(3,6)}-${valor.slice(6)}`;
+        } else if (valor.length > 3) {
+          valor = `(${valor.slice(0,3)}) ${valor.slice(3)}`;
+        } else if (valor.length > 0) {
+          valor = `(${valor}`;
+        }
+      } else {
+        if (valor.length > 8) valor = valor.slice(0,8);
+        if (valor.length > 4) {
+          valor = valor.slice(0,4) + '-' + valor.slice(4);
+        }
+      }
+      input.value = valor;
+    });
+  });
+        //otra seccion
         function mostrar(seccion) {
             // Mostrar sección
             const secciones = document.querySelectorAll("section");
@@ -560,3 +621,4 @@
 
 
 </html>
+
