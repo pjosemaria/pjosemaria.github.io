@@ -360,28 +360,28 @@
         </form>
     </section>
 
-    <!-- SOLICITAR PRÉSTAMO -->
-    <section id="solicitud">
-        <form id="loan-form">
-            <h2>Formulario de Solicitud de Préstamo</h2>
+  <!-- SOLICITAR PRÉSTAMO -->
+<section id="solicitud">
+    <form id="loan-form">
+        <h2>Formulario de Solicitud de Préstamo</h2>
 
-            <!-- Información Personal -->
-            <fieldset>
-                <legend>Información Personal</legend>
-                <label>Nombre completo:</label>
-                <input type="text" name="nombre_completo" required>
+        <!-- Información Personal -->
+        <fieldset>
+            <legend>Información Personal</legend>
+            <label>Nombre completo:</label>
+            <input type="text" name="nombre_completo" required>
 
-                <label>Número de identidad / DPI:</label>
-                <input type="text" name="identidad" required>
+            <label>Número de identidad / DPI:</label>
+            <input type="text" name="identidad" required>
 
-                <label>Fecha de nacimiento:</label>
-                <input type="date" name="fecha_nacimiento" required>
+            <label>Fecha de nacimiento:</label>
+            <input type="date" name="fecha_nacimiento" required>
 
-                <label>Edad:</label>
-                <input type="number" name="edad" min="18" required>
+            <label>Edad:</label>
+            <input type="number" name="edad" min="18" required>
 
-                <label>Estado civil:</label>
-                <select name="estado_civil">
+            <label>Estado civil:</label>
+            <select name="estado_civil">
                 <option>Soltero</option>
                 <option>Casado</option>
                 <option>Unión libre</option>
@@ -389,70 +389,70 @@
                 <option>Viudo</option>
             </select>
 
-                <label>Número de hijos:</label>
-                <input type="number" name="numero_hijos" min="0">
+            <label>Número de hijos:</label>
+            <input type="number" name="numero_hijos" min="0">
 
-                <label>Dirección de residencia:</label>
-                <textarea name="direccion_residencia" rows="2"></textarea>
+            <label>Dirección de residencia:</label>
+            <textarea name="direccion_residencia" rows="2"></textarea>
 
-                <label>Teléfono personal:</label>
-                <input type="tel" name="telefono" required>
+            <label>Teléfono personal:</label>
+            <input type="tel" name="telefono" required>
 
-                <label>Correo electrónico:</label>
-                <input type="email" name="correo">
+            <label>Correo electrónico:</label>
+            <input type="email" name="correo">
 
-                <label>Nivel de escolaridad:</label>
-                <input type="text" name="escolaridad">
+            <label>Nivel de escolaridad:</label>
+            <input type="text" name="escolaridad">
 
-                <label>Referencias personales (Nombre y Teléfono):</label>
-                <textarea name="referencias" rows="3"></textarea>
-            </fieldset>
+            <label>Referencias personales (Nombre y Teléfono):</label>
+            <textarea name="referencias" rows="3"></textarea>
+        </fieldset>
 
-            <!-- Información Laboral -->
-            <fieldset>
-                <legend>Información Laboral</legend>
-                <label>Nombre de la empresa / negocio:</label>
-                <input type="text" name="empresa" required>
+        <!-- Información Laboral -->
+        <fieldset>
+            <legend>Información Laboral</legend>
+            <label>Nombre de la empresa / negocio:</label>
+            <input type="text" name="empresa" required>
 
-                <label>Actividad económica:</label>
-                <input type="text" name="actividad_economica">
+            <label>Actividad económica:</label>
+            <input type="text" name="actividad_economica">
 
-                <label>Cargo / puesto:</label>
-                <input type="text" name="cargo">
+            <label>Cargo / puesto:</label>
+            <input type="text" name="cargo">
 
-                <label>Fecha de ingreso:</label>
-                <input type="date" name="fecha_ingreso">
+            <label>Fecha de ingreso:</label>
+            <input type="date" name="fecha_ingreso">
 
-                <label>Nombre del jefe inmediato:</label>
-                <input type="text" name="jefe">
+            <label>Nombre del jefe inmediato:</label>
+            <input type="text" name="jefe">
 
-                <label>Teléfono de la empresa:</label>
-                <input type="tel" name="telefono_empresa">
+            <label>Teléfono de la empresa:</label>
+            <input type="tel" name="telefono_empresa">
 
-                <label>Salario mensual:</label>
-                <input type="number" step="0.01" name="salario">
+            <label>Salario mensual:</label>
+            <input type="text" name="salario" class="money">
 
-                <label>Otros ingresos:</label>
-                <input type="number" step="0.01" name="otros_ingresos">
+            <label>Otros ingresos:</label>
+            <input type="text" name="otros_ingresos" class="money">
 
-                <label>Deducciones mensuales:</label>
-                <input type="number" step="0.01" name="deducciones">
+            <label>Deducciones mensuales:</label>
+            <input type="text" name="deducciones" class="money">
 
-                <label>Ingresos netos mensuales:</label>
-                <input type="number" step="0.01" name="ingresos_netos">
-            </fieldset>
+            <label>Ingresos netos mensuales:</label>
+            <input type="text" name="ingresos_netos" class="money">
+        </fieldset>
 
-            <!-- Detalles del Préstamo -->
-            <fieldset>
-                <legend>Detalles del Préstamo</legend>
-                <label>Monto solicitado:</label>
-                <input type="number" step="0.01" name="monto" required>
+        <!-- Detalles del Préstamo -->
+        <fieldset>
+            <legend>Detalles del Préstamo</legend>
+            <label>Monto solicitado:</label>
+            <input type="text" name="monto" class="money" required>
 
-                <label>Plazo solicitado (meses):</label>
-                <input type="number" name="plazo" required>
+            <label>Plazo solicitado (meses):</label>
+            <input type="number" name="plazo" required>
 
-                <label>Destino del préstamo:</label>
-                <select name="destino">
+            <label>Destino del préstamo:</label>
+            <select name="destino">
                 <option>Consumo</option>
                 <option>Vivienda</option>
                 <option>Educación</option>
@@ -461,27 +461,26 @@
                 <option>Agropecuario</option>
             </select>
 
-                <label>Forma de pago:</label>
-                <select name="forma_pago">
+            <label>Forma de pago:</label>
+            <select name="forma_pago">
                 <option>Mensual</option>
                 <option>Quincenal</option>
                 <option>Otro</option>
             </select>
 
-                <label>Garantía ofrecida:</label>
-                <input type="text" name="garantia" placeholder="Hipotecaria, prendaria, aval, etc.">
+            <label>Garantía ofrecida:</label>
+            <input type="text" name="garantia" placeholder="Hipotecaria, prendaria, aval, etc.">
 
-                <label>Historial crediticio:</label>
-                <textarea name="historial_crediticio" rows="3"></textarea>
+            <label>Historial crediticio:</label>
+            <textarea name="historial_crediticio" rows="3"></textarea>
 
-                <label>Monto máximo de cuota que puede pagar:</label>
-                <input type="number" step="0.01" name="cuota_maxima">
-            </fieldset>
+            <label>Monto máximo de cuota que puede pagar:</label>
+            <input type="text" name="cuota_maxima" class="money">
+        </fieldset>
 
-            <button type="submit" href='gracias.html'>Enviar Solicitud</button>
-        </form>
-    </section>
-
+        <button type="submit" href='gracias.html'>Enviar Solicitud</button>
+    </form>
+</section>
 
 
     <footer>
@@ -490,6 +489,23 @@
     </footer>
 
     <script>
+        //seleciona dinero
+        const moneyInputs = document.querySelectorAll(".money");
+
+  moneyInputs.forEach(input => {
+    input.addEventListener("blur", () => {
+      let valor = input.value.replace(/[^0-9.]/g, "");
+      if (valor) {
+        let numero = parseFloat(valor);
+        if (!isNaN(numero)) {
+          input.value = "L" + numero.toLocaleString("es-HN", { 
+            minimumFractionDigits: 2, 
+            maximumFractionDigits: 2 
+          });
+        }
+      }
+    });
+  });
         function mostrar(seccion) {
             // Mostrar sección
             const secciones = document.querySelectorAll("section");
@@ -541,5 +557,6 @@
         });
     </script>
 </body>
+
 
 </html>
