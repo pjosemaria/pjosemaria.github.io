@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Caja Rural CARACAS</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: #f5f7fa;
+            color: #333;
+        }
+        /* HEADER */
+        
+        header {
+            background: #ffcc00;
+            /* Amarillo principal */
+            padding: 15px;
+            text-align: center;
+        }
+        
+        header img {
+            max-height: 60px;
+        }
+        /* Botón hamburguesa */
+        
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 26px;
+            cursor: pointer;
+            color: #2e7d32;
+        }
+        /* NAV */
+        
+        nav {
+            background: #2e7d32;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap
+        }
+        
+        nav button {
+            background: none;
+            border: none;
+            color: white;
+            padding: 15px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+        
+        nav button:hover,
+        nav button.active {
+            background: #1b5e20;
+        }
+        /* Side Menu */
+        
+        .side-nav {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #2e7d32;
+            overflow-x: hidden;
+            transition: 0.3s;
+            padding-top: 60px;
+            z-index: 999;
+        }
+        
+        .side-nav button {
+            display: block;
+            text-align: left;
+            width: 100%;
+            padding: 15px 20px;
+            border: none;
+            background: none;
+            color: white;
+            font-size: 18px;
+        }
+        
+        .side-nav button:hover {
+            background: #1b5e20;
+        }
+        
+        .side-nav .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 30px;
+            color: white;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        /* SECCIONES */
+        
+        section {
+            padding: 40px 20px;
+            display: none;
+            max-width: 1100px;
+            margin: auto;
+        }
+        
+        section.active {
+            display: block;
+        }
+        
+        h2 {
+            color: #2e7d32;
+            margin-bottom: 15px;
+            margin-top: -15px;
+        }
+        
+        h3 {
+            margin-top: 10px;
+            color: #388e3c;
+        }
+        
+        p {
+            margin-top: auto;
+            margin-bottom: 10px;
+        }
+        /* HOME */
+        
+        .home {
+            text-align: center;
+            padding: 60px 20px;
+        }
+        
+        .home button {
+            background: #ffcc00;
+            color: #2e7d32;
+            border: none;
+            padding: 20px 40px;
+            font-size: 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background 0.3s;
+            font-weight: bold;
+        }
+        
+        .home button:hover {
+            background: #f4b400;
+        }
+        /* TARJETAS */
+        
+        .card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: left;
+            text-align: left;
+        }
+        
+        .card img {
+            width: 100%;
+            max-width: 100%;
+            height: 230px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 5px;
+        }
+        /* FORMULARIO */
+        
+        form {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: auto;
+        }
+        
+        form input,
+        form textarea,
+        form select {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+        
+        form button {
+            background: #ffcc00;
+            color: #2e7d32;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        
+        form button:hover {
+            background: #f4b400;
+        }
+        /* FOOTER */
+        
+        footer {
+            background: #2e7d32;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin-top: 40px;
+        }
+    </style>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+    </script>
+</head>
+
+<body>
+
+    <header>
+        <img src="assets/LOGO CARACAS.png" alt="Logo Caja Rural">
+        <button class="menu-toggle" onclick="abrirMenu()">☰</button>
+    </header>
+
+    <!-- Menú normal (pantallas grandes) -->
+    <nav>
+        <button id="btn-home" onclick="mostrar('home')">Home</button>
+        <button id="btn-quienes" onclick="mostrar('quienes')">Quiénes Somos</button>
+        <button id="btn-ahorro" onclick="mostrar('ahorro')">Tipos de Ahorro</button>
+        <button id="btn-prestamo" onclick="mostrar('prestamo')">Tipos de Préstamo</button>
+        <button id="btn-proyectos" onclick="mostrar('proyectos')">Proyectos</button>
+        <button id="btn-contacto" onclick="mostrar('contacto')">Contacto</button>
+        <button id="btn-solicitud" onclick="mostrar('solicitud')">Solicitar Préstamo</button>
+    </nav>
+
+    <!-- Menú lateral (pantallas pequeñas) -->
+    <div id="sideNav" class="side-nav">
+        <button class="close-btn" onclick="cerrarMenu()">×</button>
+        <button onclick="mostrar('home'); cerrarMenu()">Home</button>
+        <button onclick="mostrar('quienes'); cerrarMenu()">Quiénes Somos</button>
+        <button onclick="mostrar('ahorro'); cerrarMenu()">Tipos de Ahorro</button>
+        <button onclick="mostrar('prestamo'); cerrarMenu()">Tipos de Préstamo</button>
+        <button onclick="mostrar('proyectos'); cerrarMenu()">Proyectos</button>
+        <button onclick="mostrar('contacto'); cerrarMenu()">Contacto</button>
+        <button onclick="mostrar('solicitud'); cerrarMenu()">Solicitar Préstamo</button>
+    </div>
+    <!-- HOME -->
+    <section id="home" class="active home">
+        <h2>Bienvenido a Caja Rural de Ahorro y Crédito "Amistad y Superación" (CARACAS)</h2>
+        <p>Estamos aquí para ayudarte a alcanzar tus metas financieras.</p>
+        <button onclick="mostrar('solicitud')">Solicitar Préstamo</button>
+    </section>
+
+    <!-- QUIENES SOMOS -->
+    <section id="quienes">
+        <h2>Quiénes Somos</h2>
+        <p>En la <b>Caja Rural de Ahorro y Crédito "Amistad y Superación" (CARACAS),</b> nuestros proyectos se enfocan principalmente en el fortalecimiento del sector agrícola, buscando generar un desarrollo sostenible y mejorar la calidad de vida de nuestros
+            socios y de la comunidad en general.</p>
+        <p>A través de capacitación constante, asesoría técnica especializada y financiamiento accesible, ayudamos a los agricultores a incrementar la productividad de sus cultivos, adoptar prácticas más eficientes y sostenibles, y acceder a mercados donde
+            puedan comercializar sus productos de manera justa. Nuestros programas incluyen la introducción de tecnologías agrícolas modernas, técnicas de riego, selección de semillas de alta calidad y métodos de cultivo amigables con el medio ambiente.</p>
+        <p>Además, ofrecemos microcréditos adaptados a las necesidades del sector, permitiendo a los productores adquirir insumos, herramientas y maquinaria, o invertir en mejoras de infraestructura agrícola. También fomentamos proyectos de innovación, como
+            cultivos orgánicos, diversificación de productos y programas de asociatividad entre pequeños productores para lograr economías de escala.</p>
+        <p>Creemos firmemente que el desarrollo del sector agrícola es clave para el progreso de nuestra comunidad, por eso nuestros esfuerzos no solo buscan aumentar la rentabilidad de los agricultores, sino también garantizar la seguridad alimentaria,
+            fortalecer la economía local y generar oportunidades de empleo. En CARACAS, cada proyecto agrícola es un paso hacia un futuro más próspero y sostenible para todos nuestros socios.</p>
+    </section>
+
+    <!-- AHORRO -->
+    <section id="ahorro">
+        <h2>Tipos de Ahorro</h2>
+        <div class="card">
+            <img src="assets/Untitled (1).png" alt="Cuenta Retirable">
+            <h3>Cuenta de Ahorro Retirable</h3>
+            <p>El Ahorro Retirable está diseñado para quienes desean tener la libertad de disponer de su dinero en cualquier momento, sin comprometer su liquidez. Con esta cuenta podrás realizar depósitos y retiros cuando lo necesites, manteniendo siempre
+                tu capital disponible. Además, recibirás un interés del 4% mensual, lo que convierte a este producto en una excelente opción para quienes buscan seguridad, flexibilidad y una rentabilidad constante. Es ideal para imprevistos, metas a corto
+                plazo o simplemente como una forma de hacer crecer tu dinero mientras lo tienes disponible.</p>
+        </div>
+        <div class="card">
+            <img src="assets/pnc_insights_p_what-is-compound.png" alt="Plazo fijo">
+            <h3>Cuenta de Ahorro a Plazo Fijo</h3>
+            <p>El Ahorro a Plazo Fijo es la mejor alternativa para quienes desean invertir con mayor rendimiento y disciplina financiera. Este tipo de ahorro consiste en depositar un monto específico durante un periodo de tiempo previamente definido, el
+                cual no podrá ser retirado hasta finalizar dicho plazo. A cambio, obtendrás intereses mensuales de hasta un 8%, lo que lo convierte en una de las opciones más rentables para hacer crecer tu capital de manera segura. Es ideal para metas
+                de mediano y largo plazo, como proyectos personales, estudios, inversión en un negocio o simplemente para aumentar tu patrimonio de forma planificada y sin riesgos.</p>
+        </div>
+        <div class="card">
+            <img src="assets/Untitled (2).png" alt="Navideña">
+            <h3>Cuenta de Ahorro Navideña</h3>
+            <p>El Ahorro Navideño está pensado especialmente para aquellas familias y personas que desean disfrutar de una Navidad sin preocupaciones económicas. Con este plan, podrás depositar periódicamente a lo largo del año y tu dinero quedará asegurado
+                hasta el mes de diciembre, momento en el que podrás retirarlo en su totalidad para cubrir gastos navideños, compras, celebraciones o cualquier necesidad de fin de año. Además, tu ahorro genera intereses durante todo el periodo, lo que
+                te permitirá contar con un extra al llegar diciembre. Es la forma más práctica y organizada de garantizar unas fiestas tranquilas y llenas de alegría.</p>
+        </div>
+    </section>
+
+    <!-- PRESTAMOS -->
+    <section id="prestamo">
+        <h2>Tipos de Prestamos</h2>
+        <div class="card">
+            <img src="assets/Como-calcular-la-cuota-de-tu-pre.png" alt="Cuenta Retirable">
+            <h3>Préstamo Hipotecario</h3>
+            <p>El préstamo hipotecario es un crédito de largo plazo diseñado para la compra, construcción o mejora de bienes inmuebles, como casas, apartamentos o terrenos. Este tipo de préstamo se garantiza con la propiedad misma, lo que permite ofrecer
+                tasas de interés más bajas y plazos flexibles, adaptados a las necesidades del solicitante. Es ideal para quienes desean invertir en bienes raíces de manera segura y planificada, asegurando un financiamiento confiable. Entre los requisitos
+                para acceder a un préstamo hipotecario se encuentran la copia de la identidad del solicitante, comprobantes de ingresos o estados financieros, escritura del inmueble o garantía ofrecida, avalúo del inmueble y comprobantes de pago de impuestos
+                y servicios asociados a la propiedad.</p>
+        </div>
+        <div class="card">
+            <img src="assets/Prestamos-Fiduciarios-descriptiv.png" alt="Plazo fijo">
+            <h3>Préstamo Fiduciario</h3>
+            <p>El préstamo fiduciario es un crédito respaldado mediante un fideicomiso, donde los bienes o activos del solicitante se colocan bajo custodia de un fiduciario como garantía del préstamo. Este tipo de financiamiento permite acceder a montos
+                mayores y plazos más amplios, siendo ideal para proyectos empresariales, inversión en negocios o adquisición de activos valiosos. Los beneficios incluyen seguridad legal para el solicitante y la institución financiera, así como flexibilidad
+                en el manejo del crédito. Para solicitar un préstamo fiduciario se requiere la copia de identidad del solicitante y co-deudores si los hubiera, documentación legal del bien o activo en fideicomiso, comprobantes de ingresos o estados financieros,
+                contrato de fideicomiso firmado y detalles sobre el destino del préstamo o proyecto a financiar.</p>
+        </div>
+        <div class="card">
+            <img src="assets/Mejores_prestamos_prendarios_par.png" alt="Navideña">
+            <h3>Préstamo Prendario</h3>
+            <p>El préstamo prendario es un crédito que se otorga a cambio de una garantía tangible, como Certificado de Ahorro a plazo fijo, vehículos, maquinaria, joyas o equipos. El solicitante mantiene la propiedad del bien, pero este queda retenido o
+                bajo custodia de la institución financiera hasta que se cumpla con el pago total del préstamo. Este tipo de crédito es ideal para quienes necesitan acceso rápido a liquidez, con trámites ágiles y tasas de interés competitivas. Entre los
+                requisitos para obtener un préstamo prendario se incluyen la copia de identidad del solicitante, documentos que acrediten la propiedad del bien a prendar, avalúo del bien ofrecido como garantía, comprobante de domicilio e información sobre
+                los ingresos para evaluar la capacidad de pago.
+            </p>
+        </div>
+    </section>
+
+
+    <!-- PROYECTOS -->
+    <section id="proyectos">
+        <h2>Proyectos</h2>
+        <div class="card">
+            <img src="assets/ventajas-ganaderia-ecologica.png" alt="Educación Financiera">
+            <h3>Ganadería</h3>
+            <p>El proyecto de Ganadería de CARACAS está diseñado para apoyar a los socios en la cría, manejo y comercialización de ganado bovino y ovino. Buscamos mejorar la productividad y la rentabilidad de los ganaderos mediante: Asesoría técnica especializada,
+                incluyendo alimentación balanceada, manejo sanitario, control de enfermedades y reproducción eficiente. Capacitación en buenas prácticas ganaderas, para optimizar la producción de carne y leche, y garantizar la calidad de los productos.
+                Apoyo en infraestructura, como corrales, bebederos y establos, y en el acceso a herramientas y recursos necesarios para el manejo del ganado. Comercialización y mercados, facilitando que los productos lleguen a los consumidores de manera
+                directa y justa, aumentando la rentabilidad de los socios. Este proyecto no solo busca mejorar los ingresos de los ganaderos, sino también fomentar la sostenibilidad y el desarrollo económico del sector rural, contribuyendo al fortalecimiento
+                del bienestar comunitario.</p>
+        </div>
+        <div class="card">
+            <img src="https://via.placeholder.com/300x180" alt="Apoyo a Emprendedores">
+            <h3>Apoyo a Emprendedores</h3>
+            <p>Capacitación y microcréditos para nuevas ideas de negocio en la zona.</p>
+        </div>
+        <div class="card">
+            <img src="https://via.placeholder.com/300x180" alt="Desarrollo Rural">
+            <h3>Desarrollo Rural</h3>
+            <p>Inversión en infraestructura básica para comunidades rurales.</p>
+        </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto">
+        <h2>Contacto</h2>
+        <form id="contact-form">
+            <input type="text" id="nombre" name="user_name" placeholder="Tu Nombre" required>
+            <input type="email" id="correo" name="user_email" placeholder="Tu Correo" required>
+            <textarea id="mensaje" name="message" placeholder="Escribe tu mensaje" rows="5" required></textarea>
+            <button type="submit">Enviar</button>
+        </form>
+    </section>
+
+    <!-- SOLICITAR PRÉSTAMO -->
+    <section id="solicitud">
+        <form id="loan-form">
+            <h2>Formulario de Solicitud de Préstamo</h2>
+
+            <!-- Información Personal -->
+            <fieldset>
+                <legend>Información Personal</legend>
+                <label>Nombre completo:</label>
+                <input type="text" name="nombre_completo" required>
+
+                <label>Número de identidad / DPI:</label>
+                <input type="text" name="identidad" required>
+
+                <label>Fecha de nacimiento:</label>
+                <input type="date" name="fecha_nacimiento" required>
+
+                <label>Edad:</label>
+                <input type="number" name="edad" min="18" required>
+
+                <label>Estado civil:</label>
+                <select name="estado_civil">
+                <option>Soltero</option>
+                <option>Casado</option>
+                <option>Unión libre</option>
+                <option>Divorciado</option>
+                <option>Viudo</option>
+            </select>
+
+                <label>Número de hijos:</label>
+                <input type="number" name="numero_hijos" min="0">
+
+                <label>Dirección de residencia:</label>
+                <textarea name="direccion_residencia" rows="2"></textarea>
+
+                <label>Teléfono personal:</label>
+                <input type="tel" name="telefono" required>
+
+                <label>Correo electrónico:</label>
+                <input type="email" name="correo">
+
+                <label>Nivel de escolaridad:</label>
+                <input type="text" name="escolaridad">
+
+                <label>Referencias personales (Nombre y Teléfono):</label>
+                <textarea name="referencias" rows="3"></textarea>
+            </fieldset>
+
+            <!-- Información Laboral -->
+            <fieldset>
+                <legend>Información Laboral</legend>
+                <label>Nombre de la empresa / negocio:</label>
+                <input type="text" name="empresa" required>
+
+                <label>Actividad económica:</label>
+                <input type="text" name="actividad_economica">
+
+                <label>Cargo / puesto:</label>
+                <input type="text" name="cargo">
+
+                <label>Fecha de ingreso:</label>
+                <input type="date" name="fecha_ingreso">
+
+                <label>Nombre del jefe inmediato:</label>
+                <input type="text" name="jefe">
+
+                <label>Teléfono de la empresa:</label>
+                <input type="tel" name="telefono_empresa">
+
+                <label>Salario mensual:</label>
+                <input type="number" step="0.01" name="salario">
+
+                <label>Otros ingresos:</label>
+                <input type="number" step="0.01" name="otros_ingresos">
+
+                <label>Deducciones mensuales:</label>
+                <input type="number" step="0.01" name="deducciones">
+
+                <label>Ingresos netos mensuales:</label>
+                <input type="number" step="0.01" name="ingresos_netos">
+            </fieldset>
+
+            <!-- Detalles del Préstamo -->
+            <fieldset>
+                <legend>Detalles del Préstamo</legend>
+                <label>Monto solicitado:</label>
+                <input type="number" step="0.01" name="monto" required>
+
+                <label>Plazo solicitado (meses):</label>
+                <input type="number" name="plazo" required>
+
+                <label>Destino del préstamo:</label>
+                <select name="destino">
+                <option>Consumo</option>
+                <option>Vivienda</option>
+                <option>Educación</option>
+                <option>Negocio / Capital de trabajo</option>
+                <option>Consolidación de deudas</option>
+                <option>Agropecuario</option>
+            </select>
+
+                <label>Forma de pago:</label>
+                <select name="forma_pago">
+                <option>Mensual</option>
+                <option>Quincenal</option>
+                <option>Otro</option>
+            </select>
+
+                <label>Garantía ofrecida:</label>
+                <input type="text" name="garantia" placeholder="Hipotecaria, prendaria, aval, etc.">
+
+                <label>Historial crediticio:</label>
+                <textarea name="historial_crediticio" rows="3"></textarea>
+
+                <label>Monto máximo de cuota que puede pagar:</label>
+                <input type="number" step="0.01" name="cuota_maxima">
+            </fieldset>
+
+            <button type="submit" href='gracias.html'>Enviar Solicitud</button>
+        </form>
+    </section>
+
+
+
+    <footer>
+        <p> Telefono: +504 9333-8560</p>
+        <p>&copy; 2025 Caja Rural de Ahorro y Crédito "Amistad y Superación" (CARACAS). Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        function mostrar(seccion) {
+            // Mostrar sección
+            const secciones = document.querySelectorAll("section");
+            secciones.forEach(s => s.classList.remove("active"));
+            document.getElementById(seccion).classList.add("active");
+
+            // Cambiar botón activo en el menú
+            const botones = document.querySelectorAll("nav button");
+            botones.forEach(b => b.classList.remove("active"));
+            document.getElementById("btn-" + seccion).classList.add("active");
+
+            // Subir al inicio
+            window.scrollTo(0, 0);
+        }
+
+        // Activar Home por defecto
+        document.getElementById("btn-home").classList.add("active");
+
+        //solicitud
+        (function() {
+            emailjs.init("OYE6tJD-oo6mXxSKX"); // 🔑 Reemplaza con tu Public Key
+        })();
+
+        document.getElementById("loan-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            emailjs.sendForm("service_35ceth2", "template_ws4td46", this)
+                .then(function() {
+                    alert("✅ Solicitud enviada con éxito. Pronto nos pondremos en contacto.");
+                }, function(error) {
+                    alert("❌ Error al enviar: " + JSON.stringify(error));
+                });
+        });
+
+        // contacto
+        (function() {
+            emailjs.init("OYE6tJD-oo6mXxSKX"); // 🔑 reemplaza con tu Public Key de EmailJS
+        })();
+
+        document.getElementById("contact-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            emailjs.sendForm("service_35ceth2", "template_g8uwmto", this)
+                .then(function() {
+                    alert("✅ Mensaje enviado con éxito, pronto te contactaremos.");
+                }, function(error) {
+                    alert("❌ Error al enviar: " + JSON.stringify(error));
+                });
+        });
+    </script>
+</body>
+
+</html>
