@@ -414,41 +414,14 @@
     <option value="posgrado">Posgrado (Maestría/Doctorado)</option>
 </select>
 
-
-            <label>Referencias personales (Nombre y Teléfono):</label>
-            <textarea name="referencias" rows="3"></textarea>
-        </fieldset>
-
         <!-- Información Personal del conyuge -->
-        <fieldset>
-            <legend>Información Personal del Conyuge</legend>
+        
            <label for="nombre">Nombre Completo:</label>
             <input type="text" id="nombre" name="nombre_completo_conyuge" placeholder="Escriba su ombre completo" required>
 
             <label for="dni">DNI:</label>
             <input type="text" id="dni" name="dni_conyuge" placeholder="Escriba su número de identidad" 
                    pattern="[0-9]{4}-[0-9]{4}-[0-9]{5}" required>
-
-            <label>Fecha de nacimiento:</label>
-            <input type="date" name="fecha_nacimiento" required>
-
-            <label>Edad:</label>
-            <input type="number" name="edad" min="18" required>
-
-            <label>Estado civil:</label>
-            <select name="estado_civil">
-                <option>Soltero</option>
-                <option>Casado</option>
-                <option>Unión libre</option>
-                <option>Divorciado</option>
-                <option>Viudo</option>
-            </select>
-
-            <label>Número de hijos:</label>
-            <input type="number" name="numero_hijos" min="0">
-
-            <label>Dirección de residencia:</label>
-            <textarea name="direccion_residencia" rows="2"></textarea>
 
             <label>Teléfono personal:</label>
             <div style="display:flex; gap:5px; align-items:center;">
@@ -479,19 +452,27 @@
     <option value="posgrado">Posgrado (Maestría/Doctorado)</option>
 </select>
 
-
-            <label>Referencias personales (Nombre y Teléfono):</label>
-            <textarea name="referencias" rows="3"></textarea>
-        </fieldset>
-
         <!-- Información Laboral -->
         <fieldset>
             <legend>Información Laboral</legend>
             <label>Nombre de la empresa / negocio:</label>
             <input type="text" name="empresa" required>
 
-            <label>Actividad económica:</label>
-            <input type="text" name="actividad_economica">
+            <label for="actividad_economica">Actividad económica de la empresa:</label>
+<select id="actividad_economica" name="actividad_economica" required>
+    <option value="">-- Seleccione una opción --</option>
+    <option value="agricultura">Agricultura, ganadería, silvicultura y pesca</option>
+    <option value="industria">Industria manufacturera</option>
+    <option value="construccion">Construcción</option>
+    <option value="comercio">Comercio al por mayor y menor</option>
+    <option value="servicios">Servicios profesionales y técnicos</option>
+    <option value="transporte">Transporte y almacenamiento</option>
+    <option value="turismo">Turismo, hoteles y restaurantes</option>
+    <option value="finanzas">Servicios financieros y seguros</option>
+    <option value="educacion">Educación</option>
+    <option value="salud">Salud y asistencia social</option>
+    <option value="otros">Otros</option>
+</select>
 
             <label>Cargo / puesto:</label>
             <input type="text" name="cargo">
@@ -514,19 +495,6 @@
                 </select>
                 <input type="text" id="telefono_empresa" name="telefono_empresa" placeholder="0000-0000" required>
             </div>
-
-            <label>Salario mensual:</label>
-            <input type="text" name="salario" class="money" placeholder="0000-0000">
-
-            <label>Otros ingresos:</label>
-            <input type="text" name="otros_ingresos" class="money">
-
-            <label>Deducciones mensuales:</label>
-            <input type="text" name="deducciones" class="money">
-
-            <label>Ingresos netos mensuales:</label>
-            <input type="text" name="ingresos_netos" class="money">
-        </fieldset>
 
         <!-- Detalles del Préstamo -->
         <fieldset>
@@ -687,6 +655,7 @@
 
 
 </html>
+
 
 
 
