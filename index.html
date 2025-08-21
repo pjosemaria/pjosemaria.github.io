@@ -360,8 +360,9 @@
            <label for="nombre">Nombre Completo:</label>
             <input type="text" id="nombre" name="nombre_completo" placeholder="Escriba su ombre completo" required>
 
-            <label>Número de identidad / DNI:</label>
-            <input type="text" name="identidad" plaeholder="Escriba su número de identidad" required>
+            <label for="dni">DNI:</label>
+            <input type="text" id="dni" name="dni" placeholder="Escriba su número de identidad" 
+                   pattern="[0-9]{4}-[0-9]{4}-[0-9]{5}" required>
 
             <label>Fecha de nacimiento:</label>
             <input type="date" name="fecha_nacimiento" required>
@@ -400,8 +401,19 @@
             <label>Correo electrónico:</label>
             <input type="email" name="correo">
 
-            <label>Nivel de escolaridad:</label>
-            <input type="text" name="escolaridad">
+             <label for="nivel_educativo">Seleccione su nivel educativo:</label>
+<select id="nivel_educativo" name="nivel_educativo" required>
+    <option value="">-- Seleccione una opción --</option>
+    <option value="prebasica">Prebásica (Preescolar)</option>
+    <option value="basica1">Educación Básica – I Ciclo (1.º a 3.º grado)</option>
+    <option value="basica2">Educación Básica – II Ciclo (4.º a 6.º grado)</option>
+    <option value="basica3">Educación Básica – III Ciclo (7.º a 9.º grado)</option>
+    <option value="media">Educación Media – Bachillerato (10.º a 12.º grado)</option>
+    <option value="tecnico">Educación Superior – Técnico</option>
+    <option value="universitario">Educación Superior – Universitario</option>
+    <option value="posgrado">Posgrado (Maestría/Doctorado)</option>
+</select>
+
 
             <label>Referencias personales (Nombre y Teléfono):</label>
             <textarea name="referencias" rows="3"></textarea>
@@ -610,6 +622,7 @@
 
 
 </html>
+
 
 
 
