@@ -419,6 +419,71 @@
             <textarea name="referencias" rows="3"></textarea>
         </fieldset>
 
+        <!-- Información Personal del conyuge -->
+        <fieldset>
+            <legend>Información Personal del Conyuge</legend>
+           <label for="nombre">Nombre Completo:</label>
+            <input type="text" id="nombre" name="nombre_completo_conyuge" placeholder="Escriba su ombre completo" required>
+
+            <label for="dni">DNI:</label>
+            <input type="text" id="dni" name="dni_conyuge" placeholder="Escriba su número de identidad" 
+                   pattern="[0-9]{4}-[0-9]{4}-[0-9]{5}" required>
+
+            <label>Fecha de nacimiento:</label>
+            <input type="date" name="fecha_nacimiento" required>
+
+            <label>Edad:</label>
+            <input type="number" name="edad" min="18" required>
+
+            <label>Estado civil:</label>
+            <select name="estado_civil">
+                <option>Soltero</option>
+                <option>Casado</option>
+                <option>Unión libre</option>
+                <option>Divorciado</option>
+                <option>Viudo</option>
+            </select>
+
+            <label>Número de hijos:</label>
+            <input type="number" name="numero_hijos" min="0">
+
+            <label>Dirección de residencia:</label>
+            <textarea name="direccion_residencia" rows="2"></textarea>
+
+            <label>Teléfono personal:</label>
+            <div style="display:flex; gap:5px; align-items:center;">
+                <select id="codigo_pais_personal" name="codigo_pais_personal" required>
+                    <option value="+504">🇭🇳 Honduras (+504)</option>
+                    <option value="+502">🇬🇹 Guatemala (+502)</option>
+                    <option value="+503">🇸🇻 El Salvador (+503)</option>
+                    <option value="+505">🇳🇮 Nicaragua (+505)</option>
+                    <option value="+506">🇨🇷 Costa Rica (+506)</option>
+                    <option value="+1">🇺🇸 Estados Unidos (+1)</option>
+                </select>
+                <input type="text" id="telefono_personal" name="telefono_personal" placeholder="9999-9999" required>
+            </div>
+
+            <label>Correo electrónico:</label>
+            <input type="email" name="correo">
+
+             <label for="nivel_educativo">Seleccione su nivel educativo:</label>
+<select id="nivel_educativo" name="nivel_educativo" required>
+    <option value="">-- Seleccione una opción --</option>
+    <option value="prebasica">Prebásica (Preescolar)</option>
+    <option value="basica1">Educación Básica – I Ciclo (1.º a 3.º grado)</option>
+    <option value="basica2">Educación Básica – II Ciclo (4.º a 6.º grado)</option>
+    <option value="basica3">Educación Básica – III Ciclo (7.º a 9.º grado)</option>
+    <option value="media">Educación Media – Bachillerato (10.º a 12.º grado)</option>
+    <option value="tecnico">Educación Superior – Técnico</option>
+    <option value="universitario">Educación Superior – Universitario</option>
+    <option value="posgrado">Posgrado (Maestría/Doctorado)</option>
+</select>
+
+
+            <label>Referencias personales (Nombre y Teléfono):</label>
+            <textarea name="referencias" rows="3"></textarea>
+        </fieldset>
+
         <!-- Información Laboral -->
         <fieldset>
             <legend>Información Laboral</legend>
@@ -622,6 +687,7 @@
 
 
 </html>
+
 
 
 
