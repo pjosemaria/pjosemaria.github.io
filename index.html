@@ -499,80 +499,158 @@
                 <input type="text" id="telefono_empresa" name="telefono_empresa" placeholder="0000-0000" required>
             </div>
 </fieldset>
-        <fieldset>
-
+        
+ 
   <!-- Ingresos -->
- <h3>Información Financiera</h3>
  <fieldset>
-  <h4>Ingresos</h4>
-  <label>Ingreso 1:</label>
-  <input type="number" name="ingreso1" class="ingreso" placeholder="Ej: 10000" required><br>
-  <label>Ingreso 2:</label>
-  <input type="number" name="ingreso2" class="ingreso" placeholder="Ej: 5000"><br>
-  <label>Ingreso 3:</label>
-  <input type="number" name="ingreso3" class="ingreso" placeholder="Ej: 2000"><br>
-  <label>Ingreso 4:</label>
-  <input type="number" name="ingreso4" class="ingreso" placeholder="Ej: 3000"><br>
+ <h3>Información Financiera</h3>
+  <div style="display:flex; gap:5px; align-items:center; margin-bottom:5px;">
+    <select name="ingreso1" class="ingreso" required>
+      <option value="">-- Seleccione ingreso --</option>
+      <option value="salario">Salario</option>
+      <option value="negocio">Negocio propio</option>
+      <option value="ventas">Ventas</option>
+      <option value="remesas">Remesas</option>
+      <option value="inversiones">Inversiones</option>
+      <option value="renta">Renta de propiedades</option>
+      <option value="pension">Pensión</option>
+      <option value="bonos">Bonos</option>
+      <option value="becas">Becas</option>
+      <option value="eventuales">Ingresos eventuales</option>
+      <option value="otros">Otros ingresos</option>
+    </select>
+    <input type="number" class="monto-ingreso" placeholder="L. 0.00" required>
+  </div>
+
+  <div style="display:flex; gap:5px; align-items:center; margin-bottom:5px;">
+    <select name="ingreso2" class="ingreso">
+      <option value="">-- Seleccione ingreso --</option>
+      <option value="salario">Salario</option>
+      <option value="negocio">Negocio propio</option>
+      <option value="ventas">Ventas</option>
+      <option value="remesas">Remesas</option>
+      <option value="inversiones">Inversiones</option>
+      <option value="renta">Renta de propiedades</option>
+      <option value="pension">Pensión</option>
+      <option value="bonos">Bonos</option>
+      <option value="becas">Becas</option>
+      <option value="eventuales">Ingresos eventuales</option>
+      <option value="otros">Otros ingresos</option>
+    </select>
+    <input type="number" class="monto-ingreso" placeholder="L. 0.00">
+  </div>
+
+  <div style="display:flex; gap:5px; align-items:center; margin-bottom:5px;">
+    <select name="ingreso3" class="ingreso">
+      <option value="">-- Seleccione ingreso --</option>
+      <option value="salario">Salario</option>
+      <option value="negocio">Negocio propio</option>
+      <option value="ventas">Ventas</option>
+      <option value="remesas">Remesas</option>
+      <option value="inversiones">Inversiones</option>
+      <option value="renta">Renta de propiedades</option>
+      <option value="pension">Pensión</option>
+      <option value="bonos">Bonos</option>
+      <option value="becas">Becas</option>
+      <option value="eventuales">Ingresos eventuales</option>
+      <option value="otros">Otros ingresos</option>
+    </select>
+    <input type="number" class="monto-ingreso" placeholder="L. 0.00">
+  </div>
+
+  <div style="display:flex; gap:5px; align-items:center; margin-bottom:5px;">
+    <select name="ingreso4" class="ingreso">
+      <option value="">-- Seleccione ingreso --</option>
+      <option value="salario">Salario</option>
+      <option value="negocio">Negocio propio</option>
+      <option value="ventas">Ventas</option>
+      <option value="remesas">Remesas</option>
+      <option value="inversiones">Inversiones</option>
+      <option value="renta">Renta de propiedades</option>
+      <option value="pension">Pensión</option>
+      <option value="bonos">Bonos</option>
+      <option value="becas">Becas</option>
+      <option value="eventuales">Ingresos eventuales</option>
+      <option value="otros">Otros ingresos</option>
+    </select>
+    <input type="number" class="monto-ingreso" placeholder="L. 0.00">
+  </div>
 
   <!-- Egresos -->
   <h4>Egresos</h4>
-  <label>Egreso 1:</label>
-  <input type="number" name="egreso1" class="egreso" placeholder="Ej: 8000" required><br>
-  <label>Egreso 2:</label>
-  <input type="number" name="egreso2" class="egreso" placeholder="Ej: 3000"><br>
-  <label>Egreso 3:</label>
-  <input type="number" name="egreso3" class="egreso" placeholder="Ej: 1500"><br>
-  <label>Egreso 4:</label>
-  <input type="number" name="egreso4" class="egreso" placeholder="Ej: 1000"><br>
+  <div style="display:flex; gap:5px; align-items:center; margin-bottom:5px;">
+    <select name="egreso1" class="egreso" required>
+      <option value="">-- Seleccione egreso --</option>
+      <option value="alimentacion">Alimentación</option>
+      <option value="renta">Renta / Alquiler</option>
+      <option value="agua">Agua</option>
+      <option value="internet">Internet / Telefonía / Cable</option>
+      <option value="energia">Energía eléctrica</option>
+      <option value="transporte">Transporte / Combustible / Pasajes / Mantenimiento</option>
+      <option value="salud">Salud</option>
+      <option value="negocio">Gastos de negocios propios</option>
+      <option value="otros">Otros</option>
+    </select>
+    <input type="number" class="monto-egreso" placeholder="L. 0.00" required>
+  </div>
+
+  <div style="display:flex; gap:5px; align-items:center; margin-bottom:5px;">
+    <select name="egreso2" class="egreso">
+      <option value="">-- Seleccione egreso --</option>
+      <option value="alimentacion">Alimentación</option>
+      <option value="renta">Renta / Alquiler</option>
+      <option value="agua">Agua</option>
+      <option value="internet">Internet / Telefonía / Cable</option>
+      <option value="energia">Energía eléctrica</option>
+      <option value="transporte">Transporte / Combustible / Pasajes / Mantenimiento</option>
+      <option value="salud">Salud</option>
+      <option value="negocio">Gastos de negocios propios</option>
+      <option value="otros">Otros</option>
+    </select>
+    <input type="number" class="monto-egreso" placeholder="L. 0.00">
+  </div>
+
+  <div style="display:flex; gap:5px; align-items:center; margin-bottom:5px;">
+    <select name="egreso3" class="egreso">
+      <option value="">-- Seleccione egreso --</option>
+      <option value="alimentacion">Alimentación</option>
+      <option value="renta">Renta / Alquiler</option>
+      <option value="agua">Agua</option>
+      <option value="internet">Internet / Telefonía / Cable</option>
+      <option value="energia">Energía eléctrica</option>
+      <option value="transporte">Transporte / Combustible / Pasajes / Mantenimiento</option>
+      <option value="salud">Salud</option>
+      <option value="negocio">Gastos de negocios propios</option>
+      <option value="otros">Otros</option>
+    </select>
+    <input type="number" class="monto-egreso" placeholder="L. 0.00">
+  </div>
+
+  <div style="display:flex; gap:5px; align-items:center; margin-bottom:5px;">
+    <select name="egreso4" class="egreso">
+      <option value="">-- Seleccione egreso --</option>
+      <option value="alimentacion">Alimentación</option>
+      <option value="renta">Renta / Alquiler</option>
+      <option value="agua">Agua</option>
+      <option value="internet">Internet / Telefonía / Cable</option>
+      <option value="energia">Energía eléctrica</option>
+      <option value="transporte">Transporte / Combustible / Pasajes / Mantenimiento</option>
+      <option value="salud">Salud</option>
+      <option value="negocio">Gastos de negocios propios</option>
+      <option value="otros">Otros</option>
+    </select>
+    <input type="number" class="monto-egreso" placeholder="L. 0.00">
+  </div>
 
   <!-- Totales -->
   <h4>Totales</h4>
   <label>Total Ingresos:</label>
-  <input type="number" id="totalIngresos" readonly style="background-color:#e0e0e0;"><br>
+  <input type="number" id="totalIngresos" readonly style="background:#e0e0e0;"><br>
   <label>Total Egresos:</label>
-  <input type="number" id="totalEgresos" readonly style="background-color:#e0e0e0;"><br>
+  <input type="number" id="totalEgresos" readonly style="background:#e0e0e0;"><br>
   <label>Disponibilidad de Crédito:</label>
-  <input type="number" id="disponibilidad" readonly style="background-color:#e0e0e0;">
+  <input type="number" id="disponibilidad" readonly style="background:#e0e0e0;">
 </fieldset>
-        <!-- Detalles del Préstamo -->
-        <fieldset>
-            <legend>Detalles del Préstamo</legend>
-            <label>Monto solicitado:</label>
-            <input type="text" name="monto" class="money" required>
-
-            <label>Plazo solicitado (meses):</label>
-            <input type="number" name="plazo" required>
-
-            <label>Destino del préstamo:</label>
-            <select name="destino">
-                <option>Consumo</option>
-                <option>Vivienda</option>
-                <option>Educación</option>
-                <option>Negocio / Capital de trabajo</option>
-                <option>Consolidación de deudas</option>
-                <option>Agropecuario</option>
-            </select>
-
-            <label>Forma de pago:</label>
-            <select name="forma_pago">
-                <option>Mensual</option>
-                <option>Quincenal</option>
-                <option>Otro</option>
-            </select>
-
-            <label>Garantía ofrecida:</label>
-            <input type="text" name="garantia" placeholder="Hipotecaria, prendaria, aval, etc.">
-
-            <label>Historial crediticio:</label>
-            <textarea name="historial_crediticio" rows="3"></textarea>
-
-            <label>Monto máximo de cuota que puede pagar:</label>
-            <input type="text" name="cuota_maxima" class="money">
-        </fieldset>
-
-        <button type="submit" href='gracias.html'>Enviar Solicitud</button>
-    </form>
-</section>
 
     <footer>
         <p> Telefono: +504 9333-8560</p>
@@ -582,29 +660,25 @@
     <script>
         
         //INFORMACION FINANCIERA CALCULOS
-        function calcularTotales() {
-    let ingresos = document.querySelectorAll(".ingreso");
-    let egresos = document.querySelectorAll(".egreso");
-
-    let totalIngresos = 0;
-    ingresos.forEach(input => {
-      totalIngresos += Number(input.value) || 0;
-    });
-
-    let totalEgresos = 0;
-    egresos.forEach(input => {
-      totalEgresos += Number(input.value) || 0;
-    });
-
-    document.getElementById("totalIngresos").value = totalIngresos;
-    document.getElementById("totalEgresos").value = totalEgresos;
-    document.getElementById("disponibilidad").value = totalIngresos - totalEgresos;
-  }
-
-  // Escuchar cambios en ingresos y egresos
-  document.querySelectorAll(".ingreso, .egreso").forEach(input => {
-    input.addEventListener("input", calcularTotales);
+      function calcularTotales() {
+  let totalIngresos = 0;
+  document.querySelectorAll(".monto-ingreso").forEach(input => {
+    totalIngresos += Number(input.value) || 0;
   });
+
+  let totalEgresos = 0;
+  document.querySelectorAll(".monto-egreso").forEach(input => {
+    totalEgresos += Number(input.value) || 0;
+  });
+
+  document.getElementById("totalIngresos").value = totalIngresos;
+  document.getElementById("totalEgresos").value = totalEgresos;
+  document.getElementById("disponibilidad").value = totalIngresos - totalEgresos;
+}
+
+document.querySelectorAll(".monto-ingreso, .monto-egreso").forEach(input => {
+  input.addEventListener("input", calcularTotales);
+});
         //INFORMACION FINANCIERA//
         
         //seleciona dinero
@@ -720,6 +794,7 @@
 
 
 </html>
+
 
 
 
