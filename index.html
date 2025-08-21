@@ -659,46 +659,72 @@
         <!-- Sección de Bienes / Activos -->
 <fieldset>
  <h3>Bienes / Activos</h3>
-  <!-- Tipo de Bien -->
-  <label for="tipo-bien">Seleccione tipo de bien:</label>
-  <select id="tipo-bien" name="tipo_bien">
+  <!-- Inmueble 1 -->
+  <label for="inmueble1">Inmueble 1:</label>
+  <select id="inmueble1" name="inmueble1">
     <option value="">--Seleccione--</option>
-    <option value="inmueble">Propiedad Inmueble</option>
-    <option value="vehiculo">Vehículo</option>
+    <option value="casa">Casa propia</option>
+    <option value="terreno">Terreno</option>
+    <option value="local">Local comercial</option>
+    <option value="finca">Finca / Parcela</option>
   </select>
+  <input type="text" id="detalle_inmueble1" name="detalle_inmueble1" placeholder="Agregue aquí la dirección y descripción del inmueble">
 
   <br><br>
 
-  <!-- Bienes Inmuebles -->
-  <div id="inmuebles" style="display:none;">
-    <label for="casa">Casa propia:</label>
-    <input type="text" id="casa" name="casa" placeholder="Agregue aquí la dirección y descripción de la casa">
+  <!-- Inmueble 2 -->
+  <label for="inmueble2">Inmueble 2:</label>
+  <select id="inmueble2" name="inmueble2">
+    <option value="">--Seleccione--</option>
+    <option value="casa">Casa propia</option>
+    <option value="terreno">Terreno</option>
+    <option value="local">Local comercial</option>
+    <option value="finca">Finca / Parcela</option>
+  </select>
+  <input type="text" id="detalle_inmueble2" name="detalle_inmueble2" placeholder="Agregue aquí la dirección y descripción del inmueble">
 
-    <label for="terreno">Terreno:</label>
-    <input type="text" id="terreno" name="terreno" placeholder="Agregue aquí la ubicación y descripción del terreno">
+  <br><br>
 
-    <label for="local">Local comercial:</label>
-    <input type="text" id="local" name="local" placeholder="Agregue aquí la dirección y descripción del local comercial">
+  <!-- Vehículo 1 -->
+  <label for="vehiculo1">Vehículo 1:</label>
+  <select id="vehiculo1" name="vehiculo1">
+    <option value="">--Seleccione--</option>
+    <option value="automovil">Automóvil</option>
+    <option value="motocicleta">Motocicleta</option>
+    <option value="camion">Camión / Pick up</option>
+    <option value="maquinaria">Maquinaria / Equipo</option>
+  </select>
+  <input type="text" id="detalle_vehiculo1" name="detalle_vehiculo1" placeholder="Agregue aquí marca, modelo, año y color">
 
-    <label for="finca">Finca / Parcela:</label>
-    <input type="text" id="finca" name="finca" placeholder="Agregue aquí la ubicación y descripción de la finca">
-  </div>
+  <br><br>
 
-  <!-- Vehículos -->
-  <div id="vehiculos" style="display:none;">
-    <label for="automovil">Automóvil:</label>
-    <input type="text" id="automovil" name="automovil" placeholder="Agregue aquí marca, modelo, año y color">
+  <!-- Vehículo 2 -->
+  <label for="vehiculo2">Vehículo 2:</label>
+  <select id="vehiculo2" name="vehiculo2">
+    <option value="">--Seleccione--</option>
+    <option value="automovil">Automóvil</option>
+    <option value="motocicleta">Motocicleta</option>
+    <option value="camion">Camión / Pick up</option>
+    <option value="maquinaria">Maquinaria / Equipo</option>
+  </select>
+  <input type="text" id="detalle_vehiculo2" name="detalle_vehiculo2" placeholder="Agregue aquí marca, modelo, año y color">
 
-    <label for="motocicleta">Motocicleta:</label>
-    <input type="text" id="motocicleta" name="motocicleta" placeholder="Agregue aquí marca, modelo, año y color">
+  <br><br>
 
-    <label for="camion">Camión / Pick up:</label>
-    <input type="text" id="camion" name="camion" placeholder="Agregue aquí marca, modelo, año y color">
-
-    <label for="maquinaria">Maquinaria / Equipo:</label>
-    <input type="text" id="maquinaria" name="maquinaria" placeholder="Agregue aquí tipo, marca, modelo y descripción">
-  </div>
+  <!-- Otros bienes -->
+  <label for="otros">Otros bienes:</label>
+  <select id="otros" name="otros">
+    <option value="">--Seleccione--</option>
+    <option value="ahorros">Ahorros / Inversiones</option>
+    <option value="ganado">Ganado / Animales</option>
+    <option value="muebles">Muebles de valor</option>
+    <option value="otros">Otro</option>
+  </select>
+  <input type="text" id="detalle_otros" name="detalle_otros" placeholder="Agregue aquí descripción y valor del bien">
 </fieldset>
+
+    </form>
+    </body>
 
     <footer>
         <p> Telefono: +504 9333-8560</p>
@@ -888,6 +914,7 @@ document.querySelectorAll(".monto-ingreso, .monto-egreso").forEach(input => {
 
 
 </html>
+
 
 
 
