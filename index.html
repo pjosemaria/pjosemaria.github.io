@@ -237,17 +237,6 @@
         <button id="btn-solicitud" onclick="mostrar('solicitud')">Solicitar Préstamo</button>
     </nav>
 
-    <!-- Menú lateral (pantallas pequeñas) -->
-    <div id="sideNav" class="side-nav">
-        <button class="close-btn" onclick="cerrarMenu()">×</button>
-        <button onclick="mostrar('home'); cerrarMenu()">Home</button>
-        <button onclick="mostrar('quienes'); cerrarMenu()">Quiénes Somos</button>
-        <button onclick="mostrar('ahorro'); cerrarMenu()">Tipos de Ahorro</button>
-        <button onclick="mostrar('prestamo'); cerrarMenu()">Tipos de Préstamo</button>
-        <button onclick="mostrar('proyectos'); cerrarMenu()">Proyectos</button>
-        <button onclick="mostrar('contacto'); cerrarMenu()">Contacto</button>
-        <button onclick="mostrar('solicitud'); cerrarMenu()">Solicitar Préstamo</button>
-    </div>
     <!-- HOME -->
     <section id="home" class="active home">
         <h2>Bienvenido a Caja Rural de Ahorro y Crédito "Amistad y Superación" (CARACAS)</h2>
@@ -368,8 +357,8 @@
         <!-- Información Personal -->
         <fieldset>
             <legend>Información Personal</legend>
-            <label>Nombre completo:</label>
-            <input type="text" name="nombre_completo" plaeholder="Escriba su nombre completo" required>
+           <label for="nombre">Nombre Completo:</label>
+            <input type="text" id="nombre" name="nombre_completo" placeholder="Escriba su ombre completo" required>
 
             <label>Número de identidad / DNI:</label>
             <input type="text" name="identidad" plaeholder="Escriba su número de identidad" required>
@@ -540,7 +529,7 @@
       if (select.value === "+1") {
         input.placeholder = "(000) 000-0000";
       } else {
-        input.placeholder = "9999-9999";
+        input.placeholder = "0000-0000";
       }
       input.value = "";
     });
@@ -621,6 +610,7 @@
 
 
 </html>
+
 
 
 
