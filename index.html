@@ -499,6 +499,41 @@
                 <input type="text" id="telefono_empresa" name="telefono_empresa" placeholder="0000-0000" required>
             </div>
 </fieldset>
+        <fieldset>
+
+  <!-- Ingresos -->
+ <h3>Información Financiera</h3>
+ <fieldset>
+  <h4>Ingresos</h4>
+  <label>Ingreso 1:</label>
+  <input type="number" name="ingreso1" class="ingreso" placeholder="Ej: 10000" required><br>
+  <label>Ingreso 2:</label>
+  <input type="number" name="ingreso2" class="ingreso" placeholder="Ej: 5000"><br>
+  <label>Ingreso 3:</label>
+  <input type="number" name="ingreso3" class="ingreso" placeholder="Ej: 2000"><br>
+  <label>Ingreso 4:</label>
+  <input type="number" name="ingreso4" class="ingreso" placeholder="Ej: 3000"><br>
+
+  <!-- Egresos -->
+  <h4>Egresos</h4>
+  <label>Egreso 1:</label>
+  <input type="number" name="egreso1" class="egreso" placeholder="Ej: 8000" required><br>
+  <label>Egreso 2:</label>
+  <input type="number" name="egreso2" class="egreso" placeholder="Ej: 3000"><br>
+  <label>Egreso 3:</label>
+  <input type="number" name="egreso3" class="egreso" placeholder="Ej: 1500"><br>
+  <label>Egreso 4:</label>
+  <input type="number" name="egreso4" class="egreso" placeholder="Ej: 1000"><br>
+
+  <!-- Totales -->
+  <h4>Totales</h4>
+  <label>Total Ingresos:</label>
+  <input type="number" id="totalIngresos" readonly style="background-color:#e0e0e0;"><br>
+  <label>Total Egresos:</label>
+  <input type="number" id="totalEgresos" readonly style="background-color:#e0e0e0;"><br>
+  <label>Disponibilidad de Crédito:</label>
+  <input type="number" id="disponibilidad" readonly style="background-color:#e0e0e0;">
+</fieldset>
         <!-- Detalles del Préstamo -->
         <fieldset>
             <legend>Detalles del Préstamo</legend>
@@ -545,6 +580,33 @@
     </footer>
 
     <script>
+        
+        //INFORMACION FINANCIERA CALCULOS
+        function calcularTotales() {
+    let ingresos = document.querySelectorAll(".ingreso");
+    let egresos = document.querySelectorAll(".egreso");
+
+    let totalIngresos = 0;
+    ingresos.forEach(input => {
+      totalIngresos += Number(input.value) || 0;
+    });
+
+    let totalEgresos = 0;
+    egresos.forEach(input => {
+      totalEgresos += Number(input.value) || 0;
+    });
+
+    document.getElementById("totalIngresos").value = totalIngresos;
+    document.getElementById("totalEgresos").value = totalEgresos;
+    document.getElementById("disponibilidad").value = totalIngresos - totalEgresos;
+  }
+
+  // Escuchar cambios en ingresos y egresos
+  document.querySelectorAll(".ingreso, .egreso").forEach(input => {
+    input.addEventListener("input", calcularTotales);
+  });
+        //INFORMACION FINANCIERA//
+        
         //seleciona dinero
         const moneyInputs = document.querySelectorAll(".money");
 
@@ -658,6 +720,7 @@
 
 
 </html>
+
 
 
 
