@@ -772,6 +772,26 @@ document.querySelectorAll(".monto-ingreso, .monto-egreso").forEach(input => {
     input.addEventListener("input", calcularTotales);
   });
         //DINERO//
+
+// Mostrar campos según tipo de bien
+  const tipoBien = document.getElementById('tipo-bien');
+  const inmuebles = document.getElementById('inmuebles');
+  const vehiculos = document.getElementById('vehiculos');
+
+  tipoBien.addEventListener('change', function() {
+    if (this.value === 'inmueble') {
+      inmuebles.style.display = 'block';
+      vehiculos.style.display = 'none';
+    } else if (this.value === 'vehiculo') {
+      vehiculos.style.display = 'block';
+      inmuebles.style.display = 'none';
+    } else {
+      inmuebles.style.display = 'none';
+      vehiculos.style.display = 'none';
+    }
+  });
+
+        
         // Campos de teléfono personal y empresa
   const camposTelefono = [
     { select: "codigo_pais_personal", input: "telefono_personal" },
@@ -868,6 +888,7 @@ document.querySelectorAll(".monto-ingreso, .monto-egreso").forEach(input => {
 
 
 </html>
+
 
 
 
