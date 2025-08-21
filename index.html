@@ -369,10 +369,10 @@
         <fieldset>
             <legend>Información Personal</legend>
             <label>Nombre completo:</label>
-            <input type="text" name="nombre_completo" required plaeholder="Escriba su nombre completo">
+            <input type="text" name="nombre_completo" plaeholder="Escriba su nombre completo" required>
 
             <label>Número de identidad / DNI:</label>
-            <input type="text" name="identidad" required plaeholder="Escriba su número de identidad">
+            <input type="text" name="identidad" plaeholder="Escriba su número de identidad" required>
 
             <label>Fecha de nacimiento:</label>
             <input type="date" name="fecha_nacimiento" required>
@@ -446,11 +446,11 @@
                     <option value="+506">🇨🇷 Costa Rica (+506)</option>
                     <option value="+1">🇺🇸 Estados Unidos (+1)</option>
                 </select>
-                <input type="text" id="telefono_empresa" name="telefono_empresa" placeholder="9999-9999" required>
+                <input type="text" id="telefono_empresa" name="telefono_empresa" placeholder="0000-0000" required>
             </div>
 
             <label>Salario mensual:</label>
-            <input type="text" name="salario" class="money">
+            <input type="text" name="salario" class="money" placeholder="0000-0000">
 
             <label>Otros ingresos:</label>
             <input type="text" name="otros_ingresos" class="money">
@@ -621,5 +621,6 @@
 
 
 </html>
+
 
 
