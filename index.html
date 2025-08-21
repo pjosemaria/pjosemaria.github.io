@@ -655,6 +655,50 @@
   <label>Disponibilidad de Crédito:</label>
   <input type="text" id="disponibilidad" readonly style="background:#e0e0e0;">
 </fieldset>
+        
+        <!-- Sección de Bienes / Activos -->
+<fieldset>
+ <h3>Bienes / Activos</h3>
+  <!-- Tipo de Bien -->
+  <label for="tipo-bien">Seleccione tipo de bien:</label>
+  <select id="tipo-bien" name="tipo_bien">
+    <option value="">--Seleccione--</option>
+    <option value="inmueble">Propiedad Inmueble</option>
+    <option value="vehiculo">Vehículo</option>
+  </select>
+
+  <br><br>
+
+  <!-- Bienes Inmuebles -->
+  <div id="inmuebles" style="display:none;">
+    <label for="casa">Casa propia:</label>
+    <input type="text" id="casa" name="casa" placeholder="Agregue aquí la dirección y descripción de la casa">
+
+    <label for="terreno">Terreno:</label>
+    <input type="text" id="terreno" name="terreno" placeholder="Agregue aquí la ubicación y descripción del terreno">
+
+    <label for="local">Local comercial:</label>
+    <input type="text" id="local" name="local" placeholder="Agregue aquí la dirección y descripción del local comercial">
+
+    <label for="finca">Finca / Parcela:</label>
+    <input type="text" id="finca" name="finca" placeholder="Agregue aquí la ubicación y descripción de la finca">
+  </div>
+
+  <!-- Vehículos -->
+  <div id="vehiculos" style="display:none;">
+    <label for="automovil">Automóvil:</label>
+    <input type="text" id="automovil" name="automovil" placeholder="Agregue aquí marca, modelo, año y color">
+
+    <label for="motocicleta">Motocicleta:</label>
+    <input type="text" id="motocicleta" name="motocicleta" placeholder="Agregue aquí marca, modelo, año y color">
+
+    <label for="camion">Camión / Pick up:</label>
+    <input type="text" id="camion" name="camion" placeholder="Agregue aquí marca, modelo, año y color">
+
+    <label for="maquinaria">Maquinaria / Equipo:</label>
+    <input type="text" id="maquinaria" name="maquinaria" placeholder="Agregue aquí tipo, marca, modelo y descripción">
+  </div>
+</fieldset>
 
     <footer>
         <p> Telefono: +504 9333-8560</p>
@@ -824,6 +868,7 @@ document.querySelectorAll(".monto-ingreso, .monto-egreso").forEach(input => {
 
 
 </html>
+
 
 
 
