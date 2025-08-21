@@ -350,13 +350,13 @@
     </section>
 
 <!-- SOLICITAR PRÉSTAMO -->
+    <h2>Formulario de Solicitud de Préstamo</h2>
 <section id="solicitud">
     <form id="loan-form">
-        <h2>Formulario de Solicitud de Préstamo</h2>
 
         <!-- Información Personal -->
+        <h3>Información Personal</h3>
         <fieldset>
-            <legend>Información Personal</legend>
            <label for="nombre">Nombre Completo:</label>
             <input type="text" id="nombre" name="nombre_completo" placeholder="Escriba su ombre completo" required>
 
@@ -413,10 +413,12 @@
     <option value="universitario">Educación Superior – Universitario</option>
     <option value="posgrado">Posgrado (Maestría/Doctorado)</option>
 </select>
+<fieldset>
 
         <!-- Información Personal del conyuge -->
-        
-           <label for="nombre">Nombre Completo:</label>
+        <h3>Información Personal del Conyuge</h3>
+     <fieldset>
+           <label for="nombre">Nombre Completo del conyuge:</label>
             <input type="text" id="nombre" name="nombre_completo_conyuge" placeholder="Escriba su ombre completo" required>
 
             <label for="dni">DNI:</label>
@@ -451,10 +453,10 @@
     <option value="universitario">Educación Superior – Universitario</option>
     <option value="posgrado">Posgrado (Maestría/Doctorado)</option>
 </select>
-
+ <fieldset>
         <!-- Información Laboral -->
+     <h3>Información Personal</h3>
         <fieldset>
-            <legend>Información Laboral</legend>
             <label>Nombre de la empresa / negocio:</label>
             <input type="text" name="empresa" required>
 
@@ -495,7 +497,7 @@
                 </select>
                 <input type="text" id="telefono_empresa" name="telefono_empresa" placeholder="0000-0000" required>
             </div>
-
+ <fieldset>
         <!-- Detalles del Préstamo -->
         <fieldset>
             <legend>Detalles del Préstamo</legend>
@@ -655,6 +657,7 @@
 
 
 </html>
+
 
 
 
