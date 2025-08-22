@@ -904,7 +904,11 @@
         <p>&copy; 2025 Caja Rural de Ahorro y Crédito "Amistad y Superación" (CARACAS). Todos los derechos reservados.</p>
     </footer>
 
-    <script>
+    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<script type="text/javascript">
+   (function(){
+      emailjs.init("TU_USER_ID"); // <-- reemplaza TU_USER_ID con tu ID de usuario EmailJS
+   })();
 
         //menu para mobil
         // Cambiar sección visible
@@ -1150,6 +1154,7 @@ document.querySelectorAll(".monto-ingreso, .monto-egreso").forEach(input => {
 
 
 </html>
+
 
 
 
