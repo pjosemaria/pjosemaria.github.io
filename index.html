@@ -814,7 +814,7 @@
         
         <!-- Experiencia Crediticia -->
 <fieldset>
-    <legend>Experiencia Crediticia</legend>
+    <h3>Experiencia Crediticia</h3>
     <label for="experiencia_crediticia">¿Cuál es su experiencia crediticia con Caja Rural Caracas?</label>
     <select id="experiencia_crediticia" name="experiencia_crediticia" required>
         <option value="" disabled selected>Seleccione una opción</option>
@@ -830,7 +830,29 @@
         <option value="10">Décima Experiencia Crediticia</option>
     </select>
 </fieldset>
-        
+        <!--aviso-->
+        <!-- Aviso Importante -->
+<div style="border: 1px solid #ccc; padding: 15px; margin-top: 20px; border-radius: 8px; background-color: #f9f9f9;">
+    <h3 style="margin-top: 0; color: #b22222;">Aviso Importante</h3>
+    <p>
+        Para la <strong>obtención del crédito</strong> es requisito indispensable 
+        <strong>abrir una cuenta de ahorro en la Caja Rural de Ahorro y Crédito Amistad y Superación (Caracas)</strong> 
+        en caso de no contar con una.
+    </p>
+
+    <p>Además, el solicitante deberá presentar los siguientes documentos:</p>
+    <ul style="margin-left: 20px;">
+        <li>Copia de la tarjeta de identidad.</li>
+        <li>Copia del RTN (Registro Tributario Nacional).</li>
+        <li>Constancia de ingresos o carta de trabajo.</li>
+        <li>Recibo de servicios públicos (agua, energía o teléfono) reciente.</li>
+        <li>Copia del título de propiedad o documento de respaldo de bienes ofrecidos como garantía (en caso de aplicar).</li>
+        <li>Copia de referencias personales o comerciales (mínimo dos).</li>
+    </ul>
+
+    <p style="margin-top: 15px; font-weight: bold; text-align: center;">¡Gracias!</p>
+</div>
+
         <!--BOTÓN-->
         <div style="margin-top: 20px; text-align: center;">
     <button type="submit">Enviar Solicitud</button>
@@ -1068,6 +1090,7 @@ document.querySelectorAll(".monto-ingreso, .monto-egreso").forEach(input => {
 
 
 </html>
+
 
 
 
