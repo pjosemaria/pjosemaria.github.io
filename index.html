@@ -233,7 +233,7 @@
         <button class="menu-toggle" onclick="abrirMenu()">☰</button>
     </header>
 
-    <!-- Menú normal (pantallas grandes) -->
+    <!-- MENÚ NORMAL -->
     <nav>
         <button id="btn-home" onclick="mostrar('home')">Home</button>
         <button id="btn-quienes" onclick="mostrar('quienes')">Quiénes Somos</button>
@@ -243,6 +243,18 @@
         <button id="btn-contacto" onclick="mostrar('contacto')">Contacto</button>
         <button id="btn-solicitud" onclick="mostrar('solicitud')">Solicitar Préstamo</button>
     </nav>
+
+    <!-- SIDE NAV RESPONSIVE -->
+    <div id="mySidenav" class="side-nav">
+        <button class="close-btn" onclick="cerrarMenu()">&times;</button>
+        <button onclick="mostrar('home'); cerrarMenu()">🏠 Home</button>
+        <button onclick="mostrar('quienes'); cerrarMenu()">👥 Quiénes Somos</button>
+        <button onclick="mostrar('ahorro'); cerrarMenu()">💰 Tipos de Ahorro</button>
+        <button onclick="mostrar('prestamo'); cerrarMenu()">📄 Tipos de Préstamo</button>
+        <button onclick="mostrar('proyectos'); cerrarMenu()">🚀 Proyectos</button>
+        <button onclick="mostrar('contacto'); cerrarMenu()">✉️ Contacto</button>
+        <button onclick="mostrar('solicitud'); cerrarMenu()">📝 Solicitar Préstamo</button>
+    </div>
 
     <!-- HOME -->
     <section id="home" class="active home">
@@ -898,6 +910,17 @@
 
     <script>
 
+        //menu para mobil
+        // Cambiar sección visible
+        function mostrar(id) {
+            document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+        }
+
+        // Abrir / cerrar menú lateral
+        function abrirMenu() { document.getElementById("mySidenav").style.width = "250px"; }
+        function cerrarMenu() { document.getElementById("mySidenav").style.width = "0"; }
+
         //cuenta de ahorro
         function toggleCuenta() {
     let cuenta = document.getElementById("cuenta_ahorro").value;
@@ -1130,6 +1153,7 @@ document.querySelectorAll(".monto-ingreso, .monto-egreso").forEach(input => {
 
 
 </html>
+
 
 
 
