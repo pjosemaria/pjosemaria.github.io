@@ -1112,10 +1112,11 @@ document.querySelectorAll(".monto-ingreso, .monto-egreso").forEach(input => {
 
         // Activar Home por defecto
         document.getElementById("btn-home").classList.add("active");
+        
 
         //solicitud
         (function() {
-            emailjs.init("OYE6tJD-oo6mXxSKX"); // 🔑 Reemplaza con tu Public Key
+            emailjs.init("OYE6tJD-oo6mXxSKX"); // 🔑 reemplaza con tu Public Key de EmailJS
         })();
 
         document.getElementById("loan-form").addEventListener("submit", function(event) {
@@ -1123,7 +1124,7 @@ document.querySelectorAll(".monto-ingreso, .monto-egreso").forEach(input => {
 
             emailjs.sendForm("service_35ceth2", "template_ws4td46", this)
                 .then(function() {
-                    alert("✅ Solicitud enviada con éxito. Pronto nos pondremos en contacto.");
+                    alert("✅ Mensaje enviado con éxito, pronto te contactaremos.");
                 }, function(error) {
                     alert("❌ Error al enviar: " + JSON.stringify(error));
                 });
@@ -1149,6 +1150,7 @@ document.querySelectorAll(".monto-ingreso, .monto-egreso").forEach(input => {
 
 
 </html>
+
 
 
 
