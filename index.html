@@ -372,6 +372,14 @@
             <label>Edad:</label>
             <input type="number" name="edad" min="18" required>
 
+            <!-- Información Personal: Socio de la Caja -->
+<label for="socio">¿Es socio de la Caja Rural?</label>
+<select id="socio" name="socio">
+  <option value="">--Seleccione--</option>
+  <option value="si">Sí</option>
+  <option value="no">No</option>
+</select>
+
             <label>Estado civil:</label>
             <select name="estado_civil">
                 <option>Soltero</option>
@@ -723,6 +731,86 @@
   <input type="text" id="detalle_otros" name="detalle_otros" placeholder="Agregue aquí descripción y valor del bien">
 </fieldset>
 
+        <fieldset>
+  <legend>Detalles del Préstamo</legend>
+
+  <!-- Monto solicitado -->
+  <label for="monto">Monto solicitado:</label>
+  <input type="text" id="monto" name="monto" placeholder="Ingrese el monto solicitado" class="money" required>
+
+  <!-- Tasa de interés -->
+<label for="tasa-interes">Tasa de interés (%):</label>
+<input type="text" id="tasa-interes" name="tasa_interes" value="" readonly style="background-color: #e0e0e0; color: #555;" placeholder="La tasa se asigna según socio">
+
+  <!-- Destino del préstamo -->
+  <label for="destino">Destino del préstamo:</label>
+  <input type="text" id="destino" name="destino" placeholder="Describa el destino del préstamo" required>
+
+  <!-- Forma de pago / Plazo -->
+  <label for="plazo">Plazo y forma de pago:</label>
+  <input type="text" id="plazo" name="plazo" placeholder="Ej: 12 meses, pagos mensuales" required>
+
+  <!-- Tipo de préstamo -->
+  <label for="tipo-prestamo">Tipo de préstamo:</label>
+  <select id="tipo-prestamo" name="tipo_prestamo" required>
+    <option value="">--Seleccione--</option>
+    <option value="hipotecario">Hipotecario</option>
+    <option value="fiduciario">Fiduciario</option>
+    <option value="prendario">Prendario</option>
+  </select>
+
+  <br><br>
+
+  <!-- Campos para Hipotecario -->
+  <div id="hipotecario-fields" style="display:none;">
+    <label for="descripcion-terreno">Descripción del terreno:</label>
+    <input type="text" id="descripcion-terreno" name="descripcion_terreno" placeholder="Descripción del terreno" >
+
+    <label for="ubicacion-terreno">Ubicación del terreno:</label>
+    <input type="text" id="ubicacion-terreno" name="ubicacion_terreno" placeholder="Dirección / ubicación del terreno" >
+  </div>
+
+  <!-- Campos para Fiduciario -->
+  <div id="fiduciario-fields" style="display:none;">
+    <h4>Aval 1</h4>
+    <label for="nombre-aval1">Nombre:</label>
+    <input type="text" id="nombre-aval1" name="nombre_aval1" placeholder="Nombre completo">
+
+    <label for="telefono-aval1">Teléfono:</label>
+    <input type="text" id="telefono-aval1" name="telefono_aval1" placeholder="Código país + número">
+
+    <label for="domicilio-aval1">Domicilio:</label>
+    <input type="text" id="domicilio-aval1" name="domicilio_aval1" placeholder="Dirección completa">
+
+    <label for="parentesco-aval1">Parentesco:</label>
+    <input type="text" id="parentesco-aval1" name="parentesco_aval1" placeholder="Parentesco con el solicitante">
+
+    <h4>Aval 2</h4>
+    <label for="nombre-aval2">Nombre:</label>
+    <input type="text" id="nombre-aval2" name="nombre_aval2" placeholder="Nombre completo">
+
+    <label for="telefono-aval2">Teléfono:</label>
+    <input type="text" id="telefono-aval2" name="telefono_aval2" placeholder="Código país + número">
+
+    <label for="domicilio-aval2">Domicilio:</label>
+    <input type="text" id="domicilio-aval2" name="domicilio_aval2" placeholder="Dirección completa">
+
+    <label for="parentesco-aval2">Parentesco:</label>
+    <input type="text" id="parentesco-aval2" name="parentesco_aval2" placeholder="Parentesco con el solicitante">
+  </div>
+
+  <!-- Campos para Prendario -->
+  <div id="prendario-fields" style="display:none;">
+    <label for="prenda">Seleccione la prenda:</label>
+    <select id="prenda" name="prenda">
+      <option value="">--Seleccione--</option>
+      <option value="certificado">Certificado de cuenta a plazo fijo</option>
+      <option value="vehiculo">Vehículo</option>
+      <option value="maquinaria">Maquinaria</option>
+    </select>
+  </div>
+</fieldset>
+
     </form>
     </body>
 
@@ -732,6 +820,34 @@
     </footer>
 
     <script>
+
+        //TASA DE INTERES
+        const socioSelect = document.getElementById('socio');
+  const tasaInput = document.getElementById('tasa-interes');
+
+  socioSelect.addEventListener('change', function() {
+    if (this.value === 'si') {
+      tasaInput.value = "2%";
+    } else if (this.value === 'no') {
+      tasaInput.value = "3%";
+    } else {
+      tasaInput.value = "";
+    }
+  });
+        //TASA DE INTERES//
+
+        //TIPOS DE PRESTAMOS
+        const tipoPrestamo = document.getElementById('tipo-prestamo');
+  const hipotecarioFields = document.getElementById('hipotecario-fields');
+  const fiduciarioFields = document.getElementById('fiduciario-fields');
+  const prendarioFields = document.getElementById('prendario-fields');
+
+  tipoPrestamo.addEventListener('change', function() {
+    hipotecarioFields.style.display = this.value === 'hipotecario' ? 'block' : 'none';
+    fiduciarioFields.style.display = this.value === 'fiduciario' ? 'block' : 'none';
+    prendarioFields.style.display = this.value === 'prendario' ? 'block' : 'none';
+  });
+        //TIPOS DE PRESTAMOS//
         
         //INFORMACION FINANCIERA CALCULOS
       function calcularTotales() {
@@ -914,6 +1030,7 @@ document.querySelectorAll(".monto-ingreso, .monto-egreso").forEach(input => {
 
 
 </html>
+
 
 
 
