@@ -358,61 +358,62 @@
         <!-- Información Personal -->
         
         <fieldset>
-            <h3>Información Personal</h3>
-           <label for="nombre">Nombre Completo:</label>
-            <input type="text" id="nombre" name="nombre_completo" placeholder="Escriba su ombre completo" required>
+  <h3>Información Personal</h3>
+  <label for="nombre">Nombre Completo:</label>
+  <input type="text" id="nombre" name="nombre_completo" placeholder="Escriba su nombre completo" required>
 
-            <label for="dni">DNI:</label>
-            <input type="text" id="dni" name="dni" placeholder="Escriba su número de identidad" 
-                   pattern="[0-9]{4}-[0-9]{4}-[0-9]{5}" required>
+  <label for="dni">DNI:</label>
+  <input type="text" id="dni" name="dni" placeholder="Escriba su número de identidad" 
+         pattern="[0-9]{4}-[0-9]{4}-[0-9]{5}" required>
 
-            <label>Fecha de nacimiento:</label>
-            <input type="date" name="fecha_nacimiento" required>
+  <label>Fecha de nacimiento:</label>
+  <input type="date" name="fecha_nacimiento" required>
 
-            <label>Edad:</label>
-            <input type="number" name="edad" min="18" required>
+  <label>Edad:</label>
+  <input type="number" name="edad" min="18" required>
 
-            <!-- Información Personal: Socio de la Caja -->
-<label for="socio">¿Es socio de la Caja Rural?</label>
-<select id="socio" name="socio">
-  <option value="">--Seleccione--</option>
-  <option value="si">Sí</option>
-  <option value="no">No</option>
-</select>
+  <!-- Información Personal: Socio de la Caja -->
+  <label for="socio">¿Es socio de la Caja Rural?</label>
+  <select id="socio" name="socio">
+    <option value="">--Seleccione--</option>
+    <option value="si">Sí</option>
+    <option value="no">No</option>
+  </select>
 
-            <label>Estado civil:</label>
-            <select name="estado_civil">
-                <option>Soltero</option>
-                <option>Casado</option>
-                <option>Unión libre</option>
-                <option>Divorciado</option>
-                <option>Viudo</option>
-            </select>
+  <label>Estado civil:</label>
+  <select name="estado_civil" id="estado_civil">
+    <option value="">--Seleccione--</option>
+    <option value="soltero">Soltero</option>
+    <option value="casado">Casado</option>
+    <option value="union">Unión libre</option>
+    <option value="divorciado">Divorciado</option>
+    <option value="viudo">Viudo</option>
+  </select>
 
-            <label>Número de hijos:</label>
-            <input type="number" name="numero_hijos" min="0">
+  <label>Número de hijos:</label>
+  <input type="number" name="numero_hijos" min="0">
 
-            <label>Dirección de residencia:</label>
-            <textarea name="direccion_residencia" rows="2"></textarea>
+  <label>Dirección de residencia:</label>
+  <textarea name="direccion_residencia" rows="2"></textarea>
 
-            <label>Teléfono personal:</label>
-            <div style="display:flex; gap:5px; align-items:center;">
-                <select id="codigo_pais_personal" name="codigo_pais_personal" required>
-                    <option value="+504">🇭🇳 Honduras (+504)</option>
-                    <option value="+502">🇬🇹 Guatemala (+502)</option>
-                    <option value="+503">🇸🇻 El Salvador (+503)</option>
-                    <option value="+505">🇳🇮 Nicaragua (+505)</option>
-                    <option value="+506">🇨🇷 Costa Rica (+506)</option>
-                    <option value="+1">🇺🇸 Estados Unidos (+1)</option>
-                </select>
-                <input type="text" id="telefono_personal" name="telefono_personal" placeholder="9999-9999" required>
-            </div>
+  <label>Teléfono personal:</label>
+  <div style="display:flex; gap:5px; align-items:center;">
+    <select id="codigo_pais_personal" name="codigo_pais_personal" required>
+      <option value="+504">🇭🇳 Honduras (+504)</option>
+      <option value="+502">🇬🇹 Guatemala (+502)</option>
+      <option value="+503">🇸🇻 El Salvador (+503)</option>
+      <option value="+505">🇳🇮 Nicaragua (+505)</option>
+      <option value="+506">🇨🇷 Costa Rica (+506)</option>
+      <option value="+1">🇺🇸 Estados Unidos (+1)</option>
+    </select>
+    <input type="text" id="telefono_personal" name="telefono_personal" placeholder="9999-9999" required>
+  </div>
 
-            <label>Correo electrónico:</label>
-            <input type="email" name="correo">
+  <label>Correo electrónico:</label>
+  <input type="email" name="correo">
 
-             <label for="nivel_educativo">Seleccione su nivel educativo:</label>
-<select id="nivel_educativo" name="nivel_educativo" required>
+  <label for="nivel_educativo">Seleccione su nivel educativo:</label>
+  <select id="nivel_educativo" name="nivel_educativo" required>
     <option value="">-- Seleccione una opción --</option>
     <option value="prebasica">Prebásica (Preescolar)</option>
     <option value="basica1">Educación Básica – I Ciclo (1.º a 3.º grado)</option>
@@ -422,38 +423,37 @@
     <option value="tecnico">Educación Superior – Técnico</option>
     <option value="universitario">Educación Superior – Universitario</option>
     <option value="posgrado">Posgrado (Maestría/Doctorado)</option>
-</select>
+  </select>
 </fieldset>
 
-        <!-- Información Personal del conyuge -->
-       
-     <fieldset>
-          <h3>Información Personal del Conyuge</h3>
-           <label for="nombre">Nombre Completo del conyuge:</label>
-            <input type="text" id="nombre" name="nombre_completo_conyuge" placeholder="Escriba su ombre completo" required>
+<!-- Información Personal del Conyuge (oculta por defecto) -->
+<fieldset id="conyuge-fields" style="display:none;">
+  <h3>Información Personal del Cónyuge</h3>
+  <label for="nombre_conyuge">Nombre Completo del cónyuge:</label>
+  <input type="text" id="nombre_conyuge" name="nombre_completo_conyuge" placeholder="Escriba su nombre completo">
 
-            <label for="dni">DNI:</label>
-            <input type="text" id="dni" name="dni_conyuge" placeholder="Escriba su número de identidad" 
-                   pattern="[0-9]{4}-[0-9]{4}-[0-9]{5}" required>
+  <label for="dni_conyuge">DNI:</label>
+  <input type="text" id="dni_conyuge" name="dni_conyuge" placeholder="Escriba su número de identidad" 
+         pattern="[0-9]{4}-[0-9]{4}-[0-9]{5}">
 
-            <label>Teléfono personal:</label>
-            <div style="display:flex; gap:5px; align-items:center;">
-                <select id="codigo_pais_personal" name="codigo_pais_personal" required>
-                    <option value="+504">🇭🇳 Honduras (+504)</option>
-                    <option value="+502">🇬🇹 Guatemala (+502)</option>
-                    <option value="+503">🇸🇻 El Salvador (+503)</option>
-                    <option value="+505">🇳🇮 Nicaragua (+505)</option>
-                    <option value="+506">🇨🇷 Costa Rica (+506)</option>
-                    <option value="+1">🇺🇸 Estados Unidos (+1)</option>
-                </select>
-                <input type="text" id="telefono_personal" name="telefono_personal" placeholder="9999-9999" required>
-            </div>
+  <label>Teléfono personal:</label>
+  <div style="display:flex; gap:5px; align-items:center;">
+    <select id="codigo_pais_conyuge" name="codigo_pais_conyuge">
+      <option value="+504">🇭🇳 Honduras (+504)</option>
+      <option value="+502">🇬🇹 Guatemala (+502)</option>
+      <option value="+503">🇸🇻 El Salvador (+503)</option>
+      <option value="+505">🇳🇮 Nicaragua (+505)</option>
+      <option value="+506">🇨🇷 Costa Rica (+506)</option>
+      <option value="+1">🇺🇸 Estados Unidos (+1)</option>
+    </select>
+    <input type="text" id="telefono_conyuge" name="telefono_conyuge" placeholder="9999-9999">
+  </div>
 
-            <label>Correo electrónico:</label>
-            <input type="email" name="correo">
+  <label>Correo electrónico:</label>
+  <input type="email" name="correo_conyuge">
 
-             <label for="nivel_educativo">Seleccione su nivel educativo:</label>
-<select id="nivel_educativo" name="nivel_educativo" required>
+  <label for="nivel_educativo_conyuge">Seleccione su nivel educativo:</label>
+  <select id="nivel_educativo_conyuge" name="nivel_educativo_conyuge">
     <option value="">-- Seleccione una opción --</option>
     <option value="prebasica">Prebásica (Preescolar)</option>
     <option value="basica1">Educación Básica – I Ciclo (1.º a 3.º grado)</option>
@@ -463,7 +463,7 @@
     <option value="tecnico">Educación Superior – Técnico</option>
     <option value="universitario">Educación Superior – Universitario</option>
     <option value="posgrado">Posgrado (Maestría/Doctorado)</option>
-</select>
+  </select>
 </fieldset>
         <!-- Información Laboral -->
     
@@ -515,6 +515,7 @@
   <!-- Ingresos -->
  <fieldset>
  <h3>Información Financiera</h3>
+      <h4>Egresos</h4>
   <div style="display:flex; gap:5px; align-items:center; margin-bottom:5px;">
     <select name="ingreso1" class="ingreso" required>
       <option value="">-- Seleccione ingreso --</option>
@@ -732,7 +733,7 @@
 </fieldset>
 
         <fieldset>
-  <legend>Detalles del Préstamo</legend>
+   <h3>Detalles del prestamo</h3>
 
   <!-- Monto solicitado -->
   <label for="monto">Monto solicitado:</label>
@@ -820,6 +821,18 @@
     </footer>
 
     <script>
+
+        //CONYUGE
+        const estadoCivil = document.getElementById('estado_civil');
+  const conyugeFields = document.getElementById('conyuge-fields');
+
+  estadoCivil.addEventListener('change', function() {
+    if (this.value === 'casado' || this.value === 'union') {
+      conyugeFields.style.display = 'block';
+    } else {
+      conyugeFields.style.display = 'none';
+    }
+  });
 
         //TASA DE INTERES
         const socioSelect = document.getElementById('socio');
@@ -1030,6 +1043,7 @@ document.querySelectorAll(".monto-ingreso, .monto-egreso").forEach(input => {
 
 
 </html>
+
 
 
 
