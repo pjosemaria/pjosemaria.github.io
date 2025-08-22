@@ -973,25 +973,38 @@
         //TIPOS DE PRESTAMOS//
         
         //INFORMACION FINANCIERA CALCULOS
-      function calcularTotales() {
-  let totalIngresos = 0;
-  document.querySelectorAll(".monto-ingreso").forEach(input => {
-    totalIngresos += Number(input.value) || 0;
+      function limpiarNumero(valor) {
+    // Elimina todo lo que no sea número o punto decimal
+    return parseFloat(valor.replace(/[^0-9.]/g, "")) || 0;
+  }
+
+  function calcularTotales() {
+    let totalIngresos = 0;
+    document.querySelectorAll(".monto-ingreso").forEach(input => {
+      totalIngresos += limpiarNumero(input.value);
+    });
+
+    let totalEgresos = 0;
+    document.querySelectorAll(".monto-egreso").forEach(input => {
+      totalEgresos += limpiarNumero(input.value);
+    });
+
+    // Formatear en Lempiras con separador de miles
+    document.getElementById("totalIngresos").value = 
+      "L. " + totalIngresos.toLocaleString("es-HN", {minimumFractionDigits:2});
+    
+    document.getElementById("totalEgresos").value = 
+      "L. " + totalEgresos.toLocaleString("es-HN", {minimumFractionDigits:2});
+    
+    document.getElementById("disponibilidad").value = 
+      "L. " + (totalIngresos - totalEgresos).toLocaleString("es-HN", {minimumFractionDigits:2});
+  }
+
+  // Escucha tanto al escribir como al salir de la casilla
+  document.querySelectorAll(".monto-ingreso, .monto-egreso").forEach(input => {
+    input.addEventListener("input", calcularTotales);
+    input.addEventListener("blur", calcularTotales); 
   });
-
-  let totalEgresos = 0;
-  document.querySelectorAll(".monto-egreso").forEach(input => {
-    totalEgresos += Number(input.value) || 0;
-  });
-
-  document.getElementById("totalIngresos").value = totalIngresos;
-  document.getElementById("totalEgresos").value = totalEgresos;
-  document.getElementById("disponibilidad").value = totalIngresos - totalEgresos;
-}
-
-document.querySelectorAll(".monto-ingreso, .monto-egreso").forEach(input => {
-  input.addEventListener("input", calcularTotales);
-});
         //INFORMACION FINANCIERA//
         
         //DINERO
@@ -1154,6 +1167,7 @@ document.querySelectorAll(".monto-ingreso, .monto-egreso").forEach(input => {
 
 
 </html>
+
 
 
 
