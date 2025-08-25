@@ -716,91 +716,67 @@
 
         
 
-<!-- DETALLES DEL PRÉSTAMO -->
-<fieldset style="border:1px solid #ccc; padding:15px; margin-top:20px; border-radius:8px; background-color:#f9f9f9;">
-  <h3>Detalles del préstamo</h3>
-
-  <!-- Monto solicitado -->
-  <label for="monto">Monto solicitado:</label>
-  <input type="text" id="monto" name="monto" placeholder="Ingrese el monto solicitado"
-         class="money" inputmode="decimal" autocomplete="off" style="text-align:right;" required>
-
-  <!-- Tasa de interés (MENSUAL) -->
-  <label for="tasa-interes">Tasa de interés (% mensual):</label>
-  <input type="text" id="tasa-interes" name="tasa_interes"
-         readonly style="background-color:#e0e0e0; color:#555;" placeholder="La tasa se asigna según socio">
-
-  <!-- Destino del préstamo -->
-  <label for="destino">Destino del préstamo:</label>
-  <input type="text" id="destino" name="destino" placeholder="Describa el destino del préstamo" required>
-
-  <!-- Plazo en meses -->
-  <label for="plazo">Plazo en meses:</label>
-  <input type="number" id="plazo" name="plazo" placeholder="Ej: 12" min="1" step="1" required>
-
-  <!-- Tipo de préstamo -->
-  <label for="tipo-prestamo">Tipo de préstamo:</label>
-  <select id="tipo-prestamo" name="tipo_prestamo" required>
-    <option value="">--Seleccione--</option>
-    <option value="hipotecario">Hipotecario</option>
-    <option value="fiduciario">Fiduciario</option>
-    <option value="prendario">Prendario</option>
-  </select>
-
-  <br><br>
-
-  <!-- Resultados -->
-  <label for="interes-mensual">Interés mensual (estimado):</label>
-  <input type="text" id="interes-mensual" readonly
-         style="background-color:#e0e0e0; color:#555; text-align:right;" placeholder="Se calculará automáticamente">
-
-  <label for="cuota-amortizada">Cuota amortizada (francés):</label>
-  <input type="text" id="cuota-amortizada" readonly
-         style="background-color:#e0e0e0; color:#555; text-align:right;" placeholder="Defina plazo y tasa">
-
-  <!-- Campos para Hipotecario -->
-  <div id="hipotecario-fields" style="display:none;">
-    <label for="descripcion-terreno">Descripción del terreno:</label>
-    <input type="text" id="descripcion-terreno" name="descripcion_terreno" placeholder="Descripción del terreno">
-    <label for="ubicacion-terreno">Ubicación del terreno:</label>
-    <input type="text" id="ubicacion-terreno" name="ubicacion_terreno" placeholder="Dirección / ubicación del terreno">
-  </div>
-
-  <!-- Campos para Fiduciario -->
-  <div id="fiduciario-fields" style="display:none;">
-    <h4>Aval 1</h4>
-    <label for="nombre-aval1">Nombre:</label>
-    <input type="text" id="nombre-aval1" name="nombre_aval1" placeholder="Nombre completo">
-    <label for="telefono-aval1">Teléfono:</label>
-    <input type="text" id="telefono-aval1" name="telefono_aval1" placeholder="Código país + número">
-    <label for="domicilio-aval1">Domicilio:</label>
-    <input type="text" id="domicilio-aval1" name="domicilio_aval1" placeholder="Dirección completa">
-    <label for="parentesco-aval1">Parentesco:</label>
-    <input type="text" id="parentesco-aval1" name="parentesco_aval1" placeholder="Parentesco con el solicitante">
-
-    <h4>Aval 2</h4>
-    <label for="nombre-aval2">Nombre:</label>
-    <input type="text" id="nombre-aval2" name="nombre_aval2" placeholder="Nombre completo">
-    <label for="telefono-aval2">Teléfono:</label>
-    <input type="text" id="telefono-aval2" name="telefono_aval2" placeholder="Código país + número">
-    <label for="domicilio-aval2">Domicilio:</label>
-    <input type="text" id="domicilio-aval2" name="domicilio_aval2" placeholder="Dirección completa">
-    <label for="parentesco-aval2">Parentesco:</label>
-    <input type="text" id="parentesco-aval2" name="parentesco_aval2" placeholder="Parentesco con el solicitante">
-  </div>
-
-  <!-- Campos para Prendario -->
-  <div id="prendario-fields" style="display:none;">
-    <label for="prenda">Seleccione la prenda:</label>
-    <select id="prenda" name="prenda">
-      <option value="">--Seleccione--</option>
-      <option value="certificado">Certificado de cuenta a plazo fijo</option>
-      <option value="vehiculo">Vehículo</option>
-      <option value="maquinaria">Maquinaria</option>
-    </select>
-  </div>
-</fieldset>
-
+<!--DWTALLES DEL PRESTAMO--> 
+        <fieldset style="border: 1px solid #ccc; padding: 15px; margin-top: 20px; border-radius: 8px; background-color: #f9f9f9;"> 
+            <h3>Detalles del prestamo</h3> <!-- Monto solicitado --> <label for="monto">Monto solicitado:</label> 
+            <input type="text" id="monto" name="monto" placeholder="Ingrese el monto solicitado" class="money" required> 
+            <!-- Tasa de interés --> 
+            <label for="tasa-interes">Tasa de interés (%):</label> 
+            <input type="text" id="tasa-interes" name="tasa_interes" value="" readonly style="background-color: #e0e0e0; color: #555;" placeholder="La tasa se asigna según socio"> 
+            <!-- Destino del préstamo --> 
+            <label for="destino">Destino del préstamo:</label> 
+            <input type="text" id="destino" name="destino" placeholder="Describa el destino del préstamo" required> 
+            <!-- Forma de pago / Plazo --> 
+            <label for="plazo">Plazo y forma de pago:</label> 
+            <input type="text" id="plazo" name="plazo" placeholder="Ej: 12 meses, pagos mensuales" required> 
+            <!-- Tipo de préstamo --> 
+            <label for="tipo-prestamo">Tipo de préstamo:</label> 
+            <select id="tipo-prestamo" name="tipo_prestamo" required> 
+                <option value="">--Seleccione--</option> 
+                <option value="hipotecario">Hipotecario</option> 
+                <option value="fiduciario">Fiduciario</option> 
+                <option value="prendario">Prendario</option> 
+            </select> 
+            <br><br> 
+            <!-- Campos para Hipotecario --> 
+            <div id="hipotecario-fields" style="display:none;"> 
+                <label for="descripcion-terreno">Descripción del terreno:</label> 
+                <input type="text" id="descripcion-terreno" name="descripcion_terreno" placeholder="Descripción del terreno" > 
+                <label for="ubicacion-terreno">Ubicación del terreno:</label> 
+                <input type="text" id="ubicacion-terreno" name="ubicacion_terreno" placeholder="Dirección / ubicación del terreno" > 
+            </div> 
+            <!-- Campos para Fiduciario --> 
+            <div id="fiduciario-fields" style="display:none;"> 
+                <h4>Aval 1</h4> 
+                <label for="nombre-aval1">Nombre:</label> 
+                <input type="text" id="nombre-aval1" name="nombre_aval1" placeholder="Nombre completo"> 
+                <label for="telefono-aval1">Teléfono:</label> 
+                <input type="text" id="telefono-aval1" name="telefono_aval1" placeholder="Código país + número"> 
+                <label for="domicilio-aval1">Domicilio:</label> 
+                <input type="text" id="domicilio-aval1" name="domicilio_aval1" placeholder="Dirección completa"> 
+                <label for="parentesco-aval1">Parentesco:</label> 
+                <input type="text" id="parentesco-aval1" name="parentesco_aval1" placeholder="Parentesco con el solicitante"> 
+                <h4>Aval 2</h4> 
+                <label for="nombre-aval2">Nombre:</label> 
+                <input type="text" id="nombre-aval2" name="nombre_aval2" placeholder="Nombre completo"> 
+                <label for="telefono-aval2">Teléfono:</label> 
+                <input type="text" id="telefono-aval2" name="telefono_aval2" placeholder="Código país + número"> 
+                <label for="domicilio-aval2">Domicilio:</label> 
+                <input type="text" id="domicilio-aval2" name="domicilio_aval2" placeholder="Dirección completa"> 
+                <label for="parentesco-aval2">Parentesco:</label> 
+                <input type="text" id="parentesco-aval2" name="parentesco_aval2" placeholder="Parentesco con el solicitante"> 
+            </div> 
+            <!-- Campos para Prendario --> 
+            <div id="prendario-fields" style="display:none;"> 
+                <label for="prenda">Seleccione la prenda:</label> 
+                <select id="prenda" name="prenda"> 
+                    <option value="">--Seleccione--</option> 
+                    <option value="certificado">Certificado de cuenta a plazo fijo</option> 
+                    <option value="vehiculo">Vehículo</option> 
+                    <option value="maquinaria">Maquinaria</option> 
+                </select> 
+            </div> 
+        </fieldset>
 
         
         <!-- Experiencia en Caracas -->
@@ -1270,6 +1246,7 @@
 
 
 </html>
+
 
 
 
