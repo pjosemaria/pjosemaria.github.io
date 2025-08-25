@@ -39,17 +39,34 @@
         }
 
         
-       /* SIDEBAR */
+/* BOTÓN MENU */
+.menu-toggle {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    background: #2e7d32;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 5px;
+    z-index: 1001;
+}
+
+/* SIDEBAR */
 .sidebar {
     width: 220px;
     background: #2e7d32;
     height: 100vh;
     display: flex;
     flex-direction: column;
-    padding-top: 20px;
+    padding-top: 60px; /* espacio para botón */
     position: fixed;
     top: 0;
-    left: 0;
+    left: -220px; /* Oculto por defecto */
+    transition: left 0.3s ease;
+    z-index: 1000;
 }
 
 /* BOTONES */
@@ -70,11 +87,15 @@
     background: #1b5e20;
 }
 
+/* CUANDO EL SIDEBAR ESTÁ ACTIVO */
+.sidebar.active {
+    left: 0;
+}
+
 /* CONTENIDO */
 .contenido {
-    margin-left: 220px; /* espacio para el sidebar */
     padding: 20px;
-    flex: 1;
+    margin-left: 0; /* no fijo, porque el menú se esconde */
 }
         
       
@@ -204,11 +225,13 @@
 
    <header>
         <img src="assets/LOGO CARACAS.png" alt="Logo Caja Rural">
-        <button class="menu-toggle" onclick="abrirMenu()">☰</button>
     </header>
 
-   <!-- SIDEBAR MENU -->
-<nav class="sidebar">
+   <!-- BOTÓN PARA ABRIR/CERRAR -->
+<button class="menu-toggle" onclick="toggleMenu()">☰ Menú</button>
+
+<!-- SIDEBAR -->
+<nav class="sidebar" id="sidebar">
     <button id="btn-home" onclick="mostrar('home')">🏠 Home</button>
     <button id="btn-quienes" onclick="mostrar('quienes')">👥 Quiénes Somos</button>
     <button id="btn-ahorro" onclick="mostrar('ahorro')">💰 Tipos de Ahorro</button>
@@ -217,17 +240,6 @@
     <button id="btn-contacto" onclick="mostrar('contacto')">📞 Contacto</button>
     <button id="btn-solicitud" onclick="mostrar('solicitud')">📝 Solicitar Préstamo</button>
 </nav>
-
-<!-- CONTENIDO -->
-<main class="contenido">
-    <section id="home">Bienvenido a la Caja Rural</section>
-    <section id="quienes" style="display:none;">Sobre nosotros...</section>
-    <section id="ahorro" style="display:none;">Tipos de ahorro...</section>
-    <section id="prestamo" style="display:none;">Tipos de préstamo...</section>
-    <section id="proyectos" style="display:none;">Proyectos...</section>
-    <section id="contacto" style="display:none;">Contacto...</section>
-    <section id="solicitud" style="display:none;">Formulario de préstamo...</section>
-</main>
 
     
     <!-- HOME -->
@@ -874,8 +886,13 @@
     }
   });
 
+    
     //SIDEMENU
-    function mostrar(id) {
+    function toggleMenu() {
+    document.getElementById("sidebar").classList.toggle("active");
+}
+
+function mostrar(id) {
     // Ocultar todas las secciones
     document.querySelectorAll("main section").forEach(sec => sec.style.display = "none");
     // Mostrar la seleccionada
@@ -885,8 +902,12 @@
     document.querySelectorAll(".sidebar button").forEach(btn => btn.classList.remove("active"));
     // Agregar active al botón actual
     document.getElementById("btn-" + id).classList.add("active");
+
+    // Cerrar el menú automáticamente en móviles
+    document.getElementById("sidebar").classList.remove("active");
 }
 
+    
         // FUNCIONES - DETALLES DE PRESTAMO
   // --- Parser robusto de montos ---
   function parseMonto() {
@@ -1237,6 +1258,7 @@
 
 
 </html>
+
 
 
 
