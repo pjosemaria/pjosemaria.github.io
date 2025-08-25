@@ -716,25 +716,32 @@
 
         
 
-<!-- DETALLES DEL PRESTAMO -->
-<fieldset style="border: 1px solid #ccc; padding: 15px; margin-top: 20px; border-radius: 8px; background-color: #f9f9f9;">
+<!-- DETALLES DEL PRÉSTAMO -->
+<fieldset style="border:1px solid #ccc; padding:15px; margin-top:20px; border-radius:8px; background-color:#f9f9f9;">
   <h3>Detalles del préstamo</h3>
 
   <!-- Monto solicitado -->
   <label for="monto">Monto solicitado:</label>
-  <input type="number" id="monto" name="monto" placeholder="Ingrese el monto solicitado" class="money" required>
+  <input type="text" id="monto" name="monto" placeholder="Ingrese el monto solicitado"
+         class="money" inputmode="decimal" autocomplete="off" style="text-align:right;" required>
 
   <!-- Tasa de interés -->
   <label for="tasa-interes">Tasa de interés (% anual):</label>
-  <input type="text" id="tasa-interes" name="tasa_interes" value="" readonly style="background-color: #e0e0e0; color: #555;" placeholder="La tasa se asigna según socio">
+  <input type="text" id="tasa-interes" name="tasa_interes"
+         readonly style="background-color:#e0e0e0; color:#555;" placeholder="La tasa se asigna según socio">
+    
+      <!-- Cuota estimada -->
+  <label for="cuota">Cuota mensual estimada:</label>
+  <input type="text" id="cuota" name="cuota" readonly
+         style="background-color:#e0e0e0; color:#555; text-align:right;" placeholder="Se calculará automáticamente">
 
   <!-- Destino del préstamo -->
   <label for="destino">Destino del préstamo:</label>
   <input type="text" id="destino" name="destino" placeholder="Describa el destino del préstamo" required>
 
-  <!-- Forma de pago / Plazo -->
+  <!-- Plazo en meses -->
   <label for="plazo">Plazo en meses:</label>
-  <input type="number" id="plazo" name="plazo" placeholder="Ej: 12" required>
+  <input type="number" id="plazo" name="plazo" placeholder="Ej: 12" min="1" step="1" required>
 
   <!-- Tipo de préstamo -->
   <label for="tipo-prestamo">Tipo de préstamo:</label>
@@ -746,10 +753,6 @@
   </select>
 
   <br><br>
-
-  <!-- Cuota estimada -->
-  <label for="cuota">Cuota mensual estimada:</label>
-  <input type="text" id="cuota" name="cuota" readonly style="background-color: #e0e0e0; color: #555;" placeholder="Se calculará automáticamente">
 
   <!-- Campos para Hipotecario -->
   <div id="hipotecario-fields" style="display:none;">
@@ -800,6 +803,7 @@
     </select>
   </div>
 </fieldset>
+
         
         <!-- Experiencia en Caracas -->
 <fieldset style="border: 1px solid #ccc; padding: 15px; margin-top: 20px; border-radius: 8px; background-color: #f9f9f9;">
@@ -919,52 +923,84 @@
   });
 
         // TASA DE INTERES
-  const socioSelect = document.getElementById('socio');
-  const tasaInput = document.getElementById('tasa-interes');
+ // --- Utilidades ---
+  function parseTasaAnual() {
+    // Acepta "2" o "2%" o "2.0"
+    const raw = (document.getElementById('tasa-interes').value || '').toString().replace('%','').trim();
+    const n = parseFloat(raw);
+    return isNaN(n) ? 0 : n; // % anual
+  }
+
+  function parseMonto() {
+    // Permite 1,234.56 o 1.234,56 o "L 1,000"
+    const raw = (document.getElementById('monto').value || '').toString();
+    const cleaned = raw.replace(/[^\d.,]/g, '');
+    const hasDot = cleaned.includes('.');
+    const hasComma = cleaned.includes(',');
+
+    let normalized;
+    if (hasComma && !hasDot) {
+      // Caso latam: puntos como miles, coma decimal -> quitar puntos y cambiar coma por punto
+      normalized = cleaned.replace(/\./g, '').replace(',', '.');
+    } else {
+      // Caso en-us: comas miles, punto decimal -> quitar comas
+      normalized = cleaned.replace(/,/g, '');
+    }
+    const n = parseFloat(normalized);
+    return isNaN(n) ? 0 : n;
+  }
+
+  function calcularCuota() {
+    const monto = parseMonto();
+    const tasaAnual = parseTasaAnual();
+    const plazoMeses = parseInt(document.getElementById('plazo').value || '0', 10);
+
+    const cuotaInput = document.getElementById('cuota');
+
+    if (monto > 0 && tasaAnual > 0 && plazoMeses > 0) {
+      const i = (tasaAnual / 100) / 12; // interés mensual
+      const cuota = monto * (i / (1 - Math.pow(1 + i, -plazoMeses)));
+      cuotaInput.value = cuota.toFixed(2);
+    } else {
+      cuotaInput.value = '';
+    }
+  }
+
+  // --- Enlaces seguros (con guardas) ---
   const montoInput = document.getElementById('monto');
   const plazoInput = document.getElementById('plazo');
-  const cuotaInput = document.getElementById('cuota');
-
-  socioSelect.addEventListener('change', function() {
-    if (this.value === 'si') {
-      tasaInput.value = "2";
-    } else if (this.value === 'no') {
-      tasaInput.value = "3";
-    } else {
-      tasaInput.value = "";
-    }
-    calcularCuota();
-  });
-
-  // TIPOS DE PRESTAMOS
   const tipoPrestamo = document.getElementById('tipo-prestamo');
   const hipotecarioFields = document.getElementById('hipotecario-fields');
   const fiduciarioFields = document.getElementById('fiduciario-fields');
   const prendarioFields = document.getElementById('prendario-fields');
+  const socioSelect = document.getElementById('socio'); // puede no existir en este fragmento
 
-  tipoPrestamo.addEventListener('change', function() {
-    hipotecarioFields.style.display = this.value === 'hipotecario' ? 'block' : 'none';
-    fiduciarioFields.style.display = this.value === 'fiduciario' ? 'block' : 'none';
-    prendarioFields.style.display = this.value === 'prendario' ? 'block' : 'none';
-  });
-
-  // CÁLCULO DE CUOTA MENSUAL
-  function calcularCuota() {
-    const monto = parseFloat(montoInput.value) || 0;
-    const tasa = parseFloat(tasaInput.value) / 100 / 12 || 0; // interés mensual
-    const plazo = parseInt(plazoInput.value) || 0;
-
-    if (monto > 0 && tasa > 0 && plazo > 0) {
-      // Fórmula de cuota fija (sistema francés)
-      const cuota = monto * (tasa / (1 - Math.pow(1 + tasa, -plazo)));
-      cuotaInput.value = cuota.toFixed(2);
-    } else {
-      cuotaInput.value = "";
-    }
+  // Si existe #socio, asigna la tasa
+  if (socioSelect) {
+    socioSelect.addEventListener('change', function () {
+      document.getElementById('tasa-interes').value = this.value === 'si' ? '2' :
+                                                      this.value === 'no' ? '3' : '';
+      calcularCuota();
+    });
   }
 
-  montoInput.addEventListener('input', calcularCuota);
-  plazoInput.addEventListener('input', calcularCuota);
+  // Mostrar/ocultar campos por tipo
+  if (tipoPrestamo) {
+    tipoPrestamo.addEventListener('change', function () {
+      hipotecarioFields.style.display = this.value === 'hipotecario' ? 'block' : 'none';
+      fiduciarioFields.style.display = this.value === 'fiduciario' ? 'block' : 'none';
+      prendarioFields.style.display = this.value === 'prendario' ? 'block' : 'none';
+    });
+  }
+
+  // Recalcular al escribir
+  if (montoInput) montoInput.addEventListener('input', calcularCuota);
+  if (plazoInput) plazoInput.addEventListener('input', calcularCuota);
+  // También recalcular si alguien edita manualmente la tasa
+  document.getElementById('tasa-interes').addEventListener('input', calcularCuota);
+
+  // Inicial
+  calcularCuota();
         //TIPOS DE PRESTAMOS//
         
         //INFORMACION FINANCIERA CALCULOS
@@ -1198,6 +1234,7 @@
 
 
 </html>
+
 
 
 
