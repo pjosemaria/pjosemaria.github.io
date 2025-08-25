@@ -37,69 +37,47 @@
             cursor: pointer;
             color: #2e7d32;
         }
-        /* NAV */
+
         
-        nav {
-            background: #2e7d32;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap
-        }
+       /* SIDEBAR */
+.sidebar {
+    width: 220px;
+    background: #2e7d32;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+/* BOTONES */
+.sidebar button {
+    background: none;
+    border: none;
+    color: white;
+    text-align: left;
+    padding: 15px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s;
+    width: 100%;
+}
+
+.sidebar button:hover,
+.sidebar button.active {
+    background: #1b5e20;
+}
+
+/* CONTENIDO */
+.contenido {
+    margin-left: 220px; /* espacio para el sidebar */
+    padding: 20px;
+    flex: 1;
+}
         
-        nav button {
-            background: none;
-            border: none;
-            color: white;
-            padding: 15px 20px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: background 0.3s;
-        }
-        
-        nav button:hover,
-        nav button.active {
-            background: #1b5e20;
-        }
-        /* Side Menu */
-        
-        .side-nav {
-            height: 100%;
-            width: 0;
-            position: fixed;
-            top: 0;
-            left: 0;
-            background-color: #2e7d32;
-            overflow-x: hidden;
-            transition: 0.3s;
-            padding-top: 60px;
-            z-index: 999;
-        }
-        
-        .side-nav button {
-            display: block;
-            text-align: left;
-            width: 100%;
-            padding: 15px 20px;
-            border: none;
-            background: none;
-            color: white;
-            font-size: 18px;
-        }
-        
-        .side-nav button:hover {
-            background: #1b5e20;
-        }
-        
-        .side-nav .close-btn {
-            position: absolute;
-            top: 10px;
-            right: 20px;
-            font-size: 30px;
-            color: white;
-            background: none;
-            border: none;
-            cursor: pointer;
-        }
+      
         /* SECCIONES */
         
         section {
@@ -229,29 +207,29 @@
         <button class="menu-toggle" onclick="abrirMenu()">☰</button>
     </header>
 
-    <!-- MENÚ NORMAL -->
-    <nav>
-        <button id="btn-home" onclick="mostrar('home')">Home</button>
-        <button id="btn-quienes" onclick="mostrar('quienes')">Quiénes Somos</button>
-        <button id="btn-ahorro" onclick="mostrar('ahorro')">Tipos de Ahorro</button>
-        <button id="btn-prestamo" onclick="mostrar('prestamo')">Tipos de Préstamo</button>
-        <button id="btn-proyectos" onclick="mostrar('proyectos')">Proyectos</button>
-        <button id="btn-contacto" onclick="mostrar('contacto')">Contacto</button>
-        <button id="btn-solicitud" onclick="mostrar('solicitud')">Solicitar Préstamo</button>
-    </nav>
+   <!-- SIDEBAR MENU -->
+<nav class="sidebar">
+    <button id="btn-home" onclick="mostrar('home')">🏠 Home</button>
+    <button id="btn-quienes" onclick="mostrar('quienes')">👥 Quiénes Somos</button>
+    <button id="btn-ahorro" onclick="mostrar('ahorro')">💰 Tipos de Ahorro</button>
+    <button id="btn-prestamo" onclick="mostrar('prestamo')">💳 Tipos de Préstamo</button>
+    <button id="btn-proyectos" onclick="mostrar('proyectos')">📌 Proyectos</button>
+    <button id="btn-contacto" onclick="mostrar('contacto')">📞 Contacto</button>
+    <button id="btn-solicitud" onclick="mostrar('solicitud')">📝 Solicitar Préstamo</button>
+</nav>
 
-    <!-- SIDE NAV RESPONSIVE -->
-    <div id="mySidenav" class="side-nav">
-        <button class="close-btn" onclick="cerrarMenu()">&times;</button>
-        <button onclick="mostrar('home'); cerrarMenu()">🏠 Home</button>
-        <button onclick="mostrar('quienes'); cerrarMenu()">👥 Quiénes Somos</button>
-        <button onclick="mostrar('ahorro'); cerrarMenu()">💰 Tipos de Ahorro</button>
-        <button onclick="mostrar('prestamo'); cerrarMenu()">📄 Tipos de Préstamo</button>
-        <button onclick="mostrar('proyectos'); cerrarMenu()">🚀 Proyectos</button>
-        <button onclick="mostrar('contacto'); cerrarMenu()">✉️ Contacto</button>
-        <button onclick="mostrar('solicitud'); cerrarMenu()">📝 Solicitar Préstamo</button>
-    </div>
+<!-- CONTENIDO -->
+<main class="contenido">
+    <section id="home">Bienvenido a la Caja Rural</section>
+    <section id="quienes" style="display:none;">Sobre nosotros...</section>
+    <section id="ahorro" style="display:none;">Tipos de ahorro...</section>
+    <section id="prestamo" style="display:none;">Tipos de préstamo...</section>
+    <section id="proyectos" style="display:none;">Proyectos...</section>
+    <section id="contacto" style="display:none;">Contacto...</section>
+    <section id="solicitud" style="display:none;">Formulario de préstamo...</section>
+</main>
 
+    
     <!-- HOME -->
     <section id="home" class="active home">
         <h2>Bienvenido a Caja Rural de Ahorro y Crédito "Amistad y Superación" (CARACAS)</h2>
@@ -896,6 +874,19 @@
     }
   });
 
+    //SIDEMENU
+    function mostrar(id) {
+    // Ocultar todas las secciones
+    document.querySelectorAll("main section").forEach(sec => sec.style.display = "none");
+    // Mostrar la seleccionada
+    document.getElementById(id).style.display = "block";
+    
+    // Quitar active de todos los botones
+    document.querySelectorAll(".sidebar button").forEach(btn => btn.classList.remove("active"));
+    // Agregar active al botón actual
+    document.getElementById("btn-" + id).classList.add("active");
+}
+
         // FUNCIONES - DETALLES DE PRESTAMO
   // --- Parser robusto de montos ---
   function parseMonto() {
@@ -1246,6 +1237,7 @@
 
 
 </html>
+
 
 
 
