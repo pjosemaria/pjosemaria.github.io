@@ -1,0 +1,1323 @@
+<!DOCTYPE html> 
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Caja Rural</title>
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family:Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      background: #f8f9fa;
+    }
+
+    /* Header */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 60px;
+      background: #ffc107;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      z-index: 1001;
+    }
+
+    h1 {
+        color: #225e25;
+        font-weight: 800;
+
+    }
+
+    h2 {
+      color: #225e25;
+      margin-bottom: 15px;
+      margin-top: -15px;
+    }
+        
+    h3 {
+      margin-top: 10px;
+      color: #388e3c;
+    }
+        
+    p {
+      margin-top: auto;
+      margin-bottom: 10px;
+    }
+
+    header img {
+      height: 40px;
+    }
+
+    header button {
+      background: #ffc107;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+      border-radius: 8px;
+      font-size: 18px;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      position: fixed;
+      top: 60px;
+      left: 0;
+      width: 250px;
+      height: 100%;
+      background: #2e7e32;
+      padding-top: 20px;
+      transition: transform 0.3s ease;
+      transform: translateX(-100%);
+      z-index: 1000;
+    }
+
+    .sidebar.active {
+      transform: translateX(0);
+    }
+
+    .sidebar button {
+      display: block;
+      width: 90%;
+      margin: 10px auto;
+      padding: 10px;
+      border: none;
+      background: #2e7e32;
+      color: #fff;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      text-align: left;
+    }
+
+    /* Contenido */
+    .content {
+      flex: 1;
+      padding: 80px 20px 20px 20px;
+    }
+
+    section {
+      display: none;
+      animation: fadeIn 0.5s;
+    }
+
+    section.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+
+    /* Botón de solicitud */
+    .btn-solicitar {
+      display: inline-block;
+      background: #2e7e32;
+      color: #fff;
+      padding: 12px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      margin-top: 15px;
+      font-size: 16px;
+      transition: background 0.3s;
+    }
+
+    .btn-solicitar:hover {
+      background: #2e7e32;
+    }
+
+    /* Cards */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: transform 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+    }
+
+    .card-body {
+      padding: 15px;
+    }
+
+    .card-body h3 {
+      font-size: 18px;
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    .card-body p {
+      font-size: 14px;
+      color: #555;
+    }
+
+    /* Responsive */
+    @media (min-width: 768px) {
+      .sidebar {
+        transform: translateX(0);
+      }
+      .content {
+        margin-left: 250px;
+        padding: 80px 40px 20px 40px;
+      }
+      header button {
+        display: none;
+      }
+    }
+
+    /*===FORM===*/
+
+ /* FORMULARIO */
+        
+        form {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: auto;
+        }
+        
+        form input,
+        form textarea,
+        form select {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+        
+        form button {
+            background: #ffcc00;
+            color: #2e7e32;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        
+        form button:hover {
+            background: #f4b400;
+        }
+
+    /* ====== FOOTER ====== */
+    footer {
+      background: #0c3f0e;
+      color: #ddd;
+      padding: 50px 20px 20px;
+    }
+
+    .footer-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .footer-col h3 {
+      color: #fff;
+      margin-bottom: 15px;
+      font-size: 18px;
+      border-left: 4px solid #f1c40f;
+      padding-left: 10px;
+    }
+
+    .footer-col p {
+      line-height: 1.6;
+      font-size: 14px;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-col ul li {
+      margin: 10px 0;
+    }
+
+    .footer-col ul li a {
+      text-decoration: none;
+      color: #bbb;
+      transition: color 0.3s;
+    }
+
+    .footer-col ul li a:hover {
+      color: #f1c40f;
+    }
+
+    .social-links a {
+      display: inline-block;
+      margin-right: 10px;
+      font-size: 18px;
+      color: #bbb;
+      transition: color 0.3s, transform 0.3s;
+    }
+
+    .social-links a:hover {
+      color: #f1c40f;
+      transform: scale(1.1);
+    }
+
+    .newsletter input {
+      width: 70%;
+      padding: 10px;
+      border: none;
+      border-radius: 5px 0 0 5px;
+      outline: none;
+    }
+
+    .newsletter button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 0 5px 5px 0;
+      background: #f1c40f;
+      color: #111;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .newsletter button:hover {
+      background: #d4ac0d;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      border-top: 1px solid #333;
+      padding-top: 15px;
+      margin-top: 30px;
+      font-size: 14px;
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="logo.png" alt="Logo Caja Rural">
+    <button id="toggleBtn">☰</button>
+  </header>
+
+  <div class="sidebar" id="sidebar">
+    <button onclick="mostrar('home')">Home</button>
+    <button onclick="mostrar('quienes')">Quiénes Somos</button>
+    <button onclick="mostrar('ahorro')">Tipos de Ahorro</button>
+    <button onclick="mostrar('ahorro')">Tipos de Prestamo</button>
+    <button onclick="mostrar('solicitud')">Solicitud de Préstamo</button>
+    <button onclick="mostrar('cuenta')">Mi Cuenta</button>
+
+  </div>
+
+  <div class="content">
+    <section id="home" class="active">
+      <h1>Bienvenido a la Caja Rural</h1>
+      <p>Ofrecemos servicios de ahorro y crédito para apoyar a nuestra comunidad rural. Nuestra misión es ayudarte a crecer financieramente con confianza y seguridad.</p>
+      <a href="#solicitud" class="btn-solicitar" onclick="mostrar('solicitud')">Solicitar Préstamo</a>
+
+      <!-- Cards de Noticias/Eventos -->
+      <div class="cards">
+        <div class="card">
+          <img src="assets/download.jpeg" alt="Noticia 1">
+          <div class="card-body">
+            <h3>Reunión de Socios</h3>
+            <p>Este sábado tendremos una reunión para discutir nuevos proyectos de la caja rural.</p>
+          </div>
+        </div>
+        <div class="card">
+          <img src="assets/download (1).jpeg" alt="Noticia 2">
+          <div class="card-body">
+            <h3>Charla Financiera</h3>
+            <p>Únete a nuestra charla sobre cómo mejorar tus finanzas personales.</p>
+          </div>
+        </div>
+        <div class="card">
+          <img src="noticia3.jpg" alt="Noticia 3">
+          <div class="card-body">
+            <h3>Evento Comunitario</h3>
+            <p>La Caja Rural Caracas organiza un evento con actividades para toda la familia.</p>
+          </div>
+        </div>
+      </div>
+      
+    </section>
+
+    <section id="quienes">
+      <h1>Quiénes Somos</h1>
+        <p>En la <b>Caja Rural de Ahorro y Crédito "Amistad y Superación" (CARACAS),</b> nuestros proyectos se enfocan principalmente en el fortalecimiento del sector agrícola, buscando generar un desarrollo sostenible y mejorar la calidad de vida de nuestros
+            socios y de la comunidad en general.</p>
+        <p>A través de capacitación constante, asesoría técnica especializada y financiamiento accesible, ayudamos a los agricultores a incrementar la productividad de sus cultivos, adoptar prácticas más eficientes y sostenibles, y acceder a mercados donde
+            puedan comercializar sus productos de manera justa. Nuestros programas incluyen la introducción de tecnologías agrícolas modernas, técnicas de riego, selección de semillas de alta calidad y métodos de cultivo amigables con el medio ambiente.</p>
+        <p>Además, ofrecemos microcréditos adaptados a las necesidades del sector, permitiendo a los productores adquirir insumos, herramientas y maquinaria, o invertir en mejoras de infraestructura agrícola. También fomentamos proyectos de innovación, como
+            cultivos orgánicos, diversificación de productos y programas de asociatividad entre pequeños productores para lograr economías de escala.</p>
+        <p>Creemos firmemente que el desarrollo del sector agrícola es clave para el progreso de nuestra comunidad, por eso nuestros esfuerzos no solo buscan aumentar la rentabilidad de los agricultores, sino también garantizar la seguridad alimentaria,
+            fortalecer la economía local y generar oportunidades de empleo. En CARACAS, cada proyecto agrícola es un paso hacia un futuro más próspero y sostenible para todos nuestros socios.</p>
+    </section>
+    </section>
+
+    <section id="ahorro">
+      <h1>Tipos de Ahorro</h1>
+      <p>Contamos con diferentes planes de ahorro ajustados a tus necesidades.</p>
+      <div class="cards">
+        <div class="card">
+          <img src="assets/download.jpeg" alt="Noticia 1">
+          <div class="card-body">
+            <h3>Ahorro Retirable</h3>
+            <p>Este sábado tendremos una reunión para discutir nuevos proyectos de la caja rural.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    
+<section id="solicitud">
+    <h1>Formulario de Solicitud de Préstamo</h1>
+    <form id="loan-form">
+
+        <!-- Información Personal -->
+        
+        <fieldset style="border: 1px solid #ccc; padding: 15px; margin-top: 20px; border-radius: 8px; background-color: #f9f9f9;">
+  <h3>Información Personal</h3>
+  <label for="nombre">Nombre Completo:</label>
+  <input type="text" id="nombre" name="nombre_completo" placeholder="Escriba su nombre completo" required>
+
+  <label for="dni">DNI:</label>
+  <input type="text" id="dni" name="dni" placeholder="Escriba su número de identidad" 
+         pattern="[0-9]{4}-[0-9]{4}-[0-9]{5}" required>
+
+  <label>Fecha de nacimiento:</label>
+  <input type="date" name="fecha_nacimiento" required>
+
+  <label>Edad:</label>
+  <input type="number" name="edad" min="18" required>
+
+  <!-- Información Personal: Socio de la Caja -->
+  <label for="socio">¿Es socio de la Caja Rural?</label>
+  <select id="socio" name="socio">
+    <option value="">--Seleccione--</option>
+    <option value="si">Sí</option>
+    <option value="no">No</option>
+  </select>
+
+  <label>Estado civil:</label>
+  <select name="estado_civil" id="estado_civil">
+    <option value="">--Seleccione--</option>
+    <option value="soltero">Soltero</option>
+    <option value="casado">Casado</option>
+    <option value="union">Unión libre</option>
+    <option value="divorciado">Divorciado</option>
+    <option value="viudo">Viudo</option>
+  </select>
+
+  <label>Número de hijos:</label>
+  <input type="number" name="numero_hijos" min="0">
+
+  <label>Dirección de residencia:</label>
+  <textarea name="direccion_residencia" rows="2"></textarea>
+
+  <label>Teléfono personal:</label>
+  <div style="display:flex; gap:5px; align-items:center;">
+    <select id="codigo_pais_personal" name="codigo_pais_personal" required>
+      <option value="+504">🇭🇳 Honduras (+504)</option>
+      <option value="+502">🇬🇹 Guatemala (+502)</option>
+      <option value="+503">🇸🇻 El Salvador (+503)</option>
+      <option value="+505">🇳🇮 Nicaragua (+505)</option>
+      <option value="+506">🇨🇷 Costa Rica (+506)</option>
+      <option value="+1">🇺🇸 Estados Unidos (+1)</option>
+    </select>
+    <input type="text" id="telefono_personal" name="telefono_personal" placeholder="0000-0000" required>
+  </div>
+
+  <label>Correo electrónico:</label>
+  <input type="email" name="correo">
+
+  <label for="nivel_educativo">Seleccione su nivel educativo:</label>
+  <select id="nivel_educativo" name="nivel_educativo" required>
+    <option value="">-- Seleccione una opción --</option>
+    <option value="prebasica">Prebásica (Preescolar)</option>
+    <option value="basica1">Educación Básica – I Ciclo (1.º a 3.º grado)</option>
+    <option value="basica2">Educación Básica – II Ciclo (4.º a 6.º grado)</option>
+    <option value="basica3">Educación Básica – III Ciclo (7.º a 9.º grado)</option>
+    <option value="media">Educación Media – Bachillerato (10.º a 12.º grado)</option>
+    <option value="tecnico">Educación Superior – Técnico</option>
+    <option value="universitario">Educación Superior – Universitario</option>
+    <option value="posgrado">Posgrado (Maestría/Doctorado)</option>
+  </select>
+</fieldset>
+
+<!-- Información Personal del Conyuge (oculta por defecto) -->
+<fieldset id="conyuge-fields" style="border: 1px solid #ccc; padding: 15px; margin-top: 20px; border-radius: 8px; background-color: #f9f9f9;">
+  <h3>Información Personal del Cónyuge</h3>
+  <label for="nombre_conyuge">Nombre Completo del cónyuge:</label>
+  <input type="text" id="nombre_conyuge" name="nombre_completo_conyuge" placeholder="Escriba su nombre completo">
+
+  <label for="dni_conyuge">DNI:</label>
+  <input type="text" id="dni_conyuge" name="dni_conyuge" placeholder="Escriba su número de identidad" 
+         pattern="[0-9]{4}-[0-9]{4}-[0-9]{5}">
+
+  <label>Teléfono personal:</label>
+  <div style="display:flex; gap:5px; align-items:center;">
+    <select id="codigo_pais_conyuge" name="codigo_pais_conyuge">
+      <option value="+504">🇭🇳 Honduras (+504)</option>
+      <option value="+502">🇬🇹 Guatemala (+502)</option>
+      <option value="+503">🇸🇻 El Salvador (+503)</option>
+      <option value="+505">🇳🇮 Nicaragua (+505)</option>
+      <option value="+506">🇨🇷 Costa Rica (+506)</option>
+      <option value="+1">🇺🇸 Estados Unidos (+1)</option>
+    </select>
+    <input type="text" id="telefono_conyuge" name="telefono_conyuge" placeholder="0000-0000">
+  </div>
+
+  <label>Correo electrónico:</label>
+  <input type="email" name="correo_conyuge">
+
+  <label for="nivel_educativo_conyuge">Seleccione su nivel educativo:</label>
+  <select id="nivel_educativo_conyuge" name="nivel_educativo_conyuge">
+    <option value="">-- Seleccione una opción --</option>
+    <option value="prebasica">Prebásica (Preescolar)</option>
+    <option value="basica1">Educación Básica – I Ciclo (1.º a 3.º grado)</option>
+    <option value="basica2">Educación Básica – II Ciclo (4.º a 6.º grado)</option>
+    <option value="basica3">Educación Básica – III Ciclo (7.º a 9.º grado)</option>
+    <option value="media">Educación Media – Bachillerato (10.º a 12.º grado)</option>
+    <option value="tecnico">Educación Superior – Técnico</option>
+    <option value="universitario">Educación Superior – Universitario</option>
+    <option value="posgrado">Posgrado (Maestría/Doctorado)</option>
+  </select>
+</fieldset>
+        <!-- Información Laboral -->
+    
+        <fieldset style="border: 1px solid #ccc; padding: 15px; margin-top: 20px; border-radius: 8px; background-color: #f9f9f9;">
+             <h3>Información Laboral</h3>
+            <label>Nombre de la empresa / negocio:</label>
+            <input type="text" name="empresa" required>
+
+            <label for="actividad_economica">Actividad económica de la empresa:</label>
+<select id="actividad_economica" name="actividad_economica" required>
+    <option value="">-- Seleccione una opción --</option>
+    <option value="agricultura">Agricultura, ganadería, silvicultura y pesca</option>
+    <option value="industria">Industria manufacturera</option>
+    <option value="construccion">Construcción</option>
+    <option value="comercio">Comercio al por mayor y menor</option>
+    <option value="servicios">Servicios profesionales y técnicos</option>
+    <option value="transporte">Transporte y almacenamiento</option>
+    <option value="turismo">Turismo, hoteles y restaurantes</option>
+    <option value="finanzas">Servicios financieros y seguros</option>
+    <option value="educacion">Educación</option>
+    <option value="salud">Salud y asistencia social</option>
+    <option value="otros">Otros</option>
+</select>
+
+            <label>Cargo / puesto:</label>
+            <input type="text" name="cargo">
+
+            <label>Fecha de ingreso:</label>
+            <input type="date" name="fecha_ingreso">
+
+            <label>Nombre del jefe inmediato:</label>
+            <input type="text" name="jefe">
+
+            <label>Teléfono de la empresa:</label>
+            <div style="display:flex; gap:5px; align-items:center;">
+                <select id="codigo_pais_empresa" name="codigo_pais_empresa" required>
+                    <option value="+504">🇭🇳 Honduras (+504)</option>
+                    <option value="+502">🇬🇹 Guatemala (+502)</option>
+                    <option value="+503">🇸🇻 El Salvador (+503)</option>
+                    <option value="+505">🇳🇮 Nicaragua (+505)</option>
+                    <option value="+506">🇨🇷 Costa Rica (+506)</option>
+                    <option value="+1">🇺🇸 Estados Unidos (+1)</option>
+                </select>
+                <input type="text" id="telefono_empresa" name="telefono_empresa" placeholder="0000-0000" required>
+            </div>
+</fieldset>
+        
+ 
+  <!-- Ingresos -->
+ <fieldset style="border: 1px solid #ccc; padding: 15px; margin-top: 20px; border-radius: 8px; background-color: #f9f9f9;">
+  <h3>Información Financiera</h3>
+
+  <!-- Ingresos -->
+  <h4>Ingresos Mensuales</h4>
+  <div>
+    <select class="ingreso">
+      <option value="">-- Seleccione --</option>
+      <option value="salario">Salario</option>
+      <option value="remesas">Remesas</option>
+      <option value="ventas">Ventas Propias</option>
+      <option value="bonos">Bonos</option>
+      <option value="becas">Becas</option>
+    </select>
+    <input type="text" class="monto-ingreso" placeholder="L. 0.00">
+  </div>
+
+  <div>
+    <select class="ingreso">
+      <option value="">-- Seleccione --</option>
+      <option value="salario">Salario</option>
+      <option value="remesas">Remesas</option>
+      <option value="ventas">Ventas Propias</option>
+      <option value="bonos">Bonos</option>
+      <option value="becas">Becas</option>
+    </select>
+    <input type="text" class="monto-ingreso" placeholder="L. 0.00">
+  </div>
+
+  <div>
+    <select class="ingreso">
+      <option value="">-- Seleccione --</option>
+      <option value="salario">Salario</option>
+      <option value="remesas">Remesas</option>
+      <option value="ventas">Ventas Propias</option>
+      <option value="bonos">Bonos</option>
+      <option value="becas">Becas</option>
+    </select>
+    <input type="text" class="monto-ingreso" placeholder="L. 0.00">
+  </div>
+
+  <div>
+    <select class="ingreso">
+      <option value="">-- Seleccione --</option>
+      <option value="salario">Salario</option>
+      <option value="remesas">Remesas</option>
+      <option value="ventas">Ventas Propias</option>
+      <option value="bonos">Bonos</option>
+      <option value="becas">Becas</option>
+    </select>
+    <input type="text" class="monto-ingreso" placeholder="L. 0.00">
+  </div>
+
+  <!-- Egresos -->
+  <h4>Egresos</h4>
+  <div>
+    <select class="egreso">
+      <option value="">-- Seleccione --</option>
+      <option value="alimentacion">Gastos de Alimentación</option>
+      <option value="energia">Energía Eléctrica</option>
+      <option value="gas">Gas</option>
+      <option value="telefonia">Telefonía / Internet</option>
+      <option value="agua">Agua</option>
+    </select>
+    <input type="text" class="monto-egreso" placeholder="L. 0.00">
+  </div>
+
+  <div>
+    <select class="egreso">
+      <option value="">-- Seleccione --</option>
+      <option value="alimentacion">Gastos de Alimentación</option>
+      <option value="energia">Energía Eléctrica</option>
+      <option value="gas">Gas</option>
+      <option value="telefonia">Telefonía / Internet</option>
+      <option value="agua">Agua</option>
+    </select>
+    <input type="text" class="monto-egreso" placeholder="L. 0.00">
+  </div>
+
+  <div>
+    <select class="egreso">
+      <option value="">-- Seleccione --</option>
+      <option value="alimentacion">Gastos de Alimentación</option>
+      <option value="energia">Energía Eléctrica</option>
+      <option value="gas">Gas</option>
+      <option value="telefonia">Telefonía / Internet</option>
+      <option value="agua">Agua</option>
+    </select>
+    <input type="text" class="monto-egreso" placeholder="L. 0.00">
+  </div>
+
+  <div>
+    <select class="egreso">
+      <option value="">-- Seleccione --</option>
+      <option value="alimentacion">Gastos de Alimentación</option>
+      <option value="energia">Energía Eléctrica</option>
+      <option value="gas">Gas</option>
+      <option value="telefonia">Telefonía / Internet</option>
+      <option value="agua">Agua</option>
+    </select>
+    <input type="text" class="monto-egreso" placeholder="L. 0.00">
+  </div>
+
+  <!-- Totales -->
+  <h3>Totales</h3>
+  <div>
+    <label>Total Ingresos:</label>
+    <input type="text" id="total-ingresos" readonly style="background:#e0e0e0;">
+  </div>
+  <div>
+    <label>Total Egresos:</label>
+    <input type="text" id="total-egresos" readonly style="background:#e0e0e0;">
+  </div>
+  <div>
+    <label>Disponibilidad de Crédito:</label>
+    <input type="text" id="disponibilidad" readonly style="background:#e0e0e0;">
+  </div>
+</fieldset>
+        
+        <!-- Sección de Bienes / Activos -->
+<fieldset style="border: 1px solid #ccc; padding: 15px; margin-top: 20px; border-radius: 8px; background-color: #f9f9f9;">
+ <h3>Bienes / Activos</h3>
+  <!-- Inmueble 1 -->
+  <label for="inmueble1">Inmueble 1:</label>
+  <select id="inmueble1" name="inmueble1">
+    <option value="">--Seleccione--</option>
+    <option value="casa">Casa propia</option>
+    <option value="terreno">Terreno</option>
+    <option value="local">Local comercial</option>
+    <option value="finca">Finca / Parcela</option>
+  </select>
+  <input type="text" id="detalle_inmueble1" name="detalle_inmueble1" placeholder="Agregue aquí la dirección y descripción del inmueble">
+
+  <br><br>
+
+  <!-- Inmueble 2 -->
+  <label for="inmueble2">Inmueble 2:</label>
+  <select id="inmueble2" name="inmueble2">
+    <option value="">--Seleccione--</option>
+    <option value="casa">Casa propia</option>
+    <option value="terreno">Terreno</option>
+    <option value="local">Local comercial</option>
+    <option value="finca">Finca / Parcela</option>
+  </select>
+  <input type="text" id="detalle_inmueble2" name="detalle_inmueble2" placeholder="Agregue aquí la dirección y descripción del inmueble">
+
+  <br><br>
+
+  <!-- Vehículo 1 -->
+  <label for="vehiculo1">Vehículo 1:</label>
+  <select id="vehiculo1" name="vehiculo1">
+    <option value="">--Seleccione--</option>
+    <option value="automovil">Automóvil</option>
+    <option value="motocicleta">Motocicleta</option>
+    <option value="camion">Camión / Pick up</option>
+    <option value="maquinaria">Maquinaria / Equipo</option>
+  </select>
+  <input type="text" id="detalle_vehiculo1" name="detalle_vehiculo1" placeholder="Agregue aquí marca, modelo, año y color">
+
+  <br><br>
+
+  <!-- Vehículo 2 -->
+  <label for="vehiculo2">Vehículo 2:</label>
+  <select id="vehiculo2" name="vehiculo2">
+    <option value="">--Seleccione--</option>
+    <option value="automovil">Automóvil</option>
+    <option value="motocicleta">Motocicleta</option>
+    <option value="camion">Camión / Pick up</option>
+    <option value="maquinaria">Maquinaria / Equipo</option>
+  </select>
+  <input type="text" id="detalle_vehiculo2" name="detalle_vehiculo2" placeholder="Agregue aquí marca, modelo, año y color">
+
+  <br><br>
+
+  <!-- Otros bienes -->
+  <label for="otros">Otros bienes:</label>
+  <select id="otros" name="otros">
+    <option value="">--Seleccione--</option>
+    <option value="ahorros">Ahorros / Inversiones</option>
+    <option value="ganado">Ganado / Animales</option>
+    <option value="muebles">Muebles de valor</option>
+    <option value="otros">Otro</option>
+  </select>
+  <input type="text" id="detalle_otros" name="detalle_otros" placeholder="Agregue aquí descripción y valor del bien">
+</fieldset>
+
+        
+
+<!--DWTALLES DEL PRESTAMO--> 
+        <fieldset style="border: 1px solid #ccc; padding: 15px; margin-top: 20px; border-radius: 8px; background-color: #f9f9f9;"> 
+            <h3>Detalles del prestamo</h3> <!-- Monto solicitado --> <label for="monto">Monto solicitado:</label> 
+            <input type="text" id="monto" name="monto" placeholder="Ingrese el monto solicitado" class="money" required> 
+            <!-- Tasa de interés --> 
+            <label for="tasa-interes">Tasa de interés (%):</label> 
+            <input type="text" id="tasa-interes" name="tasa_interes" value="" readonly style="background-color: #e0e0e0; color: #555;" placeholder="La tasa se asigna según socio"> 
+            <!-- Destino del préstamo --> 
+            <label for="destino">Destino del préstamo:</label> 
+            <input type="text" id="destino" name="destino" placeholder="Describa el destino del préstamo" required> 
+            <!-- Forma de pago / Plazo --> 
+            <label for="plazo">Plazo y forma de pago:</label> 
+            <input type="text" id="plazo" name="plazo" placeholder="Ej: 12 meses, pagos mensuales" required> 
+            <!-- Tipo de préstamo --> 
+            <label for="tipo-prestamo">Tipo de préstamo:</label> 
+            <select id="tipo-prestamo" name="tipo_prestamo" required> 
+                <option value="">--Seleccione--</option> 
+                <option value="hipotecario">Hipotecario</option> 
+                <option value="fiduciario">Fiduciario</option> 
+                <option value="prendario">Prendario</option> 
+            </select> 
+            <br><br> 
+            <!-- Campos para Hipotecario --> 
+            <div id="hipotecario-fields" style="display:none;"> 
+                <label for="descripcion-terreno">Descripción del terreno:</label> 
+                <input type="text" id="descripcion-terreno" name="descripcion_terreno" placeholder="Descripción del terreno" > 
+                <label for="ubicacion-terreno">Ubicación del terreno:</label> 
+                <input type="text" id="ubicacion-terreno" name="ubicacion_terreno" placeholder="Dirección / ubicación del terreno" > 
+            </div> 
+            <!-- Campos para Fiduciario --> 
+            <div id="fiduciario-fields" style="display:none;"> 
+                <h4>Aval 1</h4> 
+                <label for="nombre-aval1">Nombre:</label> 
+                <input type="text" id="nombre-aval1" name="nombre_aval1" placeholder="Nombre completo"> 
+                <label for="telefono-aval1">Teléfono:</label> 
+                <input type="text" id="telefono-aval1" name="telefono_aval1" placeholder="Código país + número"> 
+                <label for="domicilio-aval1">Domicilio:</label> 
+                <input type="text" id="domicilio-aval1" name="domicilio_aval1" placeholder="Dirección completa"> 
+                <label for="parentesco-aval1">Parentesco:</label> 
+                <input type="text" id="parentesco-aval1" name="parentesco_aval1" placeholder="Parentesco con el solicitante"> 
+                <h4>Aval 2</h4> 
+                <label for="nombre-aval2">Nombre:</label> 
+                <input type="text" id="nombre-aval2" name="nombre_aval2" placeholder="Nombre completo"> 
+                <label for="telefono-aval2">Teléfono:</label> 
+                <input type="text" id="telefono-aval2" name="telefono_aval2" placeholder="Código país + número"> 
+                <label for="domicilio-aval2">Domicilio:</label> 
+                <input type="text" id="domicilio-aval2" name="domicilio_aval2" placeholder="Dirección completa"> 
+                <label for="parentesco-aval2">Parentesco:</label> 
+                <input type="text" id="parentesco-aval2" name="parentesco_aval2" placeholder="Parentesco con el solicitante"> 
+            </div> 
+            <!-- Campos para Prendario --> 
+            <div id="prendario-fields" style="display:none;"> 
+                <label for="prenda">Seleccione la prenda:</label> 
+                <select id="prenda" name="prenda"> 
+                    <option value="">--Seleccione--</option> 
+                    <option value="certificado">Certificado de cuenta a plazo fijo</option> 
+                    <option value="vehiculo">Vehículo</option> 
+                    <option value="maquinaria">Maquinaria</option> 
+                </select> 
+            </div> 
+        </fieldset>
+
+        
+        <!-- Experiencia en Caracas -->
+<fieldset style="border: 1px solid #ccc; padding: 15px; margin-top: 20px; border-radius: 8px; background-color: #f9f9f9;">
+    <legend>Experiencia en Caracas</legend>
+
+    <!-- Experiencia Crediticia -->
+    <label for="experiencia">Experiencia Crediticia con Caja Rural Caracas:</label>
+    <select id="experiencia" name="experiencia" required>
+        <option value="">Seleccione...</option>
+        <option value="primera">Primera experiencia crediticia</option>
+        <option value="segunda">Segunda experiencia crediticia</option>
+        <option value="tercera">Tercera experiencia crediticia</option>
+        <option value="cuarta">Cuarta experiencia crediticia</option>
+        <option value="quinta">Quinta experiencia crediticia</option>
+        <option value="sexta">Sexta experiencia crediticia</option>
+        <option value="septima">Séptima experiencia crediticia</option>
+        <option value="octava">Octava experiencia crediticia</option>
+        <option value="novena">Novena experiencia crediticia</option>
+        <option value="decima">Décima experiencia crediticia</option>
+    </select>
+    <br><br>
+
+    <!-- Cuenta de ahorro -->
+    <label for="cuenta_ahorro">¿Tiene cuenta de ahorro en la Caja Rural Caracas?</label>
+    <select id="cuenta_ahorro" name="cuenta_ahorro" required onchange="toggleCuenta()">
+        <option value="">Seleccione...</option>
+        <option value="si">Sí</option>
+        <option value="no">No</option>
+    </select>
+    <br><br>
+
+    <!-- Datos de la cuenta de ahorro (solo si tiene) -->
+    <div id="datos_cuenta" style="display:none;">
+        <label for="fecha_apertura">Fecha de apertura de la cuenta:</label>
+        <input type="date" id="fecha_apertura" name="fecha_apertura">
+        <br><br>
+
+        <label for="saldo_actual">Saldo actual en la cuenta:</label>
+        <input type="text" id="saldo_actual" name="saldo_actual" class="money" placeholder="Ejemplo: 5,000.00">
+    </div>
+</fieldset>
+        <!--aviso-->
+        <!-- Aviso Importante -->
+<div style="border: 1px solid #ccc; padding: 15px; margin-top: 20px; border-radius: 8px; background-color: #f9f9f9;">
+    <h3 style="margin-top: 0; color: #b22222;">Aviso Importante</h3>
+    <p>
+        Para la <strong>obtención del crédito</strong> es requisito indispensable 
+        <strong>abrir una cuenta de ahorro en la Caja Rural de Ahorro y Crédito Amistad y Superación (Caracas)</strong> 
+        en caso de no contar con una.
+    </p>
+
+    <p>Además, el solicitante deberá presentar los siguientes documentos:</p>
+    <ul style="margin-left: 20px;">
+        <li>Copia de la tarjeta de identidad.</li>
+        <li>Copia del RTN (Registro Tributario Nacional).</li>
+        <li>Constancia de ingresos o carta de trabajo.</li>
+        <li>Recibo de servicios públicos (agua, energía o teléfono) reciente.</li>
+        <li>Copia del título de propiedad o documento de respaldo de bienes ofrecidos como garantía (en caso de aplicar).</li>
+        <li>Copia de referencias personales o comerciales (mínimo dos).</li>
+    </ul>
+
+    <p style="margin-top: 15px; font-weight: bold; text-align: center;">¡Gracias!</p>
+</div>
+
+        <!--BOTÓN-->
+        <div style="margin-top: 20px; text-align: center;">
+    <button type="submit">Enviar Solicitud</button>
+</div>
+
+    </form>
+    </section>
+  </div>
+
+  <section id="cuenta">
+    <div class="login-container">
+    <h2>Iniciar Sesión</h2>
+    <form action="perfil.html" method="post">
+      <label for="usuario">Usuario</label>
+      <input type="text" id="usuario" name="usuario" required>
+
+      <label for="password">Contraseña</label>
+      <input type="password" id="password" name="password" required>
+
+      <button type="submit">Entrar</button>
+    </form>
+    <div class="extra">
+      <p>¿No tienes cuenta? <a href="#">Regístrate</a></p>
+    </div>
+  </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-col">
+        <h3>Sobre Nosotros</h3>
+        <p>
+          Somos una organización comprometida con brindar soluciones financieras
+          seguras y accesibles para el desarrollo de nuestra comunidad.
+        </p>
+      </div>
+      <div class="footer-col">
+        <h3>Enlaces Rápidos</h3>
+        <ul>
+          <li><a href="#">Inicio</a></li>
+          <li><a href="#">Servicios</a></li>
+          <li><a href="#">Proyectos</a></li>
+          <li><a href="#">Contacto</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Síguenos</h3>
+        <div class="social-links">
+          <a href="#">🌐</a>
+          <a href="#">🐦</a>
+          <a href="#">📸</a>
+          <a href="#">💼</a>
+        </div>
+      </div>
+      <div class="footer-col newsletter">
+        <h3>Suscríbete</h3>
+        <p>Recibe noticias y promociones directamente en tu correo.</p>
+        <form action="#">
+          <input type="email" placeholder="Tu correo electrónico">
+          <button type="submit">Enviar</button>
+        </form>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Caja Rural Caracas. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script>
+    const toggleBtn = document.getElementById('toggleBtn');
+    const sidebar = document.getElementById('sidebar');
+
+    toggleBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('active');
+    });
+
+    function mostrar(id) {
+      document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      sidebar.classList.remove('active');
+    }
+
+           // FUNCIONES - DETALLES DE PRESTAMO
+  // --- Parser robusto de montos ---
+  function parseMonto() {
+    const raw = (document.getElementById('monto').value || '').toString();
+
+    // Quitar símbolos y espacios
+    let s = raw.replace(/[^\d.,]/g, '');
+
+    const hasDot = s.includes('.');
+    const hasComma = s.includes(',');
+
+    if (hasDot && hasComma) {
+      // Dos separadores: decidir por el que está a la derecha como decimal
+      const lastDot = s.lastIndexOf('.');
+      const lastComma = s.lastIndexOf(',');
+      if (lastDot > lastComma) {
+        // Formato en-US: 60,000.50
+        s = s.replace(/,/g, '');
+      } else {
+        // Formato latam: 60.000,50
+        s = s.replace(/\./g, '').replace(',', '.');
+      }
+    } else if (hasComma && !hasDot) {
+      // Solo coma: decidir si es miles o decimal
+      // Si hay grupos de 3 dígitos después de cada coma -> miles (ej: 1,234,567)
+      const parts = s.split(',');
+      const isThousands = parts.slice(1).every(p => p.length === 3);
+      if (isThousands) {
+        s = s.replace(/,/g, '');
+      } else {
+        // Tratar la ÚLTIMA coma como decimal si tiene 1-2 dígitos
+        const m = s.match(/,(\d{1,2})$/);
+        if (m) s = s.replace(',', '.');
+        else s = s.replace(/,/g, ''); // sin decimales claros, asumir miles
+      }
+    } else if (hasDot && !hasComma) {
+      // Solo punto: decidir si es miles o decimal
+      const parts = s.split('.');
+      const isThousands = parts.slice(1).every(p => p.length === 3);
+      if (isThousands) {
+        s = s.replace(/\./g, '');
+      } else {
+        // dejar el punto como decimal
+      }
+    }
+    const n = parseFloat(s);
+    return isNaN(n) ? 0 : n;
+  }
+
+  // --- Leer tasa mensual % ---
+  function parseTasaMensual() {
+    const raw = (document.getElementById('tasa-interes').value || '').toString().replace('%','').trim();
+    const n = parseFloat(raw);
+    return isNaN(n) ? 0 : n; // % mensual
+  }
+
+  // --- Cálculos ---
+  function recalcular() {
+    const monto = parseMonto();
+    const tasaMensualPct = parseTasaMensual();   // p.ej. 2
+    const i = tasaMensualPct / 100;              // p.ej. 0.02
+    const plazo = parseInt(document.getElementById('plazo').value || '0', 10);
+
+    const interesMensualInput = document.getElementById('interes-mensual');
+    const cuotaAmortizadaInput = document.getElementById('cuota-amortizada');
+
+    // Interés simple del mes: monto × i
+    if (monto > 0 && i > 0) {
+      const interesMensual = monto * i;
+      interesMensualInput.value = interesMensual.toFixed(2);
+    } else {
+      interesMensualInput.value = '';
+    }
+
+    // Cuota amortizada (francés) usando tasa MENSUAL y plazo
+    if (monto > 0 && i > 0 && plazo > 0) {
+      const cuota = monto * (i / (1 - Math.pow(1 + i, -plazo)));
+      cuotaAmortizadaInput.value = cuota.toFixed(2);
+    } else {
+      cuotaAmortizadaInput.value = '';
+    }
+  }
+
+  // --- Mostrar/ocultar por tipo ---
+  const tipoPrestamo = document.getElementById('tipo-prestamo');
+  const hipotecarioFields = document.getElementById('hipotecario-fields');
+  const fiduciarioFields = document.getElementById('fiduciario-fields');
+  const prendarioFields = document.getElementById('prendario-fields');
+
+  if (tipoPrestamo) {
+    tipoPrestamo.addEventListener('change', function () {
+      hipotecarioFields.style.display = this.value === 'hipotecario' ? 'block' : 'none';
+      fiduciarioFields.style.display = this.value === 'fiduciario' ? 'block' : 'none';
+      prendarioFields.style.display = this.value === 'prendario' ? 'block' : 'none';
+    });
+  }
+
+  // --- Eventos ---
+  const montoInput = document.getElementById('monto');
+  const plazoInput = document.getElementById('plazo');
+  const tasaInput = document.getElementById('tasa-interes');
+  if (montoInput) montoInput.addEventListener('input', recalcular);
+  if (plazoInput) plazoInput.addEventListener('input', recalcular);
+  if (tasaInput) tasaInput.addEventListener('input', recalcular);
+
+  // --- Tasa por socio (2% o 3% MENSUAL) ---
+  const socioSelect = document.getElementById('socio'); // si existe en tu formulario
+  if (socioSelect) {
+    socioSelect.addEventListener('change', function () {
+      document.getElementById('tasa-interes').value = this.value === 'si' ? '2' :
+                                                      this.value === 'no' ? '3' : '';
+      recalcular();
+    });
+  }
+
+  // Inicial
+  recalcular();
+        //FUNCIONES DETALLES DE PRESTAMOS//
+        
+        //INFORMACION FINANCIERA CALCULOS
+    (() => {
+    const ingresoInputs = document.querySelectorAll('.monto-ingreso');
+    const egresoInputs = document.querySelectorAll('.monto-egreso');
+    const totalIngresos = document.getElementById('total-ingresos');
+    const totalEgresos = document.getElementById('total-egresos');
+    const disponibilidad = document.getElementById('disponibilidad');
+
+    const nf = new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    const formatCurrency = n => 'L. ' + nf.format(Number.isFinite(n) ? n : 0);
+
+    function calcTotals() {
+      const sumVals = nodeList => Array.from(nodeList).reduce((sum, el) => sum + (parseFloat(el.dataset.value) || 0), 0);
+      const ingresosSum = sumVals(ingresoInputs);
+      const egresosSum = sumVals(egresoInputs);
+      totalIngresos.value = formatCurrency(ingresosSum);
+      totalEgresos.value = formatCurrency(egresosSum);
+      disponibilidad.value = formatCurrency(ingresosSum - egresosSum);
+    }
+
+    function attachMoneyBehavior(input) {
+      // Mostrar número "limpio" al enfocar
+      input.addEventListener('focus', () => {
+        const raw = input.dataset.value;
+        input.value = raw ? String(raw) : '';
+        setTimeout(() => input.setSelectionRange(input.value.length, input.value.length), 0);
+      });
+
+      // Mientras escribe: normaliza, guarda el valor numérico y recalcula
+      input.addEventListener('input', () => {
+        let v = input.value;
+        // permitir coma o punto como decimal; quitar símbolos
+        v = v.replace(/[^0-9,.-]/g, '');
+        if (v.includes(',') && !v.includes('.')) v = v.replace(',', '.');
+        v = v.replace(/,/g, ''); // quitar separadores de miles
+        const neg = v.startsWith('-');
+        v = v.replace(/-/g, '');
+        const firstDot = v.indexOf('.');
+        if (firstDot !== -1) {
+          v = v.slice(0, firstDot + 1) + v.slice(firstDot + 1).split('.').join('');
+        }
+        if (neg) v = '-' + v;
+
+        const num = parseFloat(v);
+        if (Number.isFinite(num)) {
+          input.dataset.value = String(num);
+        } else {
+          delete input.dataset.value;
+        }
+        calcTotals();
+      });
+
+      // Formatear al salir
+      input.addEventListener('blur', () => {
+        const num = parseFloat(input.dataset.value);
+        input.value = Number.isFinite(num) ? formatCurrency(num) : '';
+        calcTotals();
+      });
+    }
+
+    document.querySelectorAll('.monto-ingreso, .monto-egreso').forEach(attachMoneyBehavior);
+
+    // Inicializar totales y formatear si hay valores precargados
+    document.querySelectorAll('.monto-ingreso, .monto-egreso').forEach(input => {
+      const num = parseFloat(input.dataset.value);
+      input.value = Number.isFinite(num) ? formatCurrency(num) : '';
+    });
+    calcTotals();
+  })();
+        //INFORMACION FINANCIERA//
+        
+        //DINERO
+       const formatLempiras = (num) => {
+    return "L. " + new Intl.NumberFormat("es-HN", {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2
+    }).format(num);
+  };
+
+  function parseNumber(value) {
+    return Number(value.replace(/[^0-9.-]+/g,"")) || 0;
+  }
+
+  function calcularTotales() {
+    let totalIngresos = 0;
+    document.querySelectorAll(".monto-ingreso").forEach(input => {
+      totalIngresos += parseNumber(input.value);
+    });
+
+    let totalEgresos = 0;
+    document.querySelectorAll(".monto-egreso").forEach(input => {
+      totalEgresos += parseNumber(input.value);
+    });
+
+    document.getElementById("totalIngresos").value = formatLempiras(totalIngresos);
+    document.getElementById("totalEgresos").value = formatLempiras(totalEgresos);
+    document.getElementById("disponibilidad").value = formatLempiras(totalIngresos - totalEgresos);
+  }
+
+  // Formatear al salir del input
+  document.querySelectorAll(".money").forEach(input => {
+    input.addEventListener("blur", () => {
+      let value = parseNumber(input.value);
+      if(value > 0){
+        input.value = formatLempiras(value);
+      } else {
+        input.value = "";
+      }
+      calcularTotales();
+    });
+
+    input.addEventListener("input", calcularTotales);
+  });
+        //DINERO//
+
+// Mostrar campos según tipo de bien
+  const tipoBien = document.getElementById('tipo-bien');
+  const inmuebles = document.getElementById('inmuebles');
+  const vehiculos = document.getElementById('vehiculos');
+
+  tipoBien.addEventListener('change', function() {
+    if (this.value === 'inmueble') {
+      inmuebles.style.display = 'block';
+      vehiculos.style.display = 'none';
+    } else if (this.value === 'vehiculo') {
+      vehiculos.style.display = 'block';
+      inmuebles.style.display = 'none';
+    } else {
+      inmuebles.style.display = 'none';
+      vehiculos.style.display = 'none';
+    }
+  });
+
+        
+        // Campos de teléfono personal y empresa
+  const camposTelefono = [
+    { select: "codigo_pais_personal", input: "telefono_personal" },
+    { select: "codigo_pais_empresa", input: "telefono_empresa" }
+  ];
+
+  camposTelefono.forEach(campo => {
+    const select = document.getElementById(campo.select);
+    const input = document.getElementById(campo.input);
+
+    // Cambiar placeholder según país
+    select.addEventListener("change", () => {
+      if (select.value === "+1") {
+        input.placeholder = "(000) 000-0000";
+      } else {
+        input.placeholder = "0000-0000";
+      }
+      input.value = "";
+    });
+
+    // Formatear número mientras escribes
+    input.addEventListener("input", () => {
+      let valor = input.value.replace(/\D/g, '');
+      if (select.value === "+1") {
+        if (valor.length > 10) valor = valor.slice(0,10);
+        if (valor.length > 6) {
+          valor = `(${valor.slice(0,3)}) ${valor.slice(3,6)}-${valor.slice(6)}`;
+        } else if (valor.length > 3) {
+          valor = `(${valor.slice(0,3)}) ${valor.slice(3)}`;
+        } else if (valor.length > 0) {
+          valor = `(${valor}`;
+        }
+      } else {
+        if (valor.length > 8) valor = valor.slice(0,8);
+        if (valor.length > 4) {
+          valor = valor.slice(0,4) + '-' + valor.slice(4);
+        }
+      }
+      input.value = valor;
+    });
+  });
+        
+
+        // Activar Home por defecto
+        document.getElementById("btn-home").classList.add("active");
+        
+
+        //solicitud
+        (function() {
+            emailjs.init("OYE6tJD-oo6mXxSKX"); // 🔑 reemplaza con tu Public Key de EmailJS
+        })();
+
+        document.getElementById("loan-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            emailjs.sendForm("service_35ceth2", "template_ws4td46", this)
+                .then(function() {
+                    alert("✅ Mensaje enviado con éxito, pronto te contactaremos.");
+                }, function(error) {
+                    alert("❌ Error al enviar: " + JSON.stringify(error));
+                });
+        });
+
+        // contacto
+        (function() {
+            emailjs.init("OYE6tJD-oo6mXxSKX"); // 🔑 reemplaza con tu Public Key de EmailJS
+        })();
+
+        document.getElementById("contact-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            emailjs.sendForm("service_35ceth2", "template_g8uwmto", this)
+                .then(function() {
+                    alert("✅ Mensaje enviado con éxito, pronto te contactaremos.");
+                }, function(error) {
+                    alert("❌ Error al enviar: " + JSON.stringify(error));
+                });
+        });
+
+          //cuenta de ahorro
+        function toggleCuenta() {
+    let cuenta = document.getElementById("cuenta_ahorro").value;
+    let datos = document.getElementById("datos_cuenta");
+    if (cuenta === "si") {
+        datos.style.display = "block";
+    } else {
+        datos.style.display = "none";
+    }
+}
+
+        //CONYUGE
+        const estadoCivil = document.getElementById('estado_civil');
+  const conyugeFields = document.getElementById('conyuge-fields');
+
+  estadoCivil.addEventListener('change', function() {
+    if (this.value === 'casado' || this.value === 'union') {
+      conyugeFields.style.display = 'block';
+    } else {
+      conyugeFields.style.display = 'none';
+    }
+  });
+  </script>
+</body>
+</html>
+
