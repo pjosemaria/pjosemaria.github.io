@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Noticia - Reunión de Socios</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f9fafb;
+      color: #111827;
+      line-height: 1.6;
+    }
+     header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            background: #facc15;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            z-index: 1001;
+        }
+    header .left {
+      flex: 1;
+    }
+    header img {
+      max-width: 150px;
+      display: flex;
+      margin: 200px;
+    }
+    .home-btn {
+      background: #2e7e32;
+      color: #fff;
+      text-decoration: none;
+      padding: 5px 12px;
+      border-radius: 6px;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+    .home-btn:hover {
+      background: #111827;
+    }
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 120px 20px 20px; /* 🔹 Extra padding arriba para que no se tape con el header */
+    }
+    .intro-text {
+      background: #fff;
+      padding: 5px 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+    }
+    .details-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+    .details-table th, .details-table td {
+      border: 1px solid #ddd;
+      padding: 12px;
+    }
+    .details-table th {
+      background: #f3f4f6;
+      text-align: left;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 15px;
+      margin: 20px 0;
+    }
+    .gallery img {
+      width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .topics {
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      margin-top: 20px;
+    }
+    footer {
+      background: #1f2937;
+      color: #fff;
+      text-align: center;
+      padding: 15px;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <!-- Botón Home -->
+    <a href="index.html" class="home-btn">Volver</a>
+    
+    <!-- Logo -->
+    <div class="left">
+      <img src="assets/LOGO CARACAS.png" alt="Logo Caja Rural Caracas">
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="intro-text">
+      <h2>Asamblea General de Socios</h2>
+      <p>
+        La Caja Rural Caracas convoca a todos los socios a participar en la reunión que se llevará a cabo en el Salón de Reuniones.  
+        Este encuentro tiene como finalidad presentar los avances de la institución, revisar proyectos en curso y discutir nuevas oportunidades para el beneficio de todos los asociados.
+      </p>
+    </div>
+
+    <table class="details-table">
+      <tr>
+        <th>Fecha</th>
+        <td>Viernes 29 de Agosto</td>
+      </tr>
+      <tr>
+        <th>Hora</th>
+        <td>5:00 PM</td>
+      </tr>
+      <tr>
+        <th>Lugar</th>
+        <td>Salón de Reuniones - Caja Rural Caracas</td>
+      </tr>
+      <tr>
+        <th>Convocatoria</th>
+        <td>Reunión de socios para tratar temas de interés general</td>
+      </tr>
+    </table>
+
+    <h2>Galería de Fotos</h2>
+    <div class="gallery">
+      <img src="assets/foto2.jpeg" alt="Foto 1">
+      <img src="assets/foto3.jpeg" alt="Foto 2">
+    </div>
+
+    <div class="topics">
+      <h3>Temas a discutir</h3>
+      <ul>
+        <li>Informe de actividades y avances de la Caja Rural.</li>
+        <li>Revisión de proyectos comunitarios en curso.</li>
+        <li>Presentación de estados financieros.</li>
+        <li>Discusión sobre futuros planes de inversión.</li>
+        <li>Espacio abierto para opiniones y propuestas de socios.</li>
+      </ul>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Caja Rural Caracas. Todos los derechos reservados.</p>
+  </footer>
+</body>
+</html>
