@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Construyendo Página - Caja Rural Caracas</title>
+  <style>
+    body {
+      background-color: #facc15; /* Amarillo principal */
+      color: #1f2937; /* Gris oscuro */
+      font-family: 'League Spartan', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      text-align: center;
+      flex-direction: column;
+    }
+
+    .container {
+      max-width: 600px;
+      padding: 20px;
+    }
+
+    img {
+      width: 300px;
+      margin-bottom: -20px;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      font-weight: 800;
+      color: #ffffff;
+    }
+
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+    }
+
+    .btn-home {
+      display: inline-block;
+      padding: 12px 24px;
+      background-color: #166534; /* Verde */
+      color: white;
+      font-size: 1rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+
+    .btn-home:hover {
+      background-color: #14532d;
+    }
+
+    /* Martillo emoji animado */
+    .hammer {
+      font-size: 4rem;
+      display: inline-block;
+      animation: hammering 1s infinite;
+      transform-origin: top right;
+    }
+
+    @keyframes hammering {
+      0% { transform: rotate(0deg); }
+      30% { transform: rotate(-40deg); }
+      60% { transform: rotate(0deg); }
+      100% { transform: rotate(0deg); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Logo -->
+    <img src="assets/Imagotipo-CARACAS (Positivo).png" alt="Logo Caja Rural">
+
+    <!-- Texto principal -->
+    <h1>CONSTRUYENDO PAGINA</h1>
+    <span class="hammer">🔨</span>
+    <p>Estamos trabajando en esta sección para brindarte una mejor experiencia.<br> ¡Muy pronto estará disponible!</p>
+
+    <!-- Botón para volver al inicio -->
+    <a href="index.html" class="btn-home">Volver al Inicio</a>
+  </div>
+</body>
+</html>
+

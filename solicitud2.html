@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Solicitud de Préstamo - PDF Formal</title>
+<link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<style>
+body {
+    font-family: 'League Spartan', sans-serif;
+    background: #f0f0f0;
+    margin: 0;
+    padding: 20px;
+}
+form {
+    max-width: 900px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+h1 {
+    text-align: center;
+    color: #2e7e32;
+    margin-bottom: 20px;
+}
+label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+}
+input, textarea, select {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    margin-top: 5px;
+    font-size: 14px;
+}
+button {
+    margin-top: 25px;
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    background: #2e7e32;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+button:hover {
+    background: #27642a;
+}
+</style>
+</head>
+<body>
+
+<form id="loanForm">
+<h1>Solicitud de Préstamo</h1>
+
+<label>Nombre del Solicitante:</label>
+<input type="text" name="nombre_solicitante" required>
+
+<label>Monto Solicitado:</label>
+<input type="text" name="monto_solicitado" required>
+
+<label>Garantía:</label>
+<textarea name="garantia" rows="2"></textarea>
+
+<label>Tasa (%):</label>
+<input type="text" name="tasa" required>
+
+<label>Forma de Pago:</label>
+<input type="text" name="forma_pago" required>
+
+<label>Plazo:</label>
+<input type="text" name="plazo" required>
+
+<label>Edad:</label>
+<input type="number" name="edad" required>
+
+<label>DNI:</label>
+<input type="text" name="dni" required>
+
+<label>RTN:</label>
+<input type="text" name="rtn" required>
+
+<label>Teléfono:</label>
+<input type="text" name="telefono" required>
+
+<label>Dirección:</label>
+<textarea name="direccion" rows="2" required></textarea>
+
+<label>Estado Civil:</label>
+<input type="text" name="estado_civil">
+
+<label>Número de Dependientes:</label>
+<input type="number" name="dependientes">
+
+<label>Ocupación / Ingresos:</label>
+<textarea name="ocupacion_ingresos" rows="3" required></textarea>
+
+<label>Destino del Crédito:</label>
+<textarea name="destino_credito" rows="2" required></textarea>
+
+<label>Ingresos Mensuales Detallados:</label>
+<textarea name="ingresos_mensuales" rows="4"></textarea>
+
+<label>Egresos Mensuales Detallados:</label>
+<textarea name="egresos_mensuales" rows="4"></textarea>
+
+<label>Cuenta de Ahorros:</label>
+<textarea name="cuenta_ahorros" rows="2"></textarea>
+
+<label>Observaciones y Recomendaciones:</label>
+<textarea name="observaciones" rows="4"></textarea>
+
+<button type="submit">Generar Documento Formal PDF</button>
+</form>
+
+<script>
+const loanForm = document.getElementById('loanForm');
+loanForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const formData = new FormData(loanForm);
+    const data = {};
+    formData.forEach((value, key) => data[key] = value);
+
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF({unit:'pt', format:'a4'});
+    const margin = 40;
+    let y = margin;
+
+    const lineHeight = 16;
+    const pageWidth = doc.internal.pageSize.getWidth();
+
+    const addLine = (text, offset = 0, bold=false) => {
+        doc.setFont("helvetica", bold?"bold":"normal");
+        doc.text(text, margin + offset, y);
+        y += lineHeight;
+        if (y > 770) { doc.addPage(); y = margin; }
+    }
+
+    // Header
+    doc.setFontSize(14);
+    doc.setFont("helvetica","bold");
+    addLine("CAJA RURAL DE AHORRO Y CREDITO AMISTAD Y SUPERACIÓN (CARACAS)");
+    addLine("Oficina: San Francisco de Saco, Arizona, Atlántida.");
+    y += lineHeight;
+
+    // Title
+    doc.setFontSize(16);
+    addLine("PRESENTACIÓN DE SOLICITUD DE PRÉSTAMO", 0, true);
+    y += lineHeight;
+
+    addLine(`DE: Tania Gissel Cruz Ávila.  `);
+    addLine(`Auxiliar de Administración`);
+    addLine(`Caja Rural “Amistad y Superación”`);
+    y += lineHeight;
+    addLine("A: COMITÉ DE CREDITOS.");
+    addLine("CARACAS.");
+    y += lineHeight;
+
+    addLine(`Nombre del Solicitante: ${data.nombre_solicitante}`);
+    addLine(`Monto Solicitado: ${data.monto_solicitado}`);
+    addLine(`Garantía: ${data.garantia}`);
+    addLine(`Tasa: ${data.tasa}%`);
+    addLine(`Forma de Pago: ${data.forma_pago}`);
+    addLine(`Plazo: ${data.plazo}`);
+    y += lineHeight;
+
+    addLine("DATOS GENERALES:", 0, true);
+    let datos_generales = `El Sr. ${data.nombre_solicitante}, mayor de edad, con DNI No. ${data.dni}, RTN ${data.rtn} y Tel. ${data.telefono}, con domicilio en ${data.direccion}, ${data.estado_civil} con ${data.dependientes} Personas que dependen de él Económicamente. ${data.ocupacion_ingresos}`;
+    addLine(datos_generales);
+    y += lineHeight;
+
+    addLine("DESTINO DEL CREDITO:", 0, true);
+    addLine(data.destino_credito);
+    y += lineHeight;
+
+    addLine("INFORMACIÓN FINANCIERA:", 0, true);
+    addLine("INGRESOS MENSUALES:");
+    addLine(data.ingresos_mensuales || "N/A");
+    addLine("EGRESOS MENSUALES:");
+    addLine(data.egresos_mensuales || "N/A");
+    y += lineHeight;
+
+    addLine("COMPENSACIÓN / CUENTA DE AHORROS:", 0, true);
+    addLine(data.cuenta_ahorros || "N/A");
+    y += lineHeight;
+
+    addLine("OBSERVACIONES Y RECOMENDACIONES:", 0, true);
+    addLine(data.observaciones || "N/A");
+
+    doc.save(`Presentacion_${data.nombre_solicitante}.pdf`);
+});
+</script>
+
+</body>
+</html>

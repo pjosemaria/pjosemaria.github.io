@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caja Rural</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <img src="assets/LOGO CARACAS.png" alt="Logo Caja Rural">
+        <nav>
+            <a href="#home" onclick="mostrar('home')">Home</a>
+            <a href="#quienes" onclick="mostrar('quienes')">Sobre Nosotros</a>
+            <a href="#ahorro" onclick="mostrar('ahorro')">Tipos de Ahorro</a>
+            <a href="#prestamo" onclick="mostrar('prestamo')">Tipos de Prestamo</a>
+            <a href="solicitud.html">Solicitud de Préstamo</a>
+            <a href="construyendo.html">Mi Perfil</a>
+        </nav>
+        <button id="toggleBtn">☰</button>
+    </header>
+
+    <!-- SIDEBAR MÓVIL -->
+    <div class="sidebar" id="sidebar">
+        <a href="#home" onclick="mostrar('home')">Home</a>
+        <a href="#quienes" onclick="mostrar('quienes')">Sobre Nosotros</a>
+        <a href="#ahorro" onclick="mostrar('ahorro')">Tipos de Ahorro</a>
+        <a href="#prestamo" onclick="mostrar('prestamo')">Tipos de Prestamo</a>
+        <a href="solicitud.html">Solicitud de Préstamo</a>
+        <a href="construyendo.html">Mi Perfil</a>
+    </div>
+
+    <!-- CONTENIDO -->
+    <div class="content" style="margin-top: 10px;">
+
+        <!-- ====== SECCIÓN HOME ====== -->
+        <section id="home" class="active">
+            <div class="card-prestamo">
+                <h2>Bienvenido a la Caja Rural</h2>
+                <p>Accede fácilmente a nuestros préstamos y obtén el apoyo financiero que necesitas.</p>
+                <button onclick="mostrar('solicitud')">Solicitar de Préstamo</button>
+            </div>
+            <div class="cards">
+                <div class="card">
+                    <img src="assets/foto1.jpg" alt="Noticia 1">
+                    <div class="card-body">
+                        <h3 style="border-radius: 5px; padding: 5px 10px; background-color: rgb(255, 115, 50); color: #fff;">Reunión de Socios</h3>
+                        <p>Este Viernes tendremos una reunión para discutir nuevos proyectos de la caja rural.</p>
+                        <a href="noticia1.html" class="btn-mas-info">Más Información</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="assets/planos.jpg" alt="Noticia 2">
+                    <div class="card-body">
+                        <h3>Lotificación CARACAS</h3>
+                        <p>La Caja Rural Caracas pone a disposición de sus socios y la comunidad en general un proyecto de lotificación pensado para brindar seguridad, accesibilidad y crecimiento a las familias.</p>
+                        <a href="noticia2.html" class="btn-mas-info">Más Información</a>
+                    </div>
+                </div>
+                <!-- Card: Conferencia sobre Ahorro y Finanzas -->
+<div class="card card-conferencia">
+  <div class="card-icon">
+  </div>
+  <div class="card-body">
+    <h3>Conferencia Virtual: Aprendiendo a Ahorrar</h3>
+    <p>Únete a nuestra charla virtual para mejorar tus finanzas personales y aprender técnicas de ahorro efectivas.</p>
+    <a href="noticia3.html" class="btn-mas-info">Más Información</a>
+    <a href="https://calendar.app.google/CfjB3deiYJF6pjNr5" class="btn-mas-info" style="background-color: #FACC15; color: #000; padding: 15PX 30PX;">UNETÉ AHORA</a>
+  </div>
+</div>
+                <div class="card">
+                    <img src="assets/images.png" alt="Noticia 2">
+                    <div class="card-body">
+                        <h3>La mejor forma de adquirir prestamos</h3>
+                        <p>Conoce las opciones más confiables y seguras para obtener préstamos adaptados a tus necesidades financieras, con procesos rápidos y sencillos.</p>
+                        <a href="noticia4.html" class="btn-mas-info">Más Información</a>
+                    </div>
+                </div>
+        </section>
+        
+        <section id="quienes">
+  <div class="container">
+  <!-- QUIENES SOMOS -->
+  <div class="intro-text">
+    <h2 style="font-size: 22px; background-color: #2e7e32; margin-top: 10px; padding: 5px 10px; text-align: center; border-radius: 15px; color: #fff;">QUIÉNES SOMOS</h2>
+    <p>
+      La <strong>Caja Rural Caracas</strong> es una institución financiera comprometida con el desarrollo de nuestra comunidad. 
+      Ofrecemos servicios de ahorro, crédito, proyectos de lotificación, ganadería y apoyo a iniciativas locales para mejorar la calidad de vida de nuestros socios.
+    </p>
+  </div>
+
+  <!-- Historia -->
+  <div class="topics">
+    <h3>Nuestra Historia</h3>
+    <p>
+      Caja Rural Caracas nació el <strong>23 de mayo de 2012</strong> en <strong>San Francisco de Saco, Arizona</strong>, fundada por un grupo de <strong>5 familiares y amigos</strong> con la visión de ofrecer servicios financieros cercanos y confiables.
+    </p>
+    <p>
+      Desde entonces, hemos crecido de manera constante y hoy contamos con <strong>100 socios</strong>. Nuestra evolución incluye oficinas modernas, proyectos de lotificación, ganadería y otras iniciativas que fortalecen la comunidad.
+    </p>
+  </div>
+
+  <!-- Misión, Visión y Principios -->
+  <div class="topics">
+    <h3>Misión</h3>
+    <p>Ofrecer servicios financieros confiables y accesibles, fomentando el ahorro, la inversión y el desarrollo de nuestra comunidad.</p>
+    
+    <h3>Visión</h3>
+    <p>Ser la institución financiera de referencia en la región, reconocida por su cercanía, transparencia y apoyo al desarrollo económico local.</p>
+    
+    <h3>Principios</h3>
+    <ul>
+      <li>Transparencia y confianza.</li>
+      <li>Compromiso con la comunidad.</li>
+      <li>Innovación y mejora continua.</li>
+      <li>Trabajo en equipo y ética.</li>
+    </ul>
+  </div>
+
+  <!-- Junta Directiva -->
+  <div class="topics">
+    <h3>Junta Directiva</h3>
+    <div class="gallery">
+      <!-- Card de miembro -->
+      <div style="background:#fff; border-radius:12px; box-shadow:0 2px 6px rgba(0,0,0,0.1); padding:15px; text-align:center;">
+        <img src="assets/presidente elder.jpeg" alt="Presidente" style="width:100%; border-radius:12px;">
+        <h4>Elder Pineda</h4>
+        <p>Presidente</p>
+      </div>
+      <div style="background:#fff; border-radius:12px; box-shadow:0 2px 6px rgba(0,0,0,0.1); padding:15px; text-align:center;">
+        <img src="assets/omar.jpg" alt="Vicepresidente" style="width:100%; border-radius:12px;">
+        <h4>Omar Henriquez</h4>
+        <p>Vicepresidente</p>
+      </div>
+      <div style="background:#fff; border-radius:12px; box-shadow:0 2px 6px rgba(0,0,0,0.1); padding:15px; text-align:center;">
+        <img src="assets/yanna.jpg" alt="Secretario" style="width:100%; border-radius:12px;">
+        <h4>Yanna Cruz</h4>
+        <p>Secretaria</p>
+      </div>
+      <div style="background:#fff; border-radius:12px; box-shadow:0 2px 6px rgba(0,0,0,0.1); padding:15px; text-align:center;">
+        <img src="assets/abigail.jpg" alt="Secretario" style="width:100%; border-radius:12px;">
+        <h4>Abigail Ponce</h4>
+        <p>Tesirera</p>
+      </div>
+      <div style="background:#fff; border-radius:12px; box-shadow:0 2px 6px rgba(0,0,0,0.1); padding:15px; text-align:center;">
+        <img src="assets/marilu.jpg" alt="Secretario" style="width:100%; border-radius:12px;">
+        <h4>María Luz Barrera</h4>
+        <p>Vocal 1</p>
+      </div>
+      <div style="background:#fff; border-radius:12px; box-shadow:0 2px 6px rgba(0,0,0,0.1); padding:15px; text-align:center;">
+        <img src="assets/avatar.webp" alt="Secretario" style="width:100%; border-radius:12px;">
+        <h4>Antonio Cardona</h4>
+        <p>Vocal 2</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Junta Fiscalizadora -->
+  <div class="topics">
+    <h3>Junta Fiscalizadora</h3>
+    <div class="gallery">
+      <div style="background:#fff; border-radius:12px; box-shadow:0 2px 6px rgba(0,0,0,0.1); padding:15px; text-align:center;">
+        <img src="assets/OSCAR.jpg" alt="Miembro" style="width:100%; border-radius:12px;">
+        <h4>Oscar Albero</h4>
+        <p>Presidente</p>
+      </div>
+      <div style="background:#fff; border-radius:12px; box-shadow:0 2px 6px rgba(0,0,0,0.1); padding:15px; text-align:center;">
+        <img src="assets/avatar.webp" alt="Miembro" style="width:100%; border-radius:12px;">
+        <h4>Javier Madrid</h4>
+        <p>Secretario</p>
+      </div>
+      <div style="background:#fff; border-radius:12px; box-shadow:0 2px 6px rgba(0,0,0,0.1); padding:15px; text-align:center;">
+        <img src="assets/MAYCON.jpg" alt="Miembro" style="width:100%; border-radius:12px;">
+        <h4>Maycon Ayala</h4>
+        <p>Vocal</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Comité de Vigilancia -->
+  <div class="topics">
+    <h3>Comité de Vigilancia</h3>
+    <div class="gallery">
+      <div style="background:#fff; border-radius:12px; box-shadow:0 2px 6px rgba(0,0,0,0.1); padding:15px; text-align:center;">
+        <img src="assets/LITO.jpg" alt="Miembro" style="width:100%; border-radius:12px;">
+        <h4>José Ramos</h4>
+        <p>Presidente</p>
+      </div>
+      <div style="background:#fff; border-radius:12px; box-shadow:0 2px 6px rgba(0,0,0,0.1); padding:15px; text-align:center;">
+        <img src="assets/avatar.webp" alt="Miembro" style="width:100%; border-radius:12px;">
+        <h4>Kenia Mejia</h4>
+        <p>Secretaria</p>
+      </div>
+      <div style="background:#fff; border-radius:12px; box-shadow:0 2px 6px rgba(0,0,0,0.1); padding:15px; text-align:center;">
+        <img src="assets/avatar.webp" alt="Miembro" style="width:100%; border-radius:12px;">
+        <h4>Brenda Barrera</h4>
+        <p>Vocal</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Comité de Educación -->
+  <div class="topics">
+    <h3>Comité de Educación</h3>
+    <div class="gallery">
+      <div style="background:#fff; border-radius:12px; box-shadow:0 2px 6px rgba(0,0,0,0.1); padding:15px; text-align:center;">
+        <img src="assets/EVER.jpg" alt="Miembro" style="width:100%; border-radius:12px;">
+        <h4>Ever Fúnez</h4>
+        <p>Miembro</p>
+      </div>
+      <div style="background:#fff; border-radius:12px; box-shadow:0 2px 6px rgba(0,0,0,0.1); padding:15px; text-align:center;">
+        <img src="assets/NORMA.jpg" alt="Miembro" style="width:100%; border-radius:12px;">
+        <h4>Norma Vásquez</h4>
+        <p>Miembro</p>
+      </div>
+      <div style="background:#fff; border-radius:12px; box-shadow:0 2px 6px rgba(0,0,0,0.1); padding:15px; text-align:center;">
+        <img src="assets/omar.jpg" alt="Miembro" style="width:100%; border-radius:12px;">
+        <h4>Omar Henriquez</h4>
+        <p>Miembro</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Comité de Ahorro y Crédito -->
+  <div class="topics">
+    <h3>Comité de Ahorro y Crédito</h3>
+    <div class="gallery">
+      <div style="background:#fff; border-radius:12px; box-shadow:0 2px 6px rgba(0,0,0,0.1); padding:15px; text-align:center;">
+        <img src="assets/VICDELIA.jpeg" alt="Miembro" style="width:100%; border-radius:12px;">
+        <h4>Vicdelia Pineda</h4>
+        <p>Presidenta</p>
+      </div>
+      <div style="background:#fff; border-radius:12px; box-shadow:0 2px 6px rgba(0,0,0,0.1); padding:15px; text-align:center;">
+        <img src="assets/marilu.jpg" alt="Miembro" style="width:100%; border-radius:12px;">
+        <h4>María Luz Barrera</h4>
+        <p>Secretaria</p>
+      </div>
+      <div style="background:#fff; border-radius:12px; box-shadow:0 2px 6px rgba(0,0,0,0.1); padding:15px; text-align:center;">
+        <img src="assets/ANA.jpg" alt="Miembro" style="width:100%; border-radius:12px;">
+        <h4>Ana Ramos</h4>
+        <p>Vocal</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Comité de Administración -->
+  <div class="topics">
+    <h3>Comité de Administración</h3>
+    <div class="gallery">
+      <div style="background:#fff; border-radius:12px; box-shadow:0 2px 6px rgba(0,0,0,0.1); padding:15px; text-align:center;">
+        <img src="assets/jaky.jpg" alt="Miembro" style="width:100%; border-radius:12px;">
+        <h4>Sonia Jackeline Castro</h4>
+        <p>Miembro</p>
+      </div>
+      <div style="background:#fff; border-radius:12px; box-shadow:0 2px 6px rgba(0,0,0,0.1); padding:15px; text-align:center;">
+        <img src="assets/tania.jpg" alt="Miembro" style="width:100%; border-radius:12px;">
+        <h4>Tania Gissel Cruz</h4>
+        <p>Miembro</p>
+      </div>
+      <div style="background:#fff; border-radius:12px; box-shadow:0 2px 6px rgba(0,0,0,0.1); padding:15px; text-align:center;">
+        <img src="assets/abigail.jpg" alt="Miembro" style="width:100%; border-radius:12px;">
+        <h4>María Abigail Ponce</h4>
+        <p>Miembro</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Comité de Producción -->
+  <div class="topics">
+    <h3>Comité de Producción</h3>
+    <div class="gallery">
+      <div style="background:#fff; border-radius:12px; box-shadow:0 2px 6px rgba(0,0,0,0.1); padding:15px; text-align:center;">
+        <img src="assets/produccion1.jpg" alt="Miembro" style="width:100%; border-radius:12px;">
+        <h4>Elder Pineda</h4>
+        <p>Miembro</p>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+
+        <!-- ====== SECCIÓN AHORRO ====== -->
+        <section id="ahorro">
+  <div class="ahorro-header">
+    <h2 style="font-size: 22px; background-color: #2e7e32; margin-top: 10px; padding: 5px 10px; text-align: center; border-radius: 15px; color: #fff; margin-bottom: 10px;">TIPOS DE AHORRO</h2>
+    <p>
+      Descubre los distintos planes de ahorro diseñados para adaptarse a tus necesidades. 
+      Cada cuenta ofrece beneficios únicos que te ayudarán a cumplir tus metas financieras 
+      de manera segura, confiable y accesible.
+    </p>
+  </div>
+
+  <div class="cards-container">
+
+    <!-- Card: Ahorro Retirable -->
+    <div class="card">
+      <div class="card-icon">
+        <i class="fas fa-university"></i>
+      </div>
+      <div class="card-body">
+        <h2>Cuenta de Ahorro Retirable</h2>
+        <p>
+          Diseñada para quienes desean mantener su dinero siempre disponible, esta cuenta 
+          te permite retirar fondos en cualquier momento sin penalización. Además, ofrece 
+          intereses competitivos sobre tu saldo, lo que asegura que tu dinero no solo 
+          esté guardado, sino que también crezca con el tiempo.
+        </p>
+        <ul>
+          <li>Acceso a tus fondos 24/7.</li>
+          <li>Intereses calculados diariamente.</li>
+          <li>Seguridad respaldada por nuestra institución financiera.</li>
+          <li>Recomendado para emergencias o gastos inesperados.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Card: Ahorro a Plazo Fijo -->
+    <div class="card">
+      <div class="card-icon">
+        <i class="fas fa-hourglass-half"></i>
+      </div>
+      <div class="card-body">
+        <h2>Cuenta de Ahorro a Plazo Fijo</h2>
+        <p>
+          Ideal para quienes buscan estabilidad y mayores rendimientos. Esta modalidad 
+          requiere mantener el dinero depositado durante un tiempo previamente acordado, 
+          lo que garantiza tasas de interés más altas que las cuentas tradicionales.
+        </p>
+        <ul>
+          <li>Plazos flexibles desde 3 meses hasta 5 años.</li>
+          <li>Tasas de interés más elevadas según el plazo elegido.</li>
+          <li>Perfecto para planificar proyectos a mediano o largo plazo.</li>
+          <li>No permite retiros anticipados sin penalización.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Card: Ahorro Navideño -->
+    <div class="card">
+      <div class="card-icon">
+        <i class="fas fa-gift"></i>
+      </div>
+      <div class="card-body">
+        <h2>Cuenta de Ahorro Navideño</h2>
+        <p>
+          Pensada especialmente para quienes desean disfrutar de las festividades sin 
+          preocupaciones financieras. Te permite ahorrar poco a poco durante el año y 
+          retirar el monto acumulado en diciembre para cubrir tus gastos de temporada.
+        </p>
+        <ul>
+          <li>Depósitos mensuales automáticos o voluntarios.</li>
+          <li>Disponibilidad de fondos únicamente en diciembre.</li>
+          <li>Te ayuda a organizar tus finanzas festivas con anticipación.</li>
+          <li>Evita endeudamientos en fin de año.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Card: Ahorro Infantil -->
+    <div class="card">
+      <div class="card-icon">
+        <i class="fas fa-child"></i>
+      </div>
+      <div class="card-body">
+        <h2>Cuenta de Ahorro Infantil</h2>
+        <p>
+          Una cuenta creada para enseñar a los más pequeños la importancia del ahorro. 
+          Ofrece beneficios especiales para los niños, incluyendo material educativo y 
+          tasas preferenciales que motivan a las familias a invertir en su futuro.
+        </p>
+        <ul>
+          <li>Ideal para padres que quieren inculcar hábitos financieros saludables.</li>
+          <li>Acceso a programas de educación financiera infantil.</li>
+          <li>Depósitos desde montos pequeños y accesibles.</li>
+          <li>Regalos y sorpresas en fechas especiales.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Card: Contacto -->
+    <div class="card highlight">
+      <div class="card-body">
+        <h2>¿Quieres más información?</h2>
+        <p>
+          Escríbenos a nuestro correo y con gusto te asesoraremos en la mejor opción para ti y tu familia.
+        </p>
+        <a href="mailto:ahorro@caracas.hn" class="btn-contact">ahorro@caracas.hn</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+       <!-- ====== SECCIÓN PRESTAMO ====== -->
+<section id="prestamo">
+  <div class="prestamo-header">
+    <h2 style="font-size: 22px; background-color: #2e7e32; margin-top: 10px; padding: 5px 10px; text-align: center; border-radius: 15px; color: #fff; margin-bottom: 10PX;">TIPOS DE PRESTAMOS</h2>
+    <p>
+      Ofrecemos distintas modalidades de préstamo diseñadas para ayudarte a cumplir tus sueños
+      y necesidades financieras. Cada tipo de crédito se adapta a tu situación, brindándote
+      respaldo, confianza y condiciones accesibles.
+    </p>
+  </div>
+
+  <div class="cards-container">
+
+    <!-- Card: Préstamo Hipotecario -->
+    <div class="card">
+      <div class="card-icon">
+        <i class="fas fa-home"></i>
+      </div>
+      <div class="card-body">
+        <h2>Préstamo Hipotecario</h2>
+        <p>
+          Crédito a mediano y largo plazo diseñado para la compra, construcción o remodelación de viviendas.
+          Está respaldado por una garantía hipotecaria, lo que te brinda seguridad y tasas accesibles.
+        </p>
+        <ul>
+          <li>Financiamiento hasta el 80% del valor del inmueble.</li>
+          <li>Plazos flexibles de hasta 20 años.</li>
+          <li>Tasas de interés competitivas.</li>
+          <li>Ideal para adquirir tu primera vivienda o ampliar tu patrimonio.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Card: Préstamo Fiduciario -->
+    <div class="card">
+      <div class="card-icon">
+        <i class="fas fa-handshake"></i>
+      </div>
+      <div class="card-body">
+        <h2>Préstamo Fiduciario</h2>
+        <p>
+          Una alternativa de financiamiento que no requiere bienes en garantía, sino la firma de un fiador solvente. 
+          Es perfecto para cubrir gastos personales, emergencias o proyectos pequeños.
+        </p>
+        <ul>
+          <li>No requiere hipoteca ni prenda.</li>
+          <li>Basado en la confianza y respaldo de un fiador.</li>
+          <li>Montos accesibles y aprobaciones rápidas.</li>
+          <li>Ideal para gastos inmediatos o planes personales.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Card: Préstamo Prendario -->
+    <div class="card">
+      <div class="card-icon">
+        <i class="fas fa-car"></i>
+      </div>
+      <div class="card-body">
+        <h2>Préstamo Prendario</h2>
+        <p>
+          Crédito respaldado por bienes muebles como vehículos, maquinaria o equipos. 
+          Ofrece una solución ágil con trámites simplificados y tasas preferenciales.
+        </p>
+        <ul>
+          <li>Respaldo con bienes muebles de fácil liquidación.</li>
+          <li>Plazos de corto y mediano plazo.</li>
+          <li>Montos según el valor del bien entregado en garantía.</li>
+          <li>Proceso rápido y flexible.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Card: Préstamo Educativo -->
+<!-- Card: Servicio en desarrollo -->
+<div class="card card-educativo">
+  <div class="new-badge">NUEVO</div>
+  <div class="card-body">
+    <div class="coming-soon-wrapper">
+      <i class="fas fa-tools fa-3x" style="color:#999999; margin-bottom:10px;"></i>
+      <p class="coming-soon">Trabajando en un nuevo servicio</p>
+    </div>
+  </div>
+</div>
+
+
+    <!-- Card: Contacto -->
+    <div class="card highlight">
+      <div class="card-body">
+        <h2>¿Necesitas asesoría?</h2>
+        <p>
+          Escríbenos y uno de nuestros asesores financieros te guiará en la mejor opción de préstamo para ti.
+        </p>
+        <a href="mailto:prestamos@caracas.hn" class="btn-contact">prestamos@caracas.hn</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+        <section id="solicitud">
+            <h2>Solicitud de Préstamo</h2>
+            <p>Formulario o información de solicitud...</p>
+        </section>
+        <section id="perfil">
+            <h2>Mi Perfil</h2>
+            <p>Sección en construcción...</p>
+        </section>
+    </div>
+
+   <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="footer-container">
+
+            <div class="footer-col">
+    <h3>Contáctanos</h3>
+    <div class="contact-info">
+        <!-- Teléfono -->
+        <a href="tel:+50498765432" title="Llamar al teléfono">
+            <i class="fas fa-phone"></i> +504 9876-5432
+        </a>
+        <!-- Correo electrónico -->
+        <a href="mailto:oficina@caracas.hn" title="Enviar correo">
+            <i class="fas fa-envelope"></i> oficina@caracas.hn
+        </a>
+    </div>
+</div>
+
+            
+           <div class="footer-col">
+    <h3>Síguenos</h3>
+    <div class="social-links">
+        <a href="#" title="Facebook"><i class="fab fa-facebook"></i></a>
+        <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" title="TikTok"><i class="fab fa-tiktok"></i></a>
+        
+    </div>
+</div>
+
+
+            <div class="footer-col newsletter">
+                <h3>Suscríbete</h3>
+                <p>Recibe noticias y promociones directamente en tu correo.</p>
+                <form action="#">
+                    <input type="email" placeholder="Tu correo electrónico">
+                    <button type="submit">Enviar</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Caja Rural Caracas. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- JS -->
+    <script>
+        // Toggle menú móvil
+        const toggleBtn = document.getElementById('toggleBtn');
+        const sidebar = document.getElementById('sidebar');
+        toggleBtn.addEventListener('click', () => { sidebar.classList.toggle('active'); });
+
+        // Mostrar sección
+        function mostrar(id) {
+            document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+            sidebar.classList.remove('active'); // cerrar sidebar al seleccionar
+        }
+    </script>
+</body>
+</html>

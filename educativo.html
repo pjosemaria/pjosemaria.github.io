@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+         /*NUEVO PRODUCTO*/
+    .card-educativo {
+  position: relative;
+  background: #fff;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.1);
+  overflow: hidden;
+}
+
+/* Borde luminoso degradado */
+.card-educativo::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 3px;
+  border-radius: 16px;
+  background: linear-gradient(45deg, #ffeb3b, #4caf50);
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+          mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* Etiqueta NUEVO */
+.card-educativo .new-badge {
+  position: absolute;
+  top: 10px;
+  right: -25px;
+  background: #4caf50;
+  color: white;
+  font-weight: bold;
+  padding: 5px 40px;
+  transform: rotate(45deg);
+  font-size: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+    </style>
+</head>
+<body>
+        <!-- Card: Préstamo Educativo -->
+<div class="card card-educativo">
+  <div class="new-badge">NUEVO</div>
+  <div class="card-icon">
+    <i class="fas fa-graduation-cap"></i>
+  </div>
+  <div class="card-body">
+    <h2>Préstamo Educativo</h2>
+    <p>
+      Una opción de financiamiento pensada en el futuro académico. Te ayuda a cubrir 
+      colegiaturas, materiales, gastos de matrícula o estudios superiores dentro y fuera del país.
+    </p>
+    <ul>
+      <li>Montos ajustados a la necesidad del estudiante.</li>
+      <li>Plazos accesibles durante el período de estudio.</li>
+      <li>Tasas preferenciales para fomentar la educación.</li>
+      <li>Apoyo financiero integral para formación profesional.</li>
+    </ul>
+  </div>
+</div>
+</body>
+</html>
