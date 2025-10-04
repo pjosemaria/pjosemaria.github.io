@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conkretos y Más - Alcantarillas de Cemento</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f8f9fa;
+            color: #333;
+        }
+        
+        .navbar {
+            background-color: #ffffff;
+        }
+        
+        .navbar-brand {
+            font-weight: bold;
+            color: white !important;
+        }
+        /* HERO */
+        /* HEADER */
+        
+        header {
+            background: #002244;
+            color: #fff;
+            text-align: center;
+            padding: 150px 20px 150px;
+        }
+        
+        header img {
+            max-width: 220px;
+            margin-bottom: 5px;
+        }
+        
+        header h2 {
+            border-radius: 20px;
+            background-color: #ff3333;
+            padding: 5px 10px;
+            color: #fff;
+            margin: 2px 0 15px;
+            font-size: 18px;
+            font-weight: normal;
+        }
+        
+        header p {
+            font-size: 15px;
+        }
+        
+        header .social-icons1 a {
+            margin: 10px 10px;
+            color: #ff3333;
+            font-size: 35px;
+            transition: 0.3s;
+        }
+        /* TARJETAS */
+        
+        .services .card,
+        #productos .card {
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .services .card:hover,
+        #productos .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        #productos .card-body h5 {
+            font-weight: bold;
+        }
+        
+        #productos .precio {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #202020;
+        }
+        
+        footer {
+            background: #002244;
+            color: white;
+            padding: 40px 20px;
+        }
+        
+        footer h5 {
+            color: #ff3333;
+            margin-bottom: 15px;
+        }
+        
+        .social-icons a {
+            color: white;
+            margin: 0 10px;
+            font-size: 20px;
+            transition: 0.3s;
+        }
+        
+        .social-icons a:hover {
+            color: #ff3333;
+        }
+        /* Estilos del formulario */
+        
+        .formulario-pedido {
+            max-width: 500px;
+            margin: 30px auto;
+            padding: 25px;
+            background: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .formulario-pedido:hover {
+            transform: translateY(-5px);
+        }
+        /* Labels */
+        
+        .formulario-pedido label {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 5px;
+            display: block;
+        }
+        /* Inputs y select */
+        
+        .formulario-pedido .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            font-size: 15px;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .formulario-pedido .form-control2 {
+            width: 35%;
+            padding: 12px 15px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            font-size: 15px;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .formulario-pedido .form-control:focus {
+            border-color: #0056b3;
+            box-shadow: 0 0 8px rgba(0, 86, 179, 0.2);
+            outline: none;
+        }
+        /* Botón */
+        
+        .btn-enviar {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            color: #fff;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+        
+        .btn-enviar:hover {
+            background: linear-gradient(135deg, #0056b3, #004099);
+            transform: translateY(-2px);
+        }
+        /* Íconos en labels */
+        
+        .form-label i {
+            color: #007bff;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+
+
+    <header id="inicio">
+        <img src="assets/CONKRETOS Y MAS.png" alt="Logo Conkretos & Más">
+        <div>
+            <h2>Calidad Insuperable</h2>
+            <p>9572-1511 | 9758-8108</p>
+        </div>
+        <div class="social-icons1">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-whatsapp"></i></a>
+        </div>
+    </header>
+
+    <!-- Cómo funciona -->
+    <section class="py-5 bg-light">
+        <div class="container text-center">
+            <h2 class="mb-4 text-primary fw-bold">¿Cómo funciona?</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card p-4 shadow-sm">
+                        <i class="fas fa-phone-volume fa-3x text-danger mb-3"></i>
+                        <h5>1. Haz tu pedido</h5>
+                        <p>Solicítalo en la web o contáctanos por teléfono/WhatsApp.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card p-4 shadow-sm">
+                        <i class="fas fa-truck-moving fa-3x text-primary mb-3"></i>
+                        <h5>2. Trae tu transporte</h5>
+                        <p>El cliente trae su camión o cualquier vehículo de carga.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card p-4 shadow-sm">
+                        <i class="fas fa-dolly fa-3x text-danger mb-3"></i>
+                        <h5>3. Nosotros cargamos</h5>
+                        <p>El equipo carga las alcantarillas listas y seguras para ti.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Productos -->
+    <section id="productos" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5 text-primary fw-bold">Nuestros Productos</h2>
+            <div class="row g-4">
+
+                <!-- Alcantarilla 40" -->
+                <div class="col-md-4">
+                    <div class="card h-100 shadow-sm">
+                        <img src="assets/tubos-productos-concrepal.jpg" class="card-img-top" alt="Alcantarilla 40in">
+                        <div class="card-body">
+                            <h5 class="card-title">Alcantarilla Industrial</h5>
+                            <p class="card-text">Tamaño: 40 Inch diámetro x 5ft Largo</p>
+                            <p class="precio">L. 5,000</p>
+                            <a href="#contacto" class="btn btn-danger w-100">Quiero este Producto</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Alcantarilla 30" -->
+                <div class="col-md-4">
+                    <div class="card h-100 shadow-sm">
+                        <img src="assets/tubos-productos-concrepal.jpg" class="card-img-top" alt="Alcantarilla 30in">
+                        <div class="card-body">
+                            <h5 class="card-title">Alcantarilla Extra Grande</h5>
+                            <p class="card-text">Tamaño: 30 Inch diámetro x 4ft Largo</p>
+                            <p class="precio">L. 3,500</p>
+                            <a href="#contacto" class="btn btn-danger w-100">Quiero este Producto</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Alcantarilla 24" -->
+                <div class="col-md-4">
+                    <div class="card h-100 shadow-sm">
+                        <img src="assets/tubos-productos-concrepal.jpg" class="card-img-top" alt="Alcantarilla 24in">
+                        <div class="card-body">
+                            <h5 class="card-title">Alcantarilla Grande</h5>
+                            <p class="card-text">Tamaño: 24 Inch diámetro x 4ft Largo</p>
+                            <p class="precio">L. 3,000</p>
+                            <a href="#contacto" class="btn btn-danger w-100">Quiero este Producto</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Alcantarilla 16" -->
+                <div class="col-md-4">
+                    <div class="card h-100 shadow-sm">
+                        <img src="assets/tubos-productos-concrepal.jpg" class="card-img-top" alt="Alcantarilla 16in">
+                        <div class="card-body">
+                            <h5 class="card-title">Alcantarilla Mediana</h5>
+                            <p class="card-text">Tamaño: 16 Inch diámetro x 4ft Largo</p>
+                            <p class="precio">L. 2,000</p>
+                            <a href="#contacto" class="btn btn-danger w-100">Quiero este Producto</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Alcantarilla 12" -->
+                <div class="col-md-4">
+                    <div class="card h-100 shadow-sm">
+                        <img src="assets/tubos-productos-concrepal.jpg" class="card-img-top" alt="Alcantarilla 12in">
+                        <div class="card-body">
+                            <h5 class="card-title">Alcantarilla Pequeña</h5>
+                            <p class="card-text">Tamaño: 12 Inch diámetro x 4ft Largo</p>
+                            <p class="precio">L. 1,500</p>
+                            <a href="#contacto" class="btn btn-danger w-100">Quiero este Producto</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Nota sobre alcantarillas reforzadas -->
+                <div class="col-md-4">
+                    <div class="card h-100 shadow-sm text-center p-4 d-flex align-items-center justify-content-center" style="background: #0a4268; color: white;">
+                        <div class="card-body d-flex flex-column align-items-center justify-content-center">
+                            <h5 class="card-title">Nota Importante</h5>
+                            <p class="card-text">Todas nuestras alcantarillas están reforzadas con mallas de hierro, garantizando máxima durabilidad y seguridad en tus proyectos.</p>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Contacto -->
+    <form id="pedidoForm" class="formulario-pedido shadow p-4 bg-white rounded">
+        <h2 class="text-center mb-5 text-primary fw-bold">Haz tu pedido</h2>
+        <div class="mb-3">
+            <label for="nombre" class="form-label"><i class="fas fa-user"></i> Nombre</label>
+            <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Tu nombre" required>
+        </div>
+        <div class="mb-3">
+            <label for="telefono" class="form-label"><i class="fas fa-phone"></i> Teléfono</label>
+            <input type="text" class="form-control" id="telefono" name="telefono" placeholder="Tu número de contacto" required>
+        </div>
+
+        <div id="productosContainer">
+            <div class="producto-row mb-3 d-flex gap-2 align-items-center">
+                <select name="producto[]" class="form-control" required>
+                <option value="">--Seleccione un producto--</option>
+                <option>Alcantarilla Pequeña</option>
+                <option>Alcantarilla Mediana</option>
+                <option>Alcantarilla Grande</option>
+                <option>Alcantarilla Extra Grande</option>
+                <option>Alcantarilla Industrial</option>
+            </select>
+                <input type="number" name="cantidad[]" class="form-control2" placeholder="Cantidad" required>
+                <button type="button" class="btn btn-danger btn-sm remove-producto"><i class="fas fa-trash"></i></button>
+            </div>
+        </div>
+
+        <button type="button" id="agregarProducto" class="btn btn-primary mb-3">Agregar otro producto</button>
+        <button type="submit" class="btn-enviar">Enviar Pedido</button>
+    </form>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row text-center text-md-start">
+                <div class="col-md-4 mb-4">
+                    <h5>Contáctanos</h5>
+                    <a><i class="fas fa-phone" href="+504 9572-1511"> </i>+504 9572-1511</a>
+                    <a><i class="fas fa-phone" href="+504 9758-8108"> </i>+504 9758-8108</a>
+                    <p><i class="fas fa-envelope"></i> info@conkretosymas.com</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5>Síguenos</h5>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5>Suscríbete</h5>
+                    <form>
+                        <div class="input-group">
+                            <input type="email" class="form-control" placeholder="Tu correo">
+                            <button class="btn btn-danger" type="submit">Enviar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="text-center mt-3">
+                <small>© 2025 Conkretos y Más. Todos los derechos reservados.</small>
+            </div>
+        </div>
+    </footer>
+
+    <!-- EmailJS -->
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <script>
+        // Inicializa EmailJS con tu User ID
+        emailjs.init("B9FQHof93gs_BaPwN"); // <-- reemplaza con tu User ID de EmailJS
+
+        const pedidoForm = document.getElementById("pedidoForm");
+        const agregarBtn = document.getElementById("agregarProducto");
+        const container = document.getElementById("productosContainer");
+
+        // Función para agregar una nueva fila de producto
+        function agregarFila() {
+            const nuevaFila = document.createElement("div");
+            nuevaFila.classList.add("producto-row", "mb-3", "d-flex", "gap-2", "align-items-center");
+            nuevaFila.innerHTML = `
+            <select name="producto[]" class="form-control" required>
+                <option value="">--Seleccione un producto--</option>
+                <option>Alcantarilla Pequeña</option>
+                <option>Alcantarilla Mediana</option>
+                <option>Alcantarilla Grande</option>
+                <option>Alcantarilla Extra Grande</option>
+                <option>Alcantarilla Industrial</option>
+            </select>
+            <input type="number" name="cantidad[]" class="form-control2" placeholder="Cantidad" required>
+            <button type="button" class="btn btn-danger btn-sm remove-producto"><i class="fas fa-trash"></i></button>
+        `;
+            container.appendChild(nuevaFila);
+
+            // Evento para eliminar esta fila
+            nuevaFila.querySelector(".remove-producto").addEventListener("click", (e) => {
+                e.target.closest(".producto-row").remove();
+            });
+        }
+
+        // Botón para agregar nueva fila
+        agregarBtn.addEventListener("click", agregarFila);
+
+        // Eliminar fila inicial si se presiona "Eliminar"
+        document.querySelectorAll(".remove-producto").forEach(btn => {
+            btn.addEventListener("click", e => e.target.closest(".producto-row").remove());
+        });
+
+        // Enviar formulario a EmailJS
+        pedidoForm.addEventListener("submit", function(e) {
+            e.preventDefault();
+
+            // Construir resumen del pedido
+            const productos = document.querySelectorAll("select[name='producto[]']");
+            const cantidades = document.querySelectorAll("input[name='cantidad[]']");
+            let detallePedido = "";
+            productos.forEach((prod, index) => {
+                if (prod.value && cantidades[index].value) {
+                    detallePedido += `• ${prod.value} - ${cantidades[index].value} piezas\n`;
+                }
+            });
+
+            // Objeto para EmailJS
+            const templateParams = {
+                nombre: document.getElementById("nombre").value,
+                telefono: document.getElementById("telefono").value,
+                pedido: detallePedido
+            };
+
+            emailjs.send("service_mufs8hy", "template_t6wb5qi", templateParams)
+                .then(function(response) {
+                    console.log("Éxito!", response.status, response.text);
+                    alert("Pedido enviado con éxito!");
+                    pedidoForm.reset();
+                    container.innerHTML = `
+                    <div class="producto-row mb-3 d-flex gap-2 align-items-center">
+                        <select name="producto[]" class="form-control" required>
+                            <option value="">--Seleccione un producto--</option>
+                            <option>Alcantarilla Pequeña</option>
+                            <option>Alcantarilla Mediana</option>
+                            <option>Alcantarilla Grande</option>
+                            <option>Alcantarilla Extra Grande</option>
+                            <option>Alcantarilla Industrial</option>
+                        </select>
+                        <input type="number" name="cantidad[]" class="form-control2" placeholder="Cantidad" required>
+                        <button type="button" class="btn btn-danger btn-sm remove-producto"><i class="fas fa-trash"></i></button>
+                    </div>
+                `;
+                    // Reagregar evento eliminar a la fila inicial
+                    container.querySelector(".remove-producto").addEventListener("click", e => e.target.closest(".producto-row").remove());
+                }, function(error) {
+                    console.log("Error...", error);
+                    alert("Error al enviar el pedido. Inténtalo nuevamente.");
+                });
+        });
+    </script>
+
+
+</body>
+
+</html>
